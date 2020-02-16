@@ -66,7 +66,7 @@
             // 
             this.buttonZoomIn.Location = new System.Drawing.Point(45, 27);
             this.buttonZoomIn.Name = "buttonZoomIn";
-            this.buttonZoomIn.Size = new System.Drawing.Size(102, 31);
+            this.buttonZoomIn.Size = new System.Drawing.Size(131, 31);
             this.buttonZoomIn.TabIndex = 3;
             this.buttonZoomIn.Text = "ZoomIn";
             this.buttonZoomIn.UseVisualStyleBackColor = true;
@@ -76,7 +76,7 @@
             // 
             this.buttonZoomout.Location = new System.Drawing.Point(45, 75);
             this.buttonZoomout.Name = "buttonZoomout";
-            this.buttonZoomout.Size = new System.Drawing.Size(102, 31);
+            this.buttonZoomout.Size = new System.Drawing.Size(131, 31);
             this.buttonZoomout.TabIndex = 4;
             this.buttonZoomout.Text = "ZoomOut";
             this.buttonZoomout.UseVisualStyleBackColor = true;
