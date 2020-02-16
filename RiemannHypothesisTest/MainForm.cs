@@ -128,7 +128,7 @@ namespace RiemannHypothesisTest
         }
 
 
-        private List<Complex> getSeriesOneExponent(Complex complex1, int k1)
+        private List<Complex> getSeriesOneExponent(Complex complex1, int k1, Complex start)
         {
 
             List<Complex> lstComplex = new List<Complex>();
@@ -139,21 +139,44 @@ namespace RiemannHypothesisTest
             //c1 = new Complex(0, 0);
             //lstComplex.Add(c1);
 
-            for (int i = 0; i <= 100; i++)
+            //for (int i = 0; i <= 100; i++)
+            //{
+            //    c1 = Complex.Pow(new Complex(k1, 0), new Complex(complex1.Real / 100.0 * i, 0));
+            //    lstComplex.Add(c1 + start);
+            //}
+            lstComplex.Add(start);
+            c1 = Complex.Pow(new Complex(k1, 0), new Complex(complex1.Real, 0));
+            lstComplex.Add(c1 + start);
+
+            int iNum = 10;
+            for (int i = 0; i <= iNum; i++)
             {
-                c1 = Complex.Pow(new Complex(k1, 0), new Complex(complex1.Real / 100.0 * i, 0));
-                lstComplex.Add(c1);
-            }
-            for (int i = 0; i <= 100; i++)
-            {
-                Complex c2 = Complex.Pow(new Complex(k1, 0), new Complex(0, complex1.Imaginary / 100.0 * i));
-                lstComplex.Add(c1 * c2);
+                Complex c2 = Complex.Pow(new Complex(k1, 0), new Complex(0, complex1.Imaginary / (double)iNum * i));
+                lstComplex.Add(c1 * c2 + start);
             }
 
 
             return lstComplex;
         }
 
+        private List<Complex> getSeriesOneExponent(Complex complex1, double dBase)
+        {
+
+            List<Complex> lstComplex = new List<Complex>();
+            Complex c1 = new Complex(0, 0);
+            lstComplex.Add(c1);
+            c1 = Complex.Pow(new Complex(dBase, 0), new Complex(complex1.Real, 0));
+            lstComplex.Add(c1);
+
+            int iNum = 100;
+            for (int i = 0; i <= iNum; i++)
+            {
+                Complex c2 = Complex.Pow(new Complex(dBase, 0), new Complex(0, complex1.Imaginary / (double)iNum * i));
+                lstComplex.Add(c1 * c2);
+            }
+
+            return lstComplex;
+        }
 
         private void buttonShowX_Click(object sender, EventArgs e)
         {
@@ -247,15 +270,109 @@ namespace RiemannHypothesisTest
 
             
             List<List<Complex>> lstlstComplex = new List<List<Complex>>();
-            for (int i = 1; i < 15; i++)
+            Complex start = new Complex(0, 0);
+            for (int i = 118; i < 120; i++)
             {
-                List<Complex> lstComplexes = new List<Complex>();
-                lstComplexes.AddRange(getSeriesOneExponent(new Complex(dXValue, dYValue), i));
+                List<Complex> lstComplexes = getSeriesOneExponent(new Complex(-dXValue, -dYValue), i, start);
+                start = lstComplexes.Last();
                 lstlstComplex.Add(lstComplexes);
             }
             
             FormResult result = new FormResult(lstlstComplex);
             result.Show();
+        }
+
+
+        private List<Complex> addComplexToANumber(List<Complex> lstComplex, Complex num, bool bNegative)
+        {
+            List<Complex> lstResults = new List<Complex>();
+            for(int i = 0; i < lstComplex.Count(); i++)
+            {
+                lstResults.Add((bNegative ? -lstComplex[i] : lstComplex[i]) + num);
+            }
+            return lstResults;
+        }
+        private void buttonShowSimpleExponent_Click(object sender, EventArgs e)
+        {
+            double dXValue = Convert.ToDouble(textBoxExponent_X.Text);
+            double dYValue = Convert.ToDouble(textBoxExponent_Y.Text);
+
+            double dBase = Convert.ToDouble(textBoxBase.Text);
+
+            List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+            Complex start = new Complex(0, 0);
+            for (int i = 1; i < 1000; i++)
+            {
+                List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                lstComplexes = addComplexToANumber(lstComplexes, start, false);
+                lstlstComplex.Add(lstComplexes);
+
+                start = lstComplexes[lstComplexes.Count - 1];
+            }
+
+            FormResult result = new FormResult(lstlstComplex);
+            result.Show();
+        }
+
+        private void buttonOnePair_Click(object sender, EventArgs e)
+        {
+            double dXValue = Convert.ToDouble(textBoxOnePairX.Text);
+            double dYValue = Convert.ToDouble(textBoxOnePairY.Text);
+            bool bShowDetails = checkBoxShowDetails.Checked;
+            int iNumOfSeries = 50;
+
+            {
+                List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+                Complex start = new Complex(0, 0);
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+                    if (bShowDetails)
+                        lstlstComplex.Add(lstComplexesShift);
+                    else
+                    {
+                        List<Complex> lstLast = new List<Complex>();
+                        lstLast.Add(start);
+                        lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                        lstlstComplex.Add(lstLast);
+                    }
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+                FormResult result = new FormResult(lstlstComplex);
+                result.StartPosition = FormStartPosition.Manual;
+                result.Location = new Point(0, 200);
+                result.Show();
+            }
+
+            {
+                List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+                Complex start = new Complex(0, 0);
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, false);
+                    if (bShowDetails)
+                        lstlstComplex.Add(lstComplexesShift);
+                    else
+                    {
+                        List<Complex> lstLast = new List<Complex>();
+                        lstLast.Add(start);
+                        lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                        lstlstComplex.Add(lstLast);
+                    }
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+                FormResult result = new FormResult(lstlstComplex);
+                result.StartPosition = FormStartPosition.Manual;
+                result.Location = new Point(800, 200);
+                result.Show();
+            }
         }
     }
 }

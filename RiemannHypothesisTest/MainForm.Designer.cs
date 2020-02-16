@@ -43,16 +43,33 @@
             this.textBoxY = new System.Windows.Forms.TextBox();
             this.buttonShowY = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonShowCalculationDetails = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOnePoint = new System.Windows.Forms.Button();
             this.textBoxOnePointY = new System.Windows.Forms.TextBox();
             this.textBoxOnePointX = new System.Windows.Forms.TextBox();
             this.checkBoxUseOriginal = new System.Windows.Forms.CheckBox();
-            this.buttonShowCalculationDetails = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBoxBase = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.buttonShowSimpleExponent = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxExponent_Y = new System.Windows.Forms.TextBox();
+            this.textBoxExponent_X = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.buttonOnePair = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxOnePairY = new System.Windows.Forms.TextBox();
+            this.textBoxOnePairX = new System.Windows.Forms.TextBox();
+            this.checkBoxShowDetails = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxX
@@ -203,6 +220,16 @@
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             // 
+            // buttonShowCalculationDetails
+            // 
+            this.buttonShowCalculationDetails.Location = new System.Drawing.Point(242, 44);
+            this.buttonShowCalculationDetails.Name = "buttonShowCalculationDetails";
+            this.buttonShowCalculationDetails.Size = new System.Drawing.Size(126, 23);
+            this.buttonShowCalculationDetails.TabIndex = 5;
+            this.buttonShowCalculationDetails.Text = "ShowCalculationDetails";
+            this.buttonShowCalculationDetails.UseVisualStyleBackColor = true;
+            this.buttonShowCalculationDetails.Click += new System.EventHandler(this.buttonShowCalculationDetails_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -237,7 +264,7 @@
             this.textBoxOnePointY.Name = "textBoxOnePointY";
             this.textBoxOnePointY.Size = new System.Drawing.Size(48, 20);
             this.textBoxOnePointY.TabIndex = 1;
-            this.textBoxOnePointY.Text = "0.5";
+            this.textBoxOnePointY.Text = "2";
             // 
             // textBoxOnePointX
             // 
@@ -245,33 +272,169 @@
             this.textBoxOnePointX.Name = "textBoxOnePointX";
             this.textBoxOnePointX.Size = new System.Drawing.Size(48, 20);
             this.textBoxOnePointX.TabIndex = 0;
-            this.textBoxOnePointX.Text = "0.5";
+            this.textBoxOnePointX.Text = "2";
             // 
             // checkBoxUseOriginal
             // 
             this.checkBoxUseOriginal.AutoSize = true;
-            this.checkBoxUseOriginal.Location = new System.Drawing.Point(60, 442);
+            this.checkBoxUseOriginal.Location = new System.Drawing.Point(93, 568);
             this.checkBoxUseOriginal.Name = "checkBoxUseOriginal";
             this.checkBoxUseOriginal.Size = new System.Drawing.Size(118, 17);
             this.checkBoxUseOriginal.TabIndex = 12;
             this.checkBoxUseOriginal.Text = "Use original formula";
             this.checkBoxUseOriginal.UseVisualStyleBackColor = true;
             // 
-            // buttonShowCalculationDetails
+            // groupBox4
             // 
-            this.buttonShowCalculationDetails.Location = new System.Drawing.Point(242, 44);
-            this.buttonShowCalculationDetails.Name = "buttonShowCalculationDetails";
-            this.buttonShowCalculationDetails.Size = new System.Drawing.Size(126, 23);
-            this.buttonShowCalculationDetails.TabIndex = 5;
-            this.buttonShowCalculationDetails.Text = "ShowCalculationDetails";
-            this.buttonShowCalculationDetails.UseVisualStyleBackColor = true;
-            this.buttonShowCalculationDetails.Click += new System.EventHandler(this.buttonShowCalculationDetails_Click);
+            this.groupBox4.Controls.Add(this.textBoxBase);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.buttonShowSimpleExponent);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.textBoxExponent_Y);
+            this.groupBox4.Controls.Add(this.textBoxExponent_X);
+            this.groupBox4.Location = new System.Drawing.Point(613, 20);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(438, 112);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            // 
+            // textBoxBase
+            // 
+            this.textBoxBase.Location = new System.Drawing.Point(68, 80);
+            this.textBoxBase.Name = "textBoxBase";
+            this.textBoxBase.Size = new System.Drawing.Size(66, 20);
+            this.textBoxBase.TabIndex = 7;
+            this.textBoxBase.Text = "2";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 83);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Base:";
+            // 
+            // buttonShowSimpleExponent
+            // 
+            this.buttonShowSimpleExponent.Location = new System.Drawing.Point(242, 44);
+            this.buttonShowSimpleExponent.Name = "buttonShowSimpleExponent";
+            this.buttonShowSimpleExponent.Size = new System.Drawing.Size(126, 23);
+            this.buttonShowSimpleExponent.TabIndex = 5;
+            this.buttonShowSimpleExponent.Text = "ShowCalculationDetails";
+            this.buttonShowSimpleExponent.UseVisualStyleBackColor = true;
+            this.buttonShowSimpleExponent.Click += new System.EventHandler(this.buttonShowSimpleExponent_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(99, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Y:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 34);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(17, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "X:";
+            // 
+            // textBoxExponent_Y
+            // 
+            this.textBoxExponent_Y.Location = new System.Drawing.Point(122, 30);
+            this.textBoxExponent_Y.Name = "textBoxExponent_Y";
+            this.textBoxExponent_Y.Size = new System.Drawing.Size(48, 20);
+            this.textBoxExponent_Y.TabIndex = 1;
+            this.textBoxExponent_Y.Text = "-2";
+            // 
+            // textBoxExponent_X
+            // 
+            this.textBoxExponent_X.Location = new System.Drawing.Point(33, 30);
+            this.textBoxExponent_X.Name = "textBoxExponent_X";
+            this.textBoxExponent_X.Size = new System.Drawing.Size(48, 20);
+            this.textBoxExponent_X.TabIndex = 0;
+            this.textBoxExponent_X.Text = "-0.5";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.checkBoxShowDetails);
+            this.groupBox5.Controls.Add(this.buttonOnePair);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.textBoxOnePairY);
+            this.groupBox5.Controls.Add(this.textBoxOnePairX);
+            this.groupBox5.Location = new System.Drawing.Point(613, 185);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(438, 112);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            // 
+            // buttonOnePair
+            // 
+            this.buttonOnePair.Location = new System.Drawing.Point(242, 44);
+            this.buttonOnePair.Name = "buttonOnePair";
+            this.buttonOnePair.Size = new System.Drawing.Size(126, 23);
+            this.buttonOnePair.TabIndex = 5;
+            this.buttonOnePair.Text = "ShowCalculationDetails";
+            this.buttonOnePair.UseVisualStyleBackColor = true;
+            this.buttonOnePair.Click += new System.EventHandler(this.buttonOnePair_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(99, 34);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(17, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Y:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 34);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "X:";
+            // 
+            // textBoxOnePairY
+            // 
+            this.textBoxOnePairY.Location = new System.Drawing.Point(122, 30);
+            this.textBoxOnePairY.Name = "textBoxOnePairY";
+            this.textBoxOnePairY.Size = new System.Drawing.Size(48, 20);
+            this.textBoxOnePairY.TabIndex = 1;
+            this.textBoxOnePairY.Text = "-2";
+            // 
+            // textBoxOnePairX
+            // 
+            this.textBoxOnePairX.Location = new System.Drawing.Point(33, 30);
+            this.textBoxOnePairX.Name = "textBoxOnePairX";
+            this.textBoxOnePairX.Size = new System.Drawing.Size(48, 20);
+            this.textBoxOnePairX.TabIndex = 0;
+            this.textBoxOnePairX.Text = "-0.5";
+            // 
+            // checkBoxShowDetails
+            // 
+            this.checkBoxShowDetails.AutoSize = true;
+            this.checkBoxShowDetails.Location = new System.Drawing.Point(36, 82);
+            this.checkBoxShowDetails.Name = "checkBoxShowDetails";
+            this.checkBoxShowDetails.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxShowDetails.TabIndex = 6;
+            this.checkBoxShowDetails.Text = "Show details";
+            this.checkBoxShowDetails.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 499);
+            this.ClientSize = new System.Drawing.Size(1150, 635);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.checkBoxUseOriginal);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -284,6 +447,10 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,6 +479,21 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBoxUseOriginal;
         private System.Windows.Forms.Button buttonShowCalculationDetails;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox textBoxBase;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonShowSimpleExponent;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxExponent_Y;
+        private System.Windows.Forms.TextBox textBoxExponent_X;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button buttonOnePair;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxOnePairY;
+        private System.Windows.Forms.TextBox textBoxOnePairX;
+        private System.Windows.Forms.CheckBox checkBoxShowDetails;
     }
 }
 

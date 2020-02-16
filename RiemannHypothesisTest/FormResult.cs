@@ -25,7 +25,11 @@ namespace RiemannHypothesisTest
             InitializeComponent();
 
             m_lstlstComplexes = lstlstComplexes;
+            UpdateMinMax();
+        }
 
+        private void UpdateMinMax()
+        {
             m_dimensionScreen.X = pictureBox1.Width;
             m_dimensionScreen.Y = pictureBox1.Height;
             foreach (List<Complex> lstComplex in m_lstlstComplexes)
@@ -52,11 +56,11 @@ namespace RiemannHypothesisTest
             }
             double dMaxX = Math.Max(m_dMaxX, Math.Abs(m_dMinX));
             double dMaxY = Math.Max(m_dMaxY, Math.Abs(m_dMinY));
-
-            m_dMaxX = dMaxX;
-            m_dMinX = -dMaxX;
-            m_dMaxY = dMaxY;
-            m_dMinY = -dMaxY;
+            double dMax = Math.Max(dMaxX, dMaxY);
+            m_dMaxX = dMax;
+            m_dMinX = -dMax;
+            m_dMaxY = dMax;
+            m_dMinY = -dMax;
 
             if (m_dMinX == m_dMaxX)
             {
@@ -202,6 +206,12 @@ namespace RiemannHypothesisTest
                     m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
             labelCurrentPoint.Text = "Current Point: " +  pt.ToString();
 
+        }
+
+        private void FormResult_Resize(object sender, EventArgs e)
+        {
+            UpdateMinMax();
+            pictureBox1.Invalidate();
         }
     }
 }

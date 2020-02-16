@@ -42,16 +42,21 @@
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelCurrentPoint = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(127, 36);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(594, 595);
+            this.pictureBox1.Size = new System.Drawing.Size(653, 660);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -59,7 +64,7 @@
             // 
             // buttonZoomIn
             // 
-            this.buttonZoomIn.Location = new System.Drawing.Point(798, 82);
+            this.buttonZoomIn.Location = new System.Drawing.Point(45, 27);
             this.buttonZoomIn.Name = "buttonZoomIn";
             this.buttonZoomIn.Size = new System.Drawing.Size(102, 31);
             this.buttonZoomIn.TabIndex = 3;
@@ -69,7 +74,7 @@
             // 
             // buttonZoomout
             // 
-            this.buttonZoomout.Location = new System.Drawing.Point(798, 143);
+            this.buttonZoomout.Location = new System.Drawing.Point(45, 75);
             this.buttonZoomout.Name = "buttonZoomout";
             this.buttonZoomout.Size = new System.Drawing.Size(102, 31);
             this.buttonZoomout.TabIndex = 4;
@@ -166,7 +171,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBoxXMin);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(764, 204);
+            this.groupBox1.Location = new System.Drawing.Point(23, 138);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(172, 194);
             this.groupBox1.TabIndex = 14;
@@ -175,29 +180,56 @@
             // labelCurrentPoint
             // 
             this.labelCurrentPoint.AutoSize = true;
-            this.labelCurrentPoint.Location = new System.Drawing.Point(736, 479);
+            this.labelCurrentPoint.Location = new System.Drawing.Point(8, 363);
             this.labelCurrentPoint.Name = "labelCurrentPoint";
             this.labelCurrentPoint.Size = new System.Drawing.Size(74, 13);
             this.labelCurrentPoint.TabIndex = 15;
             this.labelCurrentPoint.Text = "Clicked point: ";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.buttonZoomIn);
+            this.groupBox2.Controls.Add(this.labelCurrentPoint);
+            this.groupBox2.Controls.Add(this.buttonZoomout);
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Location = new System.Drawing.Point(662, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(256, 467);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.47619F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.52381F));
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 666);
+            this.tableLayoutPanel1.TabIndex = 17;
             // 
             // FormResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 666);
-            this.Controls.Add(this.labelCurrentPoint);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonZoomout);
-            this.Controls.Add(this.buttonZoomIn);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormResult";
             this.Text = "FormResult";
+            this.Resize += new System.EventHandler(this.FormResult_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -217,5 +249,7 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelCurrentPoint;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
