@@ -59,12 +59,13 @@
             this.textBoxExponent_Y = new System.Windows.Forms.TextBox();
             this.textBoxExponent_X = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowDetails = new System.Windows.Forms.CheckBox();
             this.buttonOnePair = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxOnePairY = new System.Windows.Forms.TextBox();
             this.textBoxOnePairX = new System.Windows.Forms.TextBox();
-            this.checkBoxShowDetails = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -374,6 +375,16 @@
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             // 
+            // checkBoxShowDetails
+            // 
+            this.checkBoxShowDetails.AutoSize = true;
+            this.checkBoxShowDetails.Location = new System.Drawing.Point(36, 82);
+            this.checkBoxShowDetails.Name = "checkBoxShowDetails";
+            this.checkBoxShowDetails.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxShowDetails.TabIndex = 6;
+            this.checkBoxShowDetails.Text = "Show details";
+            this.checkBoxShowDetails.UseVisualStyleBackColor = true;
+            // 
             // buttonOnePair
             // 
             this.buttonOnePair.Location = new System.Drawing.Point(242, 44);
@@ -418,21 +429,21 @@
             this.textBoxOnePairX.TabIndex = 0;
             this.textBoxOnePairX.Text = "-0.5";
             // 
-            // checkBoxShowDetails
+            // button1
             // 
-            this.checkBoxShowDetails.AutoSize = true;
-            this.checkBoxShowDetails.Location = new System.Drawing.Point(36, 82);
-            this.checkBoxShowDetails.Name = "checkBoxShowDetails";
-            this.checkBoxShowDetails.Size = new System.Drawing.Size(86, 17);
-            this.checkBoxShowDetails.TabIndex = 6;
-            this.checkBoxShowDetails.Text = "Show details";
-            this.checkBoxShowDetails.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(639, 402);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(170, 42);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Hello world";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 635);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.checkBoxUseOriginal);
@@ -494,6 +505,7 @@
         private System.Windows.Forms.TextBox textBoxOnePairY;
         private System.Windows.Forms.TextBox textBoxOnePairX;
         private System.Windows.Forms.CheckBox checkBoxShowDetails;
+        private System.Windows.Forms.Button button1;
     }
 }
 
