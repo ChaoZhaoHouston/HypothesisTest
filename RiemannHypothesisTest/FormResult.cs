@@ -28,6 +28,13 @@ namespace RiemannHypothesisTest
             UpdateMinMax();
         }
 
+        public void setDataAndUpdate(List<List<Complex>> lstlstComplexes)
+        {
+            m_lstlstComplexes = lstlstComplexes;
+            UpdateMinMax();
+            pictureBox1.Invalidate();
+        }
+
         private void UpdateMinMax()
         {
             m_dimensionScreen.X = pictureBox1.Width;
@@ -121,7 +128,7 @@ namespace RiemannHypothesisTest
 
             if (iListLength > 1)
             {
-                Color[] arrColor = { Color.Red, Color.Blue, Color.Green, Color.Aqua, Color.Yellow };
+                Color[] arrColor = { Color.Red, Color.Blue, Color.Green, Color.Aqua, Color.Black };
                 for (int i = 0; i < iListLength; i++)
                 {
                     List<Complex> lstComplex = m_lstlstComplexes[i];

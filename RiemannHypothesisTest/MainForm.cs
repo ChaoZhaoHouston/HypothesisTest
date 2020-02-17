@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -320,7 +321,7 @@ namespace RiemannHypothesisTest
             double dXValue = Convert.ToDouble(textBoxOnePairX.Text);
             double dYValue = Convert.ToDouble(textBoxOnePairY.Text);
             bool bShowDetails = checkBoxShowDetails.Checked;
-            int iNumOfSeries = 50;
+            int iNumOfSeries = 10000;
 
             {
                 List<List<Complex>> lstlstComplex = new List<List<Complex>>();
@@ -375,24 +376,76 @@ namespace RiemannHypothesisTest
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+        private void buttonShowComplexPower_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello Jane");
+            double dXValue = Convert.ToDouble(textBoxShowPowerReal.Text);
+            double dYValue = Convert.ToDouble(textBoxShowPowerImagine.Text);
+
+            double dBase = Convert.ToDouble(textBoxShowPowerBase.Text);
+
+            List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+            Complex start = new Complex(0, 0);
+
+            List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), dBase);
+            lstComplexes = addComplexToANumber(lstComplexes, start, false);
+            lstlstComplex.Add(lstComplexes);
+
+
+            FormResult result = new FormResult(lstlstComplex);
+            result.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ButtonAnimation_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Test");
+
+
+            double dYValue = 1;
+
+            List<List<Complex>> lstlstComplex = GetListsAtDifferentY(dYValue);
+
+            FormResult result = new FormResult(lstlstComplex);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
+
+
+            for (int i = 2; i < 100; i++)
+            {
+                Application.DoEvents();
+                result.Show();
+                Thread.Sleep(30);
+                lstlstComplex = GetListsAtDifferentY(i);
+                result.setDataAndUpdate(lstlstComplex);
+            }
+
+
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private List<List<Complex>> GetListsAtDifferentY(double dYValue)
         {
-            MessageBox.Show("Clicked");
-        }
+            double dXValue = -0.5;
+            int iNumOfSeries = 10000;
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Ha Ha");
+
+            List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+            Complex start = new Complex(0, 0);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+                List<Complex> lstLast = new List<Complex>();
+                lstLast.Add(start);
+                lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                lstlstComplex.Add(lstLast);
+
+                start = lstComplexesShift[lstComplexes.Count - 1];
+            }
+
+            return lstlstComplex;
         }
     }
 }

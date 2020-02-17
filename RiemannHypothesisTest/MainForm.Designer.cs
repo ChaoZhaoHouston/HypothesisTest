@@ -65,15 +65,21 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxOnePairY = new System.Windows.Forms.TextBox();
             this.textBoxOnePairX = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.buttonShowComplexPower = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxShowPowerImagine = new System.Windows.Forms.TextBox();
+            this.textBoxShowPowerReal = new System.Windows.Forms.TextBox();
+            this.textBoxShowPowerBase = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxX
@@ -377,6 +383,7 @@
             this.groupBox5.Size = new System.Drawing.Size(438, 112);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Compare zeta function and theta function";
             // 
             // checkBoxShowDetails
             // 
@@ -432,55 +439,99 @@
             this.textBoxOnePairX.TabIndex = 0;
             this.textBoxOnePairX.Text = "-0.5";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBoxShowPowerBase);
+            this.groupBox6.Controls.Add(this.buttonShowComplexPower);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.textBoxShowPowerImagine);
+            this.groupBox6.Controls.Add(this.textBoxShowPowerReal);
+            this.groupBox6.Location = new System.Drawing.Point(613, 329);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(438, 112);
+            this.groupBox6.TabIndex = 14;
+            this.groupBox6.TabStop = false;
+            // 
+            // buttonShowComplexPower
+            // 
+            this.buttonShowComplexPower.Location = new System.Drawing.Point(242, 44);
+            this.buttonShowComplexPower.Name = "buttonShowComplexPower";
+            this.buttonShowComplexPower.Size = new System.Drawing.Size(153, 34);
+            this.buttonShowComplexPower.TabIndex = 5;
+            this.buttonShowComplexPower.Text = "Show Power calculation";
+            this.buttonShowComplexPower.UseVisualStyleBackColor = true;
+            this.buttonShowComplexPower.Click += new System.EventHandler(this.buttonShowComplexPower_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(99, 34);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(17, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Y:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 34);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(17, 13);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "X:";
+            // 
+            // textBoxShowPowerImagine
+            // 
+            this.textBoxShowPowerImagine.Location = new System.Drawing.Point(122, 30);
+            this.textBoxShowPowerImagine.Name = "textBoxShowPowerImagine";
+            this.textBoxShowPowerImagine.Size = new System.Drawing.Size(48, 20);
+            this.textBoxShowPowerImagine.TabIndex = 1;
+            this.textBoxShowPowerImagine.Text = "-2";
+            // 
+            // textBoxShowPowerReal
+            // 
+            this.textBoxShowPowerReal.Location = new System.Drawing.Point(33, 30);
+            this.textBoxShowPowerReal.Name = "textBoxShowPowerReal";
+            this.textBoxShowPowerReal.Size = new System.Drawing.Size(48, 20);
+            this.textBoxShowPowerReal.TabIndex = 0;
+            this.textBoxShowPowerReal.Text = "-0.5";
+            // 
+            // textBoxShowPowerBase
+            // 
+            this.textBoxShowPowerBase.Location = new System.Drawing.Point(84, 73);
+            this.textBoxShowPowerBase.Name = "textBoxShowPowerBase";
+            this.textBoxShowPowerBase.Size = new System.Drawing.Size(66, 20);
+            this.textBoxShowPowerBase.TabIndex = 9;
+            this.textBoxShowPowerBase.Text = "2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(30, 76);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Base:";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(639, 402);
+            this.button1.Location = new System.Drawing.Point(364, 484);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 42);
+            this.button1.Size = new System.Drawing.Size(133, 39);
             this.button1.TabIndex = 15;
-            this.button1.Text = "Hello world";
+            this.button1.Text = "Animation";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(642, 332);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 50);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Test";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(645, 492);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(163, 44);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Click me";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(140, 433);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 50);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Haha";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button1.Click += new System.EventHandler(this.ButtonAnimation_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 635);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.checkBoxUseOriginal);
@@ -499,6 +550,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,10 +595,15 @@
         private System.Windows.Forms.TextBox textBoxOnePairY;
         private System.Windows.Forms.TextBox textBoxOnePairX;
         private System.Windows.Forms.CheckBox checkBoxShowDetails;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBoxShowPowerBase;
+        private System.Windows.Forms.Button buttonShowComplexPower;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBoxShowPowerImagine;
+        private System.Windows.Forms.TextBox textBoxShowPowerReal;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
     }
 }
 
