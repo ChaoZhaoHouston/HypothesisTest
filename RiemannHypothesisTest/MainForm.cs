@@ -389,5 +389,10 @@ namespace RiemannHypothesisTest
         {
             MessageBox.Show("Clicked");
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ha Ha");
+        }
     }
 }
