@@ -66,20 +66,33 @@
             this.textBoxOnePairY = new System.Windows.Forms.TextBox();
             this.textBoxOnePairX = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBoxShowPowerBase = new System.Windows.Forms.TextBox();
             this.buttonShowComplexPower = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxShowPowerImagine = new System.Windows.Forms.TextBox();
             this.textBoxShowPowerReal = new System.Windows.Forms.TextBox();
-            this.textBoxShowPowerBase = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBoxCompareY2 = new System.Windows.Forms.TextBox();
+            this.textBoxCompareX2 = new System.Windows.Forms.TextBox();
+            this.buttonCompareTwocurves = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBoxCompareY1 = new System.Windows.Forms.TextBox();
+            this.textBoxCompareX1 = new System.Windows.Forms.TextBox();
+            this.buttonMultiplyComplex = new System.Windows.Forms.Button();
+            this.buttonChangeA = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxX
@@ -454,6 +467,14 @@
             this.groupBox6.TabIndex = 14;
             this.groupBox6.TabStop = false;
             // 
+            // textBoxShowPowerBase
+            // 
+            this.textBoxShowPowerBase.Location = new System.Drawing.Point(84, 73);
+            this.textBoxShowPowerBase.Name = "textBoxShowPowerBase";
+            this.textBoxShowPowerBase.Size = new System.Drawing.Size(66, 20);
+            this.textBoxShowPowerBase.TabIndex = 9;
+            this.textBoxShowPowerBase.Text = "2";
+            // 
             // buttonShowComplexPower
             // 
             this.buttonShowComplexPower.Location = new System.Drawing.Point(242, 44);
@@ -463,6 +484,15 @@
             this.buttonShowComplexPower.Text = "Show Power calculation";
             this.buttonShowComplexPower.UseVisualStyleBackColor = true;
             this.buttonShowComplexPower.Click += new System.EventHandler(this.buttonShowComplexPower_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(30, 76);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Base:";
             // 
             // label13
             // 
@@ -498,26 +528,9 @@
             this.textBoxShowPowerReal.TabIndex = 0;
             this.textBoxShowPowerReal.Text = "-0.5";
             // 
-            // textBoxShowPowerBase
-            // 
-            this.textBoxShowPowerBase.Location = new System.Drawing.Point(84, 73);
-            this.textBoxShowPowerBase.Name = "textBoxShowPowerBase";
-            this.textBoxShowPowerBase.Size = new System.Drawing.Size(66, 20);
-            this.textBoxShowPowerBase.TabIndex = 9;
-            this.textBoxShowPowerBase.Text = "2";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(30, 76);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Base:";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(364, 484);
+            this.button1.Location = new System.Drawing.Point(60, 435);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 39);
             this.button1.TabIndex = 15;
@@ -525,11 +538,130 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.ButtonAnimation_Click);
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label17);
+            this.groupBox7.Controls.Add(this.label18);
+            this.groupBox7.Controls.Add(this.textBoxCompareY2);
+            this.groupBox7.Controls.Add(this.textBoxCompareX2);
+            this.groupBox7.Controls.Add(this.buttonCompareTwocurves);
+            this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Controls.Add(this.textBoxCompareY1);
+            this.groupBox7.Controls.Add(this.textBoxCompareX1);
+            this.groupBox7.Location = new System.Drawing.Point(613, 486);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(438, 112);
+            this.groupBox7.TabIndex = 16;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Compare two series";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(99, 71);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(23, 13);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Y2:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(10, 71);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(23, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "X1:";
+            // 
+            // textBoxCompareY2
+            // 
+            this.textBoxCompareY2.Location = new System.Drawing.Point(122, 67);
+            this.textBoxCompareY2.Name = "textBoxCompareY2";
+            this.textBoxCompareY2.Size = new System.Drawing.Size(48, 20);
+            this.textBoxCompareY2.TabIndex = 7;
+            this.textBoxCompareY2.Text = "-3";
+            // 
+            // textBoxCompareX2
+            // 
+            this.textBoxCompareX2.Location = new System.Drawing.Point(33, 67);
+            this.textBoxCompareX2.Name = "textBoxCompareX2";
+            this.textBoxCompareX2.Size = new System.Drawing.Size(48, 20);
+            this.textBoxCompareX2.TabIndex = 6;
+            this.textBoxCompareX2.Text = "-0.5";
+            // 
+            // buttonCompareTwocurves
+            // 
+            this.buttonCompareTwocurves.Location = new System.Drawing.Point(242, 44);
+            this.buttonCompareTwocurves.Name = "buttonCompareTwocurves";
+            this.buttonCompareTwocurves.Size = new System.Drawing.Size(126, 23);
+            this.buttonCompareTwocurves.TabIndex = 5;
+            this.buttonCompareTwocurves.Text = "ShowCalculationDetails";
+            this.buttonCompareTwocurves.UseVisualStyleBackColor = true;
+            this.buttonCompareTwocurves.Click += new System.EventHandler(this.buttonCompareTwocurves_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(99, 34);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(23, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Y1:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(10, 34);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(23, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "X1:";
+            // 
+            // textBoxCompareY1
+            // 
+            this.textBoxCompareY1.Location = new System.Drawing.Point(122, 30);
+            this.textBoxCompareY1.Name = "textBoxCompareY1";
+            this.textBoxCompareY1.Size = new System.Drawing.Size(48, 20);
+            this.textBoxCompareY1.TabIndex = 1;
+            this.textBoxCompareY1.Text = "-2";
+            // 
+            // textBoxCompareX1
+            // 
+            this.textBoxCompareX1.Location = new System.Drawing.Point(33, 30);
+            this.textBoxCompareX1.Name = "textBoxCompareX1";
+            this.textBoxCompareX1.Size = new System.Drawing.Size(48, 20);
+            this.textBoxCompareX1.TabIndex = 0;
+            this.textBoxCompareX1.Text = "-0.5";
+            // 
+            // buttonMultiplyComplex
+            // 
+            this.buttonMultiplyComplex.Location = new System.Drawing.Point(422, 435);
+            this.buttonMultiplyComplex.Name = "buttonMultiplyComplex";
+            this.buttonMultiplyComplex.Size = new System.Drawing.Size(133, 39);
+            this.buttonMultiplyComplex.TabIndex = 17;
+            this.buttonMultiplyComplex.Text = "AnimationRotate";
+            this.buttonMultiplyComplex.UseVisualStyleBackColor = true;
+            this.buttonMultiplyComplex.Click += new System.EventHandler(this.buttonMultiplyComplex_Click);
+            // 
+            // buttonChangeA
+            // 
+            this.buttonChangeA.Location = new System.Drawing.Point(241, 435);
+            this.buttonChangeA.Name = "buttonChangeA";
+            this.buttonChangeA.Size = new System.Drawing.Size(133, 39);
+            this.buttonChangeA.TabIndex = 18;
+            this.buttonChangeA.Text = "AnimationChangeA";
+            this.buttonChangeA.UseVisualStyleBackColor = true;
+            this.buttonChangeA.Click += new System.EventHandler(this.buttonChangeA_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 635);
+            this.Controls.Add(this.buttonChangeA);
+            this.Controls.Add(this.buttonMultiplyComplex);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -552,6 +684,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -604,6 +738,18 @@
         private System.Windows.Forms.TextBox textBoxShowPowerImagine;
         private System.Windows.Forms.TextBox textBoxShowPowerReal;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxCompareY2;
+        private System.Windows.Forms.TextBox textBoxCompareX2;
+        private System.Windows.Forms.Button buttonCompareTwocurves;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBoxCompareY1;
+        private System.Windows.Forms.TextBox textBoxCompareX1;
+        private System.Windows.Forms.Button buttonMultiplyComplex;
+        private System.Windows.Forms.Button buttonChangeA;
     }
 }
 

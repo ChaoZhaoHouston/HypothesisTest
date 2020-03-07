@@ -179,6 +179,30 @@ namespace RiemannHypothesisTest
             return lstComplex;
         }
 
+        private List<Complex> getSeriesOneExponentJustTwoPoints(Complex complex1, double dBase)
+        {
+
+            List<Complex> lstComplex = new List<Complex>();
+            Complex c1 = new Complex(0, 0);
+            lstComplex.Add(c1);
+            c1 = Complex.Pow(new Complex(dBase, 0), new Complex(complex1.Real, complex1.Imaginary));
+            lstComplex.Add(c1);
+
+            return lstComplex;
+        }
+
+        private List<Complex> getSeriesOneExponentJustTwoPointsMultiply(Complex complex1, double dBase, Complex complex2)
+        {
+
+            List<Complex> lstComplex = new List<Complex>();
+            Complex c1 = new Complex(0, 0);
+            lstComplex.Add(c1);
+            c1 = Complex.Pow(new Complex(dBase, 0), new Complex(complex1.Real + complex2.Real, complex1.Imaginary + complex2.Imaginary));
+            lstComplex.Add(c1);
+
+            return lstComplex;
+        }
+
         private void buttonShowX_Click(object sender, EventArgs e)
         {
             List<Complex> lstComplexes = new List<Complex>();
@@ -400,11 +424,10 @@ namespace RiemannHypothesisTest
 
         private void ButtonAnimation_Click(object sender, EventArgs e)
         {
+            double dXValue = -0.95;
+            double dYValue = 0;
 
-
-            double dYValue = 1;
-
-            List<List<Complex>> lstlstComplex = GetListsAtDifferentY(dYValue);
+            List<List<Complex>> lstlstComplex = GetListsAtDifferentY(dXValue, dYValue);
 
             FormResult result = new FormResult(lstlstComplex);
             result.StartPosition = FormStartPosition.Manual;
@@ -412,21 +435,21 @@ namespace RiemannHypothesisTest
             result.Show();
 
 
-            for (int i = 2; i < 100; i++)
+            for (int i = 0; i < 5000; i++)
             {
                 Application.DoEvents();
                 result.Show();
-                Thread.Sleep(30);
-                lstlstComplex = GetListsAtDifferentY(i);
+                Thread.Sleep(1);
+                lstlstComplex = GetListsAtDifferentY(dXValue, i * 0.02);
                 result.setDataAndUpdate(lstlstComplex);
+                result.setLabel(dXValue, i * 0.02);
             }
 
 
         }
 
-        private List<List<Complex>> GetListsAtDifferentY(double dYValue)
+        private List<List<Complex>> GetListsAtDifferentY(double dXValue, double dYValue)
         {
-            double dXValue = -0.5;
             int iNumOfSeries = 10000;
 
 
@@ -435,7 +458,8 @@ namespace RiemannHypothesisTest
             Complex start = new Complex(0, 0);
             for (int i = 1; i < iNumOfSeries; i++)
             {
-                List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                //List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                List<Complex> lstComplexes = getSeriesOneExponentJustTwoPoints(new Complex(dXValue, dYValue), i);
                 List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
                 List<Complex> lstLast = new List<Complex>();
                 lstLast.Add(start);
@@ -446,6 +470,160 @@ namespace RiemannHypothesisTest
             }
 
             return lstlstComplex;
+        }
+
+        private void buttonCompareTwocurves_Click(object sender, EventArgs e)
+        {
+
+            int iNumOfSeries = 10000;
+            List<List<Complex>> lstlstComplex1 = new List<List<Complex>>();
+            List<List<Complex>> lstlstComplex2 = new List<List<Complex>>();
+            {
+                
+                double dXValue = Convert.ToDouble(textBoxCompareX1.Text);
+                double dYValue = Convert.ToDouble(textBoxCompareY1.Text);
+
+
+                Complex start = new Complex(0, 0);
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+                   
+                    List<Complex> lstLast = new List<Complex>();
+                    lstLast.Add(start);
+                    lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                    lstlstComplex1.Add(lstLast);
+
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+            }
+
+
+            {
+                double dXValue = Convert.ToDouble(textBoxCompareX2.Text);
+                double dYValue = Convert.ToDouble(textBoxCompareY2.Text);
+
+
+                Complex start = new Complex(0, 0);
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+
+                    List<Complex> lstLast = new List<Complex>();
+                    lstLast.Add(start);
+                    lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                    lstlstComplex2.Add(lstLast);
+
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+            }
+
+
+            FormCompare result = new FormCompare(lstlstComplex1, lstlstComplex2);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
+        }
+
+        private List<List<Complex>> multplyAComplex(double dXValue, double dYValue, Complex complex2)
+        {
+            int iNumOfSeries = 10;
+
+            List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+            Complex start = new Complex(0, 0);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                List<Complex> lstComplexes = getSeriesOneExponentJustTwoPointsMultiply(new Complex(dXValue, dYValue), i, complex2);
+                List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+                List<Complex> lstLast = new List<Complex>();
+                lstLast.Add(start);
+                lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                lstlstComplex.Add(lstLast);
+
+                start = lstComplexesShift[lstComplexes.Count - 1];
+            }
+
+            return lstlstComplex;
+        }
+
+        private void buttonMultiplyComplex_Click(object sender, EventArgs e)
+        {
+            double dXValue = -0.5;
+            double dYValue = 5;
+
+
+
+            List<List<Complex>> lstlstComplex1 = multplyAComplex(dXValue, dYValue, new Complex(0, 0));
+
+            //double dRotate3 = Math.Log(Math.E, 3) * Math.PI * 2 - dYValue;
+            //double dRotate4 = Math.Log(Math.E, 4) * Math.PI * 2 - dYValue;
+            //double dRotate6 = Math.Log(Math.E, 6) * Math.PI * 2 - dYValue;
+            //double dRotate8 = Math.Log(Math.E, 8) * Math.PI * 2 - dYValue;
+
+            List<List<Complex>> lstlstComplex2 = multplyAComplex(dXValue, dYValue, new Complex(0, 0));
+
+            FormCompare result = new FormCompare(lstlstComplex1, lstlstComplex2);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
+
+            int iLoopNum = 2000;
+            for (int i = 1; i < iLoopNum; i++)
+            {
+                //double rotate2halfRound = Math.Log(Math.E, 2) * Math.PI * i;
+                double rotate2halfRound = 0.1 * i;
+
+                Application.DoEvents();
+                result.Show();
+                Thread.Sleep(200);
+                lstlstComplex2 = multplyAComplex(dXValue, dYValue, new Complex(0, rotate2halfRound));
+
+                result.setDataAndUpdate(lstlstComplex1, lstlstComplex2);
+
+                //for (int j = 1; j < iLoopNum; j++)
+                //{
+                //    double rotate3halfRound = Math.Log(Math.E, 3) * Math.PI * j;
+
+                //    for (int k = 1; k < iLoopNum; k++)
+                //    {
+                //        double rotate4halfRound = Math.Log(Math.E, 4) * Math.PI * k;
+                //        //if (Math.Abs(rotate2halfRound - rotate3halfRound) < 0.01 && Math.Abs(rotate4halfRound - rotate3halfRound) < 0.01)
+                //        //{
+
+                //        }
+                //    }
+                //}
+            }
+        }
+
+        private void buttonChangeA_Click(object sender, EventArgs e)
+        {
+            double dXValue = 0;
+            double dYValue = 21;
+
+            List<List<Complex>> lstlstComplex = GetListsAtDifferentY(dXValue, dYValue);
+
+            FormResult result = new FormResult(lstlstComplex);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
+
+
+            for (int i = 0; i < 3500; i++)
+            {
+                Application.DoEvents();
+                result.Show();
+                //Thread.Sleep(100);
+                lstlstComplex = GetListsAtDifferentY(-0.001 * i, dYValue);
+                result.setDataAndUpdate(lstlstComplex);
+                result.setLabel(0.001 * i, dYValue);
+            }
+
         }
     }
 }

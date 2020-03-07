@@ -80,6 +80,13 @@ namespace RiemannHypothesisTest
                 m_dMaxY += 1;
             }
 
+            //Fixed the axis
+            //m_dMaxX = 8;
+            //m_dMinX = -8;
+            //m_dMaxY = 8;
+            //m_dMinY = -8;
+
+
             textBoxXMin.Text = m_dMinX.ToString();
             textBoxXMax.Text = m_dMaxX.ToString();
             textBoxYMin.Text = m_dMinY.ToString();
@@ -193,6 +200,11 @@ namespace RiemannHypothesisTest
             m_dMinY *= 2;
             m_dMaxY *= 2;
             pictureBox1.Invalidate();
+        }
+
+        public void setLabel(double dX, double dY)
+        {
+            labelCurrentXY.Text = "Current X/Y: " + dX.ToString() + "   " + dY.ToString();
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
