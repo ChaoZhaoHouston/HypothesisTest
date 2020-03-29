@@ -86,6 +86,8 @@
             this.textBoxCompareX1 = new System.Windows.Forms.TextBox();
             this.buttonMultiplyComplex = new System.Windows.Forms.Button();
             this.buttonChangeA = new System.Windows.Forms.Button();
+            this.buttonAnimationBall = new System.Windows.Forms.Button();
+            this.buttonBallRotate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -654,11 +656,33 @@
             this.buttonChangeA.UseVisualStyleBackColor = true;
             this.buttonChangeA.Click += new System.EventHandler(this.buttonChangeA_Click);
             // 
+            // buttonAnimationBall
+            // 
+            this.buttonAnimationBall.Location = new System.Drawing.Point(61, 493);
+            this.buttonAnimationBall.Name = "buttonAnimationBall";
+            this.buttonAnimationBall.Size = new System.Drawing.Size(149, 42);
+            this.buttonAnimationBall.TabIndex = 19;
+            this.buttonAnimationBall.Text = "AnimationDisplayBall";
+            this.buttonAnimationBall.UseVisualStyleBackColor = true;
+            this.buttonAnimationBall.Click += new System.EventHandler(this.buttonAnimationBall_Click);
+            // 
+            // buttonBallRotate
+            // 
+            this.buttonBallRotate.Location = new System.Drawing.Point(245, 493);
+            this.buttonBallRotate.Name = "buttonBallRotate";
+            this.buttonBallRotate.Size = new System.Drawing.Size(129, 40);
+            this.buttonBallRotate.TabIndex = 20;
+            this.buttonBallRotate.Text = "Ball rotate";
+            this.buttonBallRotate.UseVisualStyleBackColor = true;
+            this.buttonBallRotate.Click += new System.EventHandler(this.buttonBallRotate_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 635);
+            this.Controls.Add(this.buttonBallRotate);
+            this.Controls.Add(this.buttonAnimationBall);
             this.Controls.Add(this.buttonChangeA);
             this.Controls.Add(this.buttonMultiplyComplex);
             this.Controls.Add(this.groupBox7);
@@ -750,6 +774,8 @@
         private System.Windows.Forms.TextBox textBoxCompareX1;
         private System.Windows.Forms.Button buttonMultiplyComplex;
         private System.Windows.Forms.Button buttonChangeA;
+        private System.Windows.Forms.Button buttonAnimationBall;
+        private System.Windows.Forms.Button buttonBallRotate;
     }
 }
 

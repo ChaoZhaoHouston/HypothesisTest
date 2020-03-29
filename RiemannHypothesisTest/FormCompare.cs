@@ -39,6 +39,33 @@ namespace RiemannHypothesisTest
             pictureBox1.Invalidate();
         }
 
+        public void setDataAndUpdateAndExp(List<List<Complex>> lstlstComplexes1, List<List<Complex>> lstlstComplexes2)
+        {
+            m_lstlstComplexes1 = new List<List<Complex>>();
+            foreach (List<Complex> lstComplex in lstlstComplexes1)
+            {
+                List<Complex> lstComp1 = new List<Complex>();
+                foreach (Complex c1 in lstComplex)
+                {
+                    lstComp1.Add(Complex.Exp(c1));
+                }
+                m_lstlstComplexes1.Add(lstComp1);
+            }
+            m_lstlstComplexes2 = new List<List<Complex>>();
+            foreach (List<Complex> lstComplex in lstlstComplexes2)
+            {
+                List<Complex> lstComp2 = new List<Complex>();
+                foreach (Complex c2 in lstComplex)
+                {
+                    lstComp2.Add(Complex.Exp(c2));
+                }
+                m_lstlstComplexes2.Add(lstComp2);
+            }
+
+            UpdateMinMax();
+            pictureBox1.Invalidate();
+        }
+
 
         private void UpdateMinMax()
         {
