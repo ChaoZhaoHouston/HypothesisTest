@@ -19,17 +19,19 @@ namespace RiemannHypothesisTest
         double m_dMinY = double.MaxValue;
         double m_dMaxY = double.MinValue;
         List<List<Complex>> m_lstlstComplexes = null;
+        bool m_bHighlightLast = false;
 
-        public FormResult(List<List<Complex>> lstlstComplexes)
+        public FormResult(List<List<Complex>> lstlstComplexes, bool highlightLast)
         {
             InitializeComponent();
-
+            m_bHighlightLast = highlightLast;
             m_lstlstComplexes = lstlstComplexes;
             UpdateMinMax();
         }
 
-        public void setDataAndUpdate(List<List<Complex>> lstlstComplexes)
+        public void setDataAndUpdate(List<List<Complex>> lstlstComplexes, bool highlightLast)
         {
+            m_bHighlightLast = highlightLast;
             m_lstlstComplexes = lstlstComplexes;
             UpdateMinMax();
             pictureBox1.Invalidate();

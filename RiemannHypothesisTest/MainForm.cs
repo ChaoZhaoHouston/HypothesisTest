@@ -236,7 +236,7 @@ namespace RiemannHypothesisTest
             }
             List<List<Complex>> lstlstComplex = new List<List<Complex>>();
             lstlstComplex.Add(lstComplexes);
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.Show();
         }
 
@@ -272,7 +272,7 @@ namespace RiemannHypothesisTest
             }
             List<List<Complex>> lstlstComplex = new List<List<Complex>>();
             lstlstComplex.Add(lstComplexes);
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.Show();
         }
 
@@ -285,7 +285,7 @@ namespace RiemannHypothesisTest
 
             List<List<Complex>> lstlstComplex = new List<List<Complex>>();
             lstlstComplex.Add(lstComplexes);
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.Show();
         }
 
@@ -304,7 +304,7 @@ namespace RiemannHypothesisTest
                 lstlstComplex.Add(lstComplexes);
             }
             
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.Show();
         }
 
@@ -337,7 +337,7 @@ namespace RiemannHypothesisTest
                 start = lstComplexes[lstComplexes.Count - 1];
             }
 
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.Show();
         }
 
@@ -368,7 +368,7 @@ namespace RiemannHypothesisTest
                     start = lstComplexesShift[lstComplexes.Count - 1];
                 }
 
-                FormResult result = new FormResult(lstlstComplex);
+                FormResult result = new FormResult(lstlstComplex, false);
                 result.StartPosition = FormStartPosition.Manual;
                 result.Location = new Point(0, 200);
                 result.Show();
@@ -394,7 +394,7 @@ namespace RiemannHypothesisTest
                     start = lstComplexesShift[lstComplexes.Count - 1];
                 }
 
-                FormResult result = new FormResult(lstlstComplex);
+                FormResult result = new FormResult(lstlstComplex, false);
                 result.StartPosition = FormStartPosition.Manual;
                 result.Location = new Point(800, 200);
                 result.Show();
@@ -419,7 +419,7 @@ namespace RiemannHypothesisTest
             lstlstComplex.Add(lstComplexes);
 
 
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.Show();
         }
 
@@ -430,7 +430,7 @@ namespace RiemannHypothesisTest
 
             List<List<Complex>> lstlstComplex = GetListsAtDifferentY(dXValue, dYValue);
 
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.StartPosition = FormStartPosition.Manual;
             result.Location = new Point(0, 200);
             result.Show();
@@ -442,7 +442,7 @@ namespace RiemannHypothesisTest
                 result.Show();
                 Thread.Sleep(1);
                 lstlstComplex = GetListsAtDifferentY(dXValue, i * 0.2);
-                result.setDataAndUpdate(lstlstComplex);
+                result.setDataAndUpdate(lstlstComplex, false);
                 result.setLabel(dXValue, i * 0.02);
             }
 
@@ -609,7 +609,7 @@ namespace RiemannHypothesisTest
 
             List<List<Complex>> lstlstComplex = GetListsAtDifferentY(dXValue, dYValue);
 
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.StartPosition = FormStartPosition.Manual;
             result.Location = new Point(0, 200);
             result.Show();
@@ -621,7 +621,7 @@ namespace RiemannHypothesisTest
                 result.Show();
                 //Thread.Sleep(100);
                 lstlstComplex = GetListsAtDifferentY(-0.001 * i, dYValue);
-                result.setDataAndUpdate(lstlstComplex);
+                result.setDataAndUpdate(lstlstComplex, false);
                 result.setLabel(0.001 * i, dYValue);
             }
 
@@ -634,7 +634,7 @@ namespace RiemannHypothesisTest
 
             List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
 
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.StartPosition = FormStartPosition.Manual;
             result.Location = new Point(0, 200);
             result.Show();
@@ -646,7 +646,7 @@ namespace RiemannHypothesisTest
                 result.Show();
                 Thread.Sleep(2000);
                 lstlstComplex = GetListsAtDifferentY_Ball(dXValue, i * 0.2);
-                result.setDataAndUpdate(lstlstComplex);
+                result.setDataAndUpdate(lstlstComplex, false);
                 result.setLabel(dXValue, i * 0.02);
             }
 
@@ -655,7 +655,7 @@ namespace RiemannHypothesisTest
 
         private List<List<Complex>> GetListsAtDifferentY_Ball(double dXValue, double dYValue)
         {
-            int iNumOfSeries = 10;
+            int iNumOfSeries = 20;
 
             List<List<Complex>> lstlstComplex = new List<List<Complex>>();
 
@@ -677,20 +677,20 @@ namespace RiemannHypothesisTest
 
         private void buttonBallRotate_Click(object sender, EventArgs e)
         {
-            double dXValue = -0.1;
+            double dXValue = -0.61;
             double dYValue = 8.2;
 
 
             List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
 
-            FormResult result = new FormResult(lstlstComplex);
+            FormResult result = new FormResult(lstlstComplex, false);
             result.StartPosition = FormStartPosition.Manual;
             result.Location = new Point(0, 200);
             result.Show();
 
 
-            //Complex cRotate = Complex.Exp(new Complex(0, Math.Log(Math.E, 2) * Math.PI * 2));
-            Complex cRotate = Complex.Exp(new Complex(0, Math.PI));
+            Complex cRotate = Complex.Exp(new Complex(0, -dYValue * Math.Log(3)));
+            //Complex cRotate = Complex.Exp(new Complex(0, Math.PI));
 
             List<List<Complex>> lstlstComplexRotated = new List<List<Complex>>();
 
@@ -704,11 +704,86 @@ namespace RiemannHypothesisTest
                 lstlstComplexRotated.Add(lstRotated);
             }
 
-            FormResult result1 = new FormResult(lstlstComplexRotated);
+            FormResult result1 = new FormResult(lstlstComplexRotated, false);
             result1.StartPosition = FormStartPosition.Manual;
             result1.Location = new Point(0, 200);
             result1.Show();
          
+        }
+
+        private void buttonShowSumBySkipping_Click(object sender, EventArgs e)
+        {
+            double dBase = Convert.ToDouble(textBoxBaseInSkip.Text);
+            double dX = 0.5;
+            double dY = 2;
+
+            int iNumOfSeries = 10;
+
+
+            {
+                List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+                Complex start = new Complex(0, 0);
+  
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dX, dY), dBase * i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, false);
+                   
+                    List<Complex> lstLast = new List<Complex>();
+                    lstLast.Add(start);
+                    lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                    lstlstComplex.Add(lstLast);
+
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+                FormResult result = new FormResult(lstlstComplex, false);
+                result.StartPosition = FormStartPosition.Manual;
+                result.Location = new Point(800, 200);
+                result.Show();
+            }
+
+        }
+
+        private void buttonPlotSum_Click(object sender, EventArgs e)
+        {
+            double dXValue = -0.61;
+            double dYValue = 8.2;
+
+
+            List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
+
+            FormResult result = new FormResult(lstlstComplex, false);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
+
+        }
+
+        private void buttonBallCompare_Click(object sender, EventArgs e)
+        {
+            double dXValue = -0.9;
+            double dYValue = 8.2;
+
+
+            List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
+
+            FormResult result = new FormResult(lstlstComplex, false);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
+
+
+            Complex cRotate = Complex.Exp(new Complex(0, -dYValue * Math.Log(3)));
+            //Complex cRotate = Complex.Exp(new Complex(0, Math.PI));
+
+            List<List<Complex>> lstlstComplexDoubleA = GetListsAtDifferentY_Ball(-0.99, dYValue);
+
+            FormResult result1 = new FormResult(lstlstComplexDoubleA, false);
+            result1.StartPosition = FormStartPosition.Manual;
+            result1.Location = new Point(0, 200);
+            result1.Show();
         }
     }
 }
