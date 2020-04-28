@@ -94,6 +94,10 @@
             this.textBoxBaseInSkip = new System.Windows.Forms.TextBox();
             this.buttonPlotSum = new System.Windows.Forms.Button();
             this.buttonBallCompare = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonCalculateCoefficient = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -102,6 +106,9 @@
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxX
@@ -130,7 +137,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxX);
             this.groupBox1.Controls.Add(this.buttonShowX);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(39, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(438, 102);
             this.groupBox1.TabIndex = 9;
@@ -179,7 +186,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBoxY);
             this.groupBox2.Controls.Add(this.buttonShowY);
-            this.groupBox2.Location = new System.Drawing.Point(12, 145);
+            this.groupBox2.Location = new System.Drawing.Point(39, 166);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(438, 95);
             this.groupBox2.TabIndex = 10;
@@ -246,7 +253,7 @@
             this.groupBox3.Controls.Add(this.buttonOnePoint);
             this.groupBox3.Controls.Add(this.textBoxOnePointY);
             this.groupBox3.Controls.Add(this.textBoxOnePointX);
-            this.groupBox3.Location = new System.Drawing.Point(12, 277);
+            this.groupBox3.Location = new System.Drawing.Point(39, 298);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(438, 112);
             this.groupBox3.TabIndex = 11;
@@ -309,7 +316,7 @@
             // checkBoxUseOriginal
             // 
             this.checkBoxUseOriginal.AutoSize = true;
-            this.checkBoxUseOriginal.Location = new System.Drawing.Point(45, 550);
+            this.checkBoxUseOriginal.Location = new System.Drawing.Point(72, 571);
             this.checkBoxUseOriginal.Name = "checkBoxUseOriginal";
             this.checkBoxUseOriginal.Size = new System.Drawing.Size(118, 17);
             this.checkBoxUseOriginal.TabIndex = 12;
@@ -325,7 +332,7 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.textBoxExponent_Y);
             this.groupBox4.Controls.Add(this.textBoxExponent_X);
-            this.groupBox4.Location = new System.Drawing.Point(483, 2);
+            this.groupBox4.Location = new System.Drawing.Point(510, 23);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(378, 112);
             this.groupBox4.TabIndex = 13;
@@ -400,7 +407,7 @@
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.textBoxOnePairY);
             this.groupBox5.Controls.Add(this.textBoxOnePairX);
-            this.groupBox5.Location = new System.Drawing.Point(483, 145);
+            this.groupBox5.Location = new System.Drawing.Point(510, 166);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(378, 106);
             this.groupBox5.TabIndex = 14;
@@ -470,7 +477,7 @@
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.textBoxShowPowerImagine);
             this.groupBox6.Controls.Add(this.textBoxShowPowerReal);
-            this.groupBox6.Location = new System.Drawing.Point(483, 277);
+            this.groupBox6.Location = new System.Drawing.Point(510, 298);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(378, 112);
             this.groupBox6.TabIndex = 14;
@@ -539,7 +546,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 417);
+            this.button1.Location = new System.Drawing.Point(39, 438);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 39);
             this.button1.TabIndex = 15;
@@ -558,7 +565,7 @@
             this.groupBox7.Controls.Add(this.label16);
             this.groupBox7.Controls.Add(this.textBoxCompareY1);
             this.groupBox7.Controls.Add(this.textBoxCompareX1);
-            this.groupBox7.Location = new System.Drawing.Point(567, 475);
+            this.groupBox7.Location = new System.Drawing.Point(594, 496);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(378, 112);
             this.groupBox7.TabIndex = 16;
@@ -645,7 +652,7 @@
             // 
             // buttonMultiplyComplex
             // 
-            this.buttonMultiplyComplex.Location = new System.Drawing.Point(374, 417);
+            this.buttonMultiplyComplex.Location = new System.Drawing.Point(401, 438);
             this.buttonMultiplyComplex.Name = "buttonMultiplyComplex";
             this.buttonMultiplyComplex.Size = new System.Drawing.Size(133, 39);
             this.buttonMultiplyComplex.TabIndex = 17;
@@ -655,7 +662,7 @@
             // 
             // buttonChangeA
             // 
-            this.buttonChangeA.Location = new System.Drawing.Point(193, 417);
+            this.buttonChangeA.Location = new System.Drawing.Point(220, 438);
             this.buttonChangeA.Name = "buttonChangeA";
             this.buttonChangeA.Size = new System.Drawing.Size(133, 39);
             this.buttonChangeA.TabIndex = 18;
@@ -665,7 +672,7 @@
             // 
             // buttonAnimationBall
             // 
-            this.buttonAnimationBall.Location = new System.Drawing.Point(13, 475);
+            this.buttonAnimationBall.Location = new System.Drawing.Point(40, 496);
             this.buttonAnimationBall.Name = "buttonAnimationBall";
             this.buttonAnimationBall.Size = new System.Drawing.Size(149, 42);
             this.buttonAnimationBall.TabIndex = 19;
@@ -675,7 +682,7 @@
             // 
             // buttonBallRotate
             // 
-            this.buttonBallRotate.Location = new System.Drawing.Point(197, 475);
+            this.buttonBallRotate.Location = new System.Drawing.Point(224, 496);
             this.buttonBallRotate.Name = "buttonBallRotate";
             this.buttonBallRotate.Size = new System.Drawing.Size(129, 40);
             this.buttonBallRotate.TabIndex = 20;
@@ -688,7 +695,7 @@
             this.groupBox8.Controls.Add(this.buttonShowSumBySkipping);
             this.groupBox8.Controls.Add(this.label19);
             this.groupBox8.Controls.Add(this.textBoxBaseInSkip);
-            this.groupBox8.Location = new System.Drawing.Point(883, 12);
+            this.groupBox8.Location = new System.Drawing.Point(910, 33);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(313, 90);
             this.groupBox8.TabIndex = 21;
@@ -724,7 +731,7 @@
             // 
             // buttonPlotSum
             // 
-            this.buttonPlotSum.Location = new System.Drawing.Point(914, 148);
+            this.buttonPlotSum.Location = new System.Drawing.Point(944, 164);
             this.buttonPlotSum.Name = "buttonPlotSum";
             this.buttonPlotSum.Size = new System.Drawing.Size(131, 41);
             this.buttonPlotSum.TabIndex = 22;
@@ -734,7 +741,7 @@
             // 
             // buttonBallCompare
             // 
-            this.buttonBallCompare.Location = new System.Drawing.Point(374, 475);
+            this.buttonBallCompare.Location = new System.Drawing.Point(401, 496);
             this.buttonBallCompare.Name = "buttonBallCompare";
             this.buttonBallCompare.Size = new System.Drawing.Size(129, 40);
             this.buttonBallCompare.TabIndex = 23;
@@ -742,27 +749,70 @@
             this.buttonBallCompare.UseVisualStyleBackColor = true;
             this.buttonBallCompare.Click += new System.EventHandler(this.buttonBallCompare_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1214, 635);
+            this.tabControl1.TabIndex = 24;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.buttonPlotSum);
+            this.tabPage1.Controls.Add(this.buttonBallCompare);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.groupBox8);
+            this.tabPage1.Controls.Add(this.checkBoxUseOriginal);
+            this.tabPage1.Controls.Add(this.buttonBallRotate);
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Controls.Add(this.buttonAnimationBall);
+            this.tabPage1.Controls.Add(this.groupBox5);
+            this.tabPage1.Controls.Add(this.buttonChangeA);
+            this.tabPage1.Controls.Add(this.groupBox6);
+            this.tabPage1.Controls.Add(this.buttonMultiplyComplex);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.groupBox7);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1206, 609);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Curves&Animations";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.buttonCalculateCoefficient);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1206, 609);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Calculate Polynomial";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonCalculateCoefficient
+            // 
+            this.buttonCalculateCoefficient.Location = new System.Drawing.Point(57, 46);
+            this.buttonCalculateCoefficient.Name = "buttonCalculateCoefficient";
+            this.buttonCalculateCoefficient.Size = new System.Drawing.Size(155, 44);
+            this.buttonCalculateCoefficient.TabIndex = 0;
+            this.buttonCalculateCoefficient.Text = "Calculate product coefficient";
+            this.buttonCalculateCoefficient.UseVisualStyleBackColor = true;
+            this.buttonCalculateCoefficient.Click += new System.EventHandler(this.buttonCalculateCoefficient_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 635);
-            this.Controls.Add(this.buttonBallCompare);
-            this.Controls.Add(this.buttonPlotSum);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.buttonBallRotate);
-            this.Controls.Add(this.buttonAnimationBall);
-            this.Controls.Add(this.buttonChangeA);
-            this.Controls.Add(this.buttonMultiplyComplex);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.checkBoxUseOriginal);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
@@ -781,8 +831,11 @@
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -853,6 +906,10 @@
         private System.Windows.Forms.TextBox textBoxBaseInSkip;
         private System.Windows.Forms.Button buttonPlotSum;
         private System.Windows.Forms.Button buttonBallCompare;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button buttonCalculateCoefficient;
     }
 }
 

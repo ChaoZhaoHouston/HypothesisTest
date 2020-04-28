@@ -137,22 +137,61 @@ namespace RiemannHypothesisTest
 
             if (iListLength > 1)
             {
-                Color[] arrColor = { Color.Red, Color.Blue, Color.Green, Color.Aqua, Color.Black };
-                for (int i = 0; i < iListLength; i++)
+                Color[] arrColor = { Color.Red, Color.Blue, Color.Green, Color.Aqua, Color.Violet };
+                if (m_bHighlightLast)
                 {
-                    List<Complex> lstComplex = m_lstlstComplexes[i];
-                    int iLength = m_lstlstComplexes[i].Count;
-
-                    for (int j = 1; j < iLength; j++)
+                    for (int i = 0; i < iListLength - 1; i++)
                     {
-                        Complex c1 = lstComplex[j - 1];
-                        Complex c2 = lstComplex[j];
-                        Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
-                            m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
-                        Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
-                            m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                        List<Complex> lstComplex = m_lstlstComplexes[i];
+                        int iLength = m_lstlstComplexes[i].Count;
 
-                        e.Graphics.DrawLine(new Pen(arrColor[i % 5], 1f), ptScreen1, ptScreen2);
+                        for (int j = 1; j < iLength; j++)
+                        {
+                            Complex c1 = lstComplex[j - 1];
+                            Complex c2 = lstComplex[j];
+                            Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                            Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                            e.Graphics.DrawLine(new Pen(arrColor[i % 5], 1f), ptScreen1, ptScreen2);
+                        }
+                    }
+                    {
+                        List<Complex> lstComplex = m_lstlstComplexes[iListLength - 1];
+                        int iLength = m_lstlstComplexes[iListLength - 1].Count;
+
+                        for (int j = 1; j < iLength; j++)
+                        {
+                            Complex c1 = lstComplex[j - 1];
+                            Complex c2 = lstComplex[j];
+                            Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                            Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                            e.Graphics.DrawLine(new Pen(Color.Black, 4f), ptScreen1, ptScreen2);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < iListLength; i++)
+                    {
+                        List<Complex> lstComplex = m_lstlstComplexes[i];
+                        int iLength = m_lstlstComplexes[i].Count;
+
+                        for (int j = 1; j < iLength; j++)
+                        {
+                            Complex c1 = lstComplex[j - 1];
+                            Complex c2 = lstComplex[j];
+                            Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                            Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                            e.Graphics.DrawLine(new Pen(arrColor[i % 5], 1f), ptScreen1, ptScreen2);
+                        }
                     }
                 }
             }

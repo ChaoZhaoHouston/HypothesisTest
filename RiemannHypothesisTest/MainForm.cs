@@ -655,7 +655,7 @@ namespace RiemannHypothesisTest
 
         private List<List<Complex>> GetListsAtDifferentY_Ball(double dXValue, double dYValue)
         {
-            int iNumOfSeries = 20;
+            int iNumOfSeries = 2000;
 
             List<List<Complex>> lstlstComplex = new List<List<Complex>>();
 
@@ -763,27 +763,126 @@ namespace RiemannHypothesisTest
 
         private void buttonBallCompare_Click(object sender, EventArgs e)
         {
-            double dXValue = -0.9;
-            double dYValue = 8.2;
+            double dXValue = -0.5;
+            double dYValue = 14.14;
 
 
             List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
-
-            FormResult result = new FormResult(lstlstComplex, false);
+            lstlstComplex.Add(sumOfListComplex(lstlstComplex));
+            
+            FormResult result = new FormResult(lstlstComplex, true);
             result.StartPosition = FormStartPosition.Manual;
             result.Location = new Point(0, 200);
             result.Show();
 
 
-            Complex cRotate = Complex.Exp(new Complex(0, -dYValue * Math.Log(3)));
+            //Complex cRotate = Complex.Exp(new Complex(0, -dYValue * Math.Log(3)));
             //Complex cRotate = Complex.Exp(new Complex(0, Math.PI));
 
-            List<List<Complex>> lstlstComplexDoubleA = GetListsAtDifferentY_Ball(-0.99, dYValue);
+            List<List<Complex>> lstlstComplexDoubleA = GetListsAtDifferentY_Ball(dXValue, dYValue + 2);
+            lstlstComplexDoubleA.Add(sumOfListComplex(lstlstComplexDoubleA));
 
-            FormResult result1 = new FormResult(lstlstComplexDoubleA, false);
+            FormResult result1 = new FormResult(lstlstComplexDoubleA, true);
             result1.StartPosition = FormStartPosition.Manual;
             result1.Location = new Point(0, 200);
             result1.Show();
+        }
+
+        private List<Complex> sumOfListComplex(List<List<Complex>> lstlstComplex)
+        {
+            List<Complex> lstReturn = new List<Complex>();
+            lstReturn.Add(new Complex(0, 0));
+            Complex sum = new Complex(0, 0);
+            for (int i = 0; i < lstlstComplex.Count; i++)
+            {
+                List<Complex> lstComplex = lstlstComplex[i];
+                sum += lstComplex[1];
+            }
+
+            lstReturn.Add(sum);
+            return lstReturn;
+        }
+
+        private List<Complex> sumOfPowerOfI(List<List<Complex>> lstlstComplex)
+        {
+            List<Complex> lstReturn = new List<Complex>();
+            lstReturn.Add(new Complex(0, 0));
+            Complex sum = new Complex(0, 0);
+            for (int i = 0; i < lstlstComplex.Count; i++)
+            {
+                List<Complex> lstComplex = lstlstComplex[i];
+                lstReturn.Add(Complex.Pow(new Complex(i + 1, 0), new Complex(0, 0.5)));
+                sum += (Complex.Pow(new Complex(i + 1, 0), new Complex(0, 0.5)));
+            }
+
+            lstReturn.Add(sum);
+            return lstReturn;
+        }
+
+        private void buttonCalculateCoefficient_Click(object sender, EventArgs e)
+        {
+            int iTotalNum = 20000;
+            int[] arr_Base = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Base[i] = (i % 2 == 0 ? 1 : -1);
+            }
+
+
+            int[] arr_Sum = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Sum[i] = 0;
+            }
+
+            for (int j = 0; j < iTotalNum; j++)
+            {
+                
+                int[] arr_N = new int[iTotalNum];
+                for (int i = 0; i < iTotalNum; i++)
+                {
+                    arr_N[i] = 0;
+                }
+
+                int iSign = (j % 2 == 0) ? 1 : -1;
+                int iCount_N = 0;
+                for (int i = 0; i < iTotalNum; i++)
+                {
+                    if ((i + 1) % (j + 1) == 0)
+                    {
+                        arr_N[i] = (iSign * arr_Base[iCount_N]);
+                        iCount_N++;
+                    }
+                }
+
+                for (int i = 0; i < iTotalNum; i++)
+                {
+                    arr_Sum[i] += arr_N[i];
+                }
+            }
+
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                if (arr_Sum[i] == 11)
+                {
+                    Console.WriteLine((i + 1).ToString());
+                }
+            }
+
+            //FormPoints formPoints = new FormPoints(arr_Sum);
+            //formPoints.Show();
+
+
+
+            int maxValue = arr_Sum.Max();
+            int minValue = arr_Sum.Min();
+            int maxIndex = arr_Sum.ToList().IndexOf(maxValue) + 1;
+            int minIndex = arr_Sum.ToList().IndexOf(minValue) + 1;
+
+            MessageBox.Show(arr_Sum.Min().ToString() + " at " + minIndex.ToString() + "\n" + 
+                arr_Sum.Max().ToString() + " at " + maxIndex.ToString());
+
+
         }
     }
 }
