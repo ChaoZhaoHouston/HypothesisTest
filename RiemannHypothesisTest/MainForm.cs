@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -821,11 +822,11 @@ namespace RiemannHypothesisTest
 
         private void buttonCalculateCoefficient_Click(object sender, EventArgs e)
         {
-            int iTotalNum = 20000;
-            int[] arr_Base = new int[iTotalNum];
+            int iTotalNum = 1000;
+            int[] arr_Sum1 = new int[iTotalNum];
             for (int i = 0; i < iTotalNum; i++)
             {
-                arr_Base[i] = (i % 2 == 0 ? 1 : -1);
+                arr_Sum1[i] = (i % 2 == 0 ? 1 : -1);
             }
 
 
@@ -835,9 +836,154 @@ namespace RiemannHypothesisTest
                 arr_Sum[i] = 0;
             }
 
+            CalculatePower(iTotalNum, arr_Sum, arr_Sum1);
+
+            //for (int j = 0; j < iTotalNum; j++)
+            //{
+
+            //    int[] arr_N = new int[iTotalNum];
+            //    for (int i = 0; i < iTotalNum; i++)
+            //    {
+            //        arr_N[i] = 0;
+            //    }
+
+            //    int iSign = (j % 2 == 0) ? 1 : -1;
+            //    int iCount_N = 0;
+            //    for (int i = 0; i < iTotalNum; i++)
+            //    {
+            //        if ((i + 1) % (j + 1) == 0)
+            //        {
+            //            arr_N[i] = (iSign * arr_Base[iCount_N]);
+            //            iCount_N++;
+            //        }
+            //    }
+
+            //    for (int i = 0; i < iTotalNum; i++)
+            //    {
+            //        arr_Sum[i] += arr_N[i];
+            //    }
+            //}
+
+            int[] arr_Sum2 = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Sum2[i] = arr_Sum[i];
+                arr_Sum[i] = 0;
+            }
+
+            CalculatePower(iTotalNum, arr_Sum, arr_Sum2);
+
+            int[] arr_Sum3 = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Sum3[i] = arr_Sum[i];
+                arr_Sum[i] = 0;
+            }
+
+            CalculatePower(iTotalNum, arr_Sum, arr_Sum3);
+
+            int[] arr_Sum4 = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Sum4[i] = arr_Sum[i];
+                arr_Sum[i] = 0;
+            }
+
+            CalculatePower(iTotalNum, arr_Sum, arr_Sum4);
+
+            int[] arr_Sum5 = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Sum5[i] = arr_Sum[i];
+                arr_Sum[i] = 0;
+            }
+
+            CalculatePower(iTotalNum, arr_Sum, arr_Sum5);
+
+            int[] arr_Sum6 = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Sum6[i] = arr_Sum[i];
+                arr_Sum[i] = 0;
+            }
+
+            CalculatePower(iTotalNum, arr_Sum, arr_Sum6);
+
+            int[] arr_Sum7 = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_Sum7[i] = arr_Sum[i];
+                arr_Sum[i] = 0;
+            }
+
+            CalculatePower(iTotalNum, arr_Sum, arr_Sum7);
+
+            int[] arr_SumFirst8 = new int[iTotalNum];
+            for (int i = 0; i < iTotalNum; i++)
+            {
+                arr_SumFirst8[i] = arr_Sum1[i] - arr_Sum2[i] + arr_Sum3[i] - arr_Sum4[i] + arr_Sum5[i]
+                    - arr_Sum6[i] + arr_Sum7[i] - arr_Sum[i];
+
+            }
+
+
+
+
+            int maxValue = arr_Sum.Max();
+            int minValue = arr_Sum.Min();
+            int maxIndex = arr_Sum.ToList().IndexOf(maxValue) + 1;
+            int minIndex = arr_Sum.ToList().IndexOf(minValue) + 1;
+
+            MessageBox.Show(arr_Sum.Min().ToString() + " at " + minIndex.ToString() + "\n" +
+                arr_Sum.Max().ToString() + " at " + maxIndex.ToString());
+
+
+
+            var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "numbers.txt");
+
+            using (StreamWriter writetext = new StreamWriter(fileName))
+            {
+
+                for (int iSum = minValue; iSum <= maxValue; iSum++)
+                {
+                    StringBuilder str = new StringBuilder();
+
+                    bool bFoundOne = false;
+                    for (int i = 0; i < iTotalNum; i++)
+                    {
+                        if (iSum == arr_Sum[i])
+                        {
+                            str.Append((i + 1).ToString() + "\t");
+                            bFoundOne = true;
+                        }
+                    }
+
+                    if (bFoundOne)
+                    {
+                        writetext.WriteLine(iSum + ":");
+                        writetext.WriteLine(str);
+                        writetext.WriteLine();
+                    }
+                }
+            }
+
+
+
+            FormPoints formPoints = new FormPoints(arr_SumFirst8);
+            formPoints.Show();
+
+
+
+
+
+
+        }
+
+        private static void CalculatePower(int iTotalNum, int[] arr_Sum, int[] arr_Sum2)
+        {
             for (int j = 0; j < iTotalNum; j++)
             {
-                
+
                 int[] arr_N = new int[iTotalNum];
                 for (int i = 0; i < iTotalNum; i++)
                 {
@@ -850,7 +996,7 @@ namespace RiemannHypothesisTest
                 {
                     if ((i + 1) % (j + 1) == 0)
                     {
-                        arr_N[i] = (iSign * arr_Base[iCount_N]);
+                        arr_N[i] = (iSign * arr_Sum2[iCount_N]);
                         iCount_N++;
                     }
                 }
@@ -860,29 +1006,6 @@ namespace RiemannHypothesisTest
                     arr_Sum[i] += arr_N[i];
                 }
             }
-
-            for (int i = 0; i < iTotalNum; i++)
-            {
-                if (arr_Sum[i] == 11)
-                {
-                    Console.WriteLine((i + 1).ToString());
-                }
-            }
-
-            //FormPoints formPoints = new FormPoints(arr_Sum);
-            //formPoints.Show();
-
-
-
-            int maxValue = arr_Sum.Max();
-            int minValue = arr_Sum.Min();
-            int maxIndex = arr_Sum.ToList().IndexOf(maxValue) + 1;
-            int minIndex = arr_Sum.ToList().IndexOf(minValue) + 1;
-
-            MessageBox.Show(arr_Sum.Min().ToString() + " at " + minIndex.ToString() + "\n" + 
-                arr_Sum.Max().ToString() + " at " + maxIndex.ToString());
-
-
         }
     }
 }
