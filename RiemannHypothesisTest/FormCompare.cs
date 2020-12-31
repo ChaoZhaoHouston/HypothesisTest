@@ -20,6 +20,7 @@ namespace RiemannHypothesisTest
         double m_dMaxY = double.MinValue;
         List<List<Complex>> m_lstlstComplexes1 = null;
         List<List<Complex>> m_lstlstComplexes2 = null;
+        List<List<Complex>> m_lstlstComplexes3 = null;
 
         public FormCompare(List<List<Complex>> lstlstComplexes1, List<List<Complex>> lstlstComplexes2)
         {
@@ -27,6 +28,17 @@ namespace RiemannHypothesisTest
 
             m_lstlstComplexes1 = lstlstComplexes1;
             m_lstlstComplexes2 = lstlstComplexes2;
+            UpdateMinMax();
+
+        }
+
+        public FormCompare(List<List<Complex>> lstlstComplexes1, List<List<Complex>> lstlstComplexes2, List<List<Complex>> lstlstComplexes3)
+        {
+            InitializeComponent();
+
+            m_lstlstComplexes1 = lstlstComplexes1;
+            m_lstlstComplexes2 = lstlstComplexes2;
+            m_lstlstComplexes3 = lstlstComplexes3;
             UpdateMinMax();
 
         }
@@ -112,6 +124,32 @@ namespace RiemannHypothesisTest
                     if (m_dMaxY < c1.Imaginary)
                     {
                         m_dMaxY = c1.Imaginary;
+                    }
+                }
+            }
+
+            if (m_lstlstComplexes3 != null)
+            {
+                foreach (List<Complex> lstComplex in m_lstlstComplexes3)
+                {
+                    foreach (Complex c1 in lstComplex)
+                    {
+                        if (m_dMinX > c1.Real)
+                        {
+                            m_dMinX = c1.Real;
+                        }
+                        if (m_dMaxX < c1.Real)
+                        {
+                            m_dMaxX = c1.Real;
+                        }
+                        if (m_dMinY > c1.Imaginary)
+                        {
+                            m_dMinY = c1.Imaginary;
+                        }
+                        if (m_dMaxY < c1.Imaginary)
+                        {
+                            m_dMaxY = c1.Imaginary;
+                        }
                     }
                 }
             }
@@ -304,6 +342,85 @@ namespace RiemannHypothesisTest
                         Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
                         e.Graphics.DrawEllipse(new Pen(Color.Red, 1f), new Rectangle(ptScreen1.X, ptScreen1.Y, 4, 4));
+                    }
+                }
+            }
+
+
+            {
+                if (m_lstlstComplexes3 != null)
+                {
+                    int iListLength3 = m_lstlstComplexes3.Count;
+
+                    //for(int i = 0; i < iLength; i++)
+                    //{
+                    //    Complex c1 = m_lstComplexes[i];
+                    //    Point ptScreen = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary), 
+                    //        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                    //    if (i < iLength /3)
+                    //    {
+                    //        aBrush = (Brush)Brushes.Green;
+                    //    }
+                    //    else if (i < 3 * iLength /3)
+                    //    {
+                    //        aBrush = (Brush)Brushes.Blue;
+                    //    }
+                    //    else
+                    //    {
+                    //        aBrush = (Brush)Brushes.Red;
+                    //    }
+                    //    e.Graphics.FillEllipse(aBrush, ptScreen.X, ptScreen.Y, 2, 2);
+                    //}
+
+                    if (iListLength3 > 1)
+                    {
+                        Color[] arrColor = { Color.Red, Color.Blue, Color.Green, Color.Aqua, Color.Black };
+                        for (int i = 0; i < iListLength3; i++)
+                        {
+                            List<Complex> lstComplex = m_lstlstComplexes3[i];
+                            int iLength = m_lstlstComplexes3[i].Count;
+
+                            for (int j = 1; j < iLength; j++)
+                            {
+                                Complex c1 = lstComplex[j - 1];
+                                Complex c2 = lstComplex[j];
+                                Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                                    m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                                Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                                    m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                                e.Graphics.DrawLine(new Pen(arrColor[i % 5], 1f), ptScreen1, ptScreen2);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int iLength = m_lstlstComplexes3[0].Count;
+                        if (iLength > 1)
+                        {
+                            for (int i = 1; i < iLength; i++)
+                            {
+                                Complex c1 = m_lstlstComplexes3[0][i - 1];
+                                Complex c2 = m_lstlstComplexes3[0][i];
+                                Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                                    m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                                Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                                    m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                                if (i < iListLength3 / 2)
+                                    e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
+                                else
+                                    e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
+                            }
+                        }
+                        else
+                        {
+                            Complex c1 = m_lstlstComplexes3[0].ElementAt(0);
+                            Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                            e.Graphics.DrawEllipse(new Pen(Color.Red, 1f), new Rectangle(ptScreen1.X, ptScreen1.Y, 4, 4));
+                        }
                     }
                 }
             }

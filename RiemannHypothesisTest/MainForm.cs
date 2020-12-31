@@ -764,29 +764,38 @@ namespace RiemannHypothesisTest
 
         private void buttonBallCompare_Click(object sender, EventArgs e)
         {
-            double dXValue = -0.5;
+            //double dXValue = -1;
             double dYValue = 14.14;
 
 
-            List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
-            lstlstComplex.Add(sumOfListComplex(lstlstComplex));
+            //List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
+            //lstlstComplex.Add(sumOfListComplex(lstlstComplex));
             
-            FormResult result = new FormResult(lstlstComplex, true);
-            result.StartPosition = FormStartPosition.Manual;
-            result.Location = new Point(0, 200);
-            result.Show();
+            //FormResult result = new FormResult(lstlstComplex, true);
+            //result.StartPosition = FormStartPosition.Manual;
+            //result.Location = new Point(0, 200);
+            //result.Show();
 
 
             //Complex cRotate = Complex.Exp(new Complex(0, -dYValue * Math.Log(3)));
             //Complex cRotate = Complex.Exp(new Complex(0, Math.PI));
 
-            List<List<Complex>> lstlstComplexDoubleA = GetListsAtDifferentY_Ball(dXValue, dYValue + 2);
+            List<List<Complex>> lstlstComplexDoubleA = GetListsAtDifferentY_Ball(-0.1, dYValue);
             lstlstComplexDoubleA.Add(sumOfListComplex(lstlstComplexDoubleA));
 
             FormResult result1 = new FormResult(lstlstComplexDoubleA, true);
             result1.StartPosition = FormStartPosition.Manual;
-            result1.Location = new Point(0, 200);
+            result1.Location = new Point(0, 20);
             result1.Show();
+
+
+            List<List<Complex>> lstlstComplexAnotherA = GetListsAtDifferentY_Ball(-0.9, dYValue);
+            lstlstComplexAnotherA.Add(sumOfListComplex(lstlstComplexAnotherA));
+
+            FormResult result2 = new FormResult(lstlstComplexAnotherA, true);
+            result2.StartPosition = FormStartPosition.Manual;
+            result2.Location = new Point(0, 20);
+            result2.Show();
         }
 
         private List<Complex> sumOfListComplex(List<List<Complex>> lstlstComplex)
@@ -838,93 +847,22 @@ namespace RiemannHypothesisTest
 
             CalculatePower(iTotalNum, arr_Sum, arr_Sum1);
 
-            //for (int j = 0; j < iTotalNum; j++)
-            //{
-
-            //    int[] arr_N = new int[iTotalNum];
-            //    for (int i = 0; i < iTotalNum; i++)
-            //    {
-            //        arr_N[i] = 0;
-            //    }
-
-            //    int iSign = (j % 2 == 0) ? 1 : -1;
-            //    int iCount_N = 0;
-            //    for (int i = 0; i < iTotalNum; i++)
-            //    {
-            //        if ((i + 1) % (j + 1) == 0)
-            //        {
-            //            arr_N[i] = (iSign * arr_Base[iCount_N]);
-            //            iCount_N++;
-            //        }
-            //    }
-
-            //    for (int i = 0; i < iTotalNum; i++)
-            //    {
-            //        arr_Sum[i] += arr_N[i];
-            //    }
-            //}
 
             int[] arr_Sum2 = new int[iTotalNum];
             for (int i = 0; i < iTotalNum; i++)
             {
                 arr_Sum2[i] = arr_Sum[i];
-                arr_Sum[i] = 0;
+                //arr_Sum[i] = 0;
             }
 
-            CalculatePower(iTotalNum, arr_Sum, arr_Sum2);
+            //CalculatePower(iTotalNum, arr_Sum, arr_Sum2);
 
-            int[] arr_Sum3 = new int[iTotalNum];
-            for (int i = 0; i < iTotalNum; i++)
-            {
-                arr_Sum3[i] = arr_Sum[i];
-                arr_Sum[i] = 0;
-            }
-
-            CalculatePower(iTotalNum, arr_Sum, arr_Sum3);
-
-            int[] arr_Sum4 = new int[iTotalNum];
-            for (int i = 0; i < iTotalNum; i++)
-            {
-                arr_Sum4[i] = arr_Sum[i];
-                arr_Sum[i] = 0;
-            }
-
-            CalculatePower(iTotalNum, arr_Sum, arr_Sum4);
-
-            int[] arr_Sum5 = new int[iTotalNum];
-            for (int i = 0; i < iTotalNum; i++)
-            {
-                arr_Sum5[i] = arr_Sum[i];
-                arr_Sum[i] = 0;
-            }
-
-            CalculatePower(iTotalNum, arr_Sum, arr_Sum5);
-
-            int[] arr_Sum6 = new int[iTotalNum];
-            for (int i = 0; i < iTotalNum; i++)
-            {
-                arr_Sum6[i] = arr_Sum[i];
-                arr_Sum[i] = 0;
-            }
-
-            CalculatePower(iTotalNum, arr_Sum, arr_Sum6);
-
-            int[] arr_Sum7 = new int[iTotalNum];
-            for (int i = 0; i < iTotalNum; i++)
-            {
-                arr_Sum7[i] = arr_Sum[i];
-                arr_Sum[i] = 0;
-            }
-
-            CalculatePower(iTotalNum, arr_Sum, arr_Sum7);
-
-            int[] arr_SumFirst8 = new int[iTotalNum];
-            for (int i = 0; i < iTotalNum; i++)
-            {
-                arr_SumFirst8[i] = arr_Sum1[i] - arr_Sum2[i] + arr_Sum3[i] - arr_Sum4[i] + arr_Sum5[i]
-                    - arr_Sum6[i] + arr_Sum7[i] - arr_Sum[i];
-
-            }
+            //int[] arr_Sum3 = new int[iTotalNum];
+            //for (int i = 0; i < iTotalNum; i++)
+            //{
+            //    arr_Sum3[i] = arr_Sum[i];
+               
+            //}
 
 
 
@@ -940,6 +878,24 @@ namespace RiemannHypothesisTest
 
 
             var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "numbers.txt");
+
+            using (StreamWriter writetext = new StreamWriter(fileName))
+            {
+                //int iCount = 0;
+                for (int i = 0; i < iTotalNum; i++)
+                {
+                    if (arr_Sum2[i] - 2 * arr_Sum1[i] < 0)
+                    {
+                        writetext.Write(arr_Sum2[i] - 2 * arr_Sum1[i] + "/" + (i + 1) + "^x ");
+                        //iCount++;
+                    }
+                    else if (arr_Sum2[i] - 2 * arr_Sum1[i] > 0)
+                    {
+                        writetext.Write("+" + (arr_Sum2[i] - 2 * arr_Sum1[i]) + "/" + (i + 1) + "^x ");
+                    }
+                }
+
+            }
 
             using (StreamWriter writetext = new StreamWriter(fileName))
             {
@@ -968,9 +924,8 @@ namespace RiemannHypothesisTest
             }
 
 
-
-            FormPoints formPoints = new FormPoints(arr_SumFirst8);
-            formPoints.Show();
+            //FormPoints formPoints = new FormPoints(arr_SumFirst8);
+            //formPoints.Show();
 
 
 
@@ -1006,6 +961,136 @@ namespace RiemannHypothesisTest
                     arr_Sum[i] += arr_N[i];
                 }
             }
+        }
+
+        private void buttonSumRoot2_Click(object sender, EventArgs e)
+        {
+            double dSum = 0;
+
+            for (int i = 1; i < 1000000; i++)
+            {
+                dSum += (Math.Pow(-1, i+1) /Math.Sqrt( i));
+            }
+
+            Console.WriteLine(dSum / (1-Math.Sqrt(2)) );
+        }
+
+        private void buttonShowImageChange_Click(object sender, EventArgs e)
+        {
+            double dXValue = -0.55;
+            double dYValue = -0.86;
+
+
+            List<List<Complex>> lstlstComplex = GetListsAtDifferentY_ImaginaryChange(dXValue, dYValue);
+
+            FormResult result = new FormResult(lstlstComplex, false);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
+
+        }
+
+        private List<List<Complex>> GetListsAtDifferentY_ImaginaryChange(double dXValue, double dYValue)
+        {
+            int iNumOfSeries = 380;
+
+            List<List<Complex>> lstlstComplex = new List<List<Complex>>();
+
+            Complex start = new Complex(0, 0);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                //List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                List<Complex> lstComplexes = getSeriesOneExponentJustTwoPoints(new Complex(dXValue, dYValue), i);
+                //List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+                List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, false);
+                List<Complex> lstLast = new List<Complex>();
+                lstLast.Add(start);
+                lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                lstlstComplex.Add(lstLast);
+
+            }
+
+            return lstlstComplex;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            int iNumOfSeries = 10000;
+            List<List<Complex>> lstlstComplex1 = new List<List<Complex>>();
+            List<List<Complex>> lstlstComplex2 = new List<List<Complex>>();
+            List<List<Complex>> lstlstComplex3 = new List<List<Complex>>();
+
+            {
+
+                double dXValue = Convert.ToDouble(textBoxProjectionX1.Text);
+                double dYValue = Convert.ToDouble(textBoxProjectionY1.Text);
+
+
+                Complex start = new Complex(0, 0);
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+
+                    List<Complex> lstLast = new List<Complex>();
+                    lstLast.Add(start);
+                    lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                    lstlstComplex1.Add(lstLast);
+
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+            }
+
+
+            {
+                double dXValue = Convert.ToDouble(textBoxProjectionX2.Text);
+                double dYValue = Convert.ToDouble(textBoxProjectionY2.Text);
+
+
+                Complex start = new Complex(0, 0);
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+
+                    List<Complex> lstLast = new List<Complex>();
+                    lstLast.Add(start);
+                    lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                    lstlstComplex2.Add(lstLast);
+
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+            }
+
+            {
+                double dXValue = Convert.ToDouble(textBoxProjectionX3.Text);
+                double dYValue = Convert.ToDouble(textBoxProjectionY3.Text);
+
+
+                Complex start = new Complex(0, 0);
+                for (int i = 1; i < iNumOfSeries; i++)
+                {
+                    List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
+                    List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
+
+                    List<Complex> lstLast = new List<Complex>();
+                    lstLast.Add(start);
+                    lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
+                    lstlstComplex3.Add(lstLast);
+
+                    start = lstComplexesShift[lstComplexes.Count - 1];
+                }
+
+            }
+
+
+            FormCompare result = new FormCompare(lstlstComplex1, lstlstComplex2, lstlstComplex3);
+            result.StartPosition = FormStartPosition.Manual;
+            result.Location = new Point(0, 200);
+            result.Show();
         }
     }
 }

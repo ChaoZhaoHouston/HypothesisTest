@@ -96,8 +96,25 @@
             this.buttonBallCompare = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonShowImageChange = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonSumRoot2 = new System.Windows.Forms.Button();
             this.buttonCalculateCoefficient = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBoxProjectionY2 = new System.Windows.Forms.TextBox();
+            this.textBoxProjectionX2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
+            this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBoxProjectionY3 = new System.Windows.Forms.TextBox();
+            this.textBoxProjectionX3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -109,6 +126,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxX
@@ -596,7 +615,7 @@
             this.textBoxCompareY2.Name = "textBoxCompareY2";
             this.textBoxCompareY2.Size = new System.Drawing.Size(48, 20);
             this.textBoxCompareY2.TabIndex = 7;
-            this.textBoxCompareY2.Text = "-3";
+            this.textBoxCompareY2.Text = "-14.14";
             // 
             // textBoxCompareX2
             // 
@@ -604,7 +623,7 @@
             this.textBoxCompareX2.Name = "textBoxCompareX2";
             this.textBoxCompareX2.Size = new System.Drawing.Size(48, 20);
             this.textBoxCompareX2.TabIndex = 6;
-            this.textBoxCompareX2.Text = "-0.5";
+            this.textBoxCompareX2.Text = "-0.99";
             // 
             // buttonCompareTwocurves
             // 
@@ -640,7 +659,7 @@
             this.textBoxCompareY1.Name = "textBoxCompareY1";
             this.textBoxCompareY1.Size = new System.Drawing.Size(48, 20);
             this.textBoxCompareY1.TabIndex = 1;
-            this.textBoxCompareY1.Text = "-2";
+            this.textBoxCompareY1.Text = "-14.14";
             // 
             // textBoxCompareX1
             // 
@@ -753,6 +772,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -762,6 +782,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonShowImageChange);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.buttonPlotSum);
             this.tabPage1.Controls.Add(this.buttonBallCompare);
@@ -786,8 +807,19 @@
             this.tabPage1.Text = "Curves&Animations";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // buttonShowImageChange
+            // 
+            this.buttonShowImageChange.Location = new System.Drawing.Point(227, 563);
+            this.buttonShowImageChange.Name = "buttonShowImageChange";
+            this.buttonShowImageChange.Size = new System.Drawing.Size(125, 34);
+            this.buttonShowImageChange.TabIndex = 24;
+            this.buttonShowImageChange.Text = "Show imaginary change";
+            this.buttonShowImageChange.UseVisualStyleBackColor = true;
+            this.buttonShowImageChange.Click += new System.EventHandler(this.buttonShowImageChange_Click);
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.buttonSumRoot2);
             this.tabPage2.Controls.Add(this.buttonCalculateCoefficient);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -796,6 +828,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Calculate Polynomial";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonSumRoot2
+            // 
+            this.buttonSumRoot2.Location = new System.Drawing.Point(57, 153);
+            this.buttonSumRoot2.Name = "buttonSumRoot2";
+            this.buttonSumRoot2.Size = new System.Drawing.Size(155, 40);
+            this.buttonSumRoot2.TabIndex = 1;
+            this.buttonSumRoot2.Text = "Calculate Sum of root2";
+            this.buttonSumRoot2.UseVisualStyleBackColor = true;
+            this.buttonSumRoot2.Click += new System.EventHandler(this.buttonSumRoot2_Click);
             // 
             // buttonCalculateCoefficient
             // 
@@ -806,6 +848,151 @@
             this.buttonCalculateCoefficient.Text = "Calculate product coefficient";
             this.buttonCalculateCoefficient.UseVisualStyleBackColor = true;
             this.buttonCalculateCoefficient.Click += new System.EventHandler(this.buttonCalculateCoefficient_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox9);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1206, 609);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label24);
+            this.groupBox9.Controls.Add(this.label25);
+            this.groupBox9.Controls.Add(this.textBoxProjectionY3);
+            this.groupBox9.Controls.Add(this.textBoxProjectionX3);
+            this.groupBox9.Controls.Add(this.label20);
+            this.groupBox9.Controls.Add(this.label21);
+            this.groupBox9.Controls.Add(this.textBoxProjectionY2);
+            this.groupBox9.Controls.Add(this.textBoxProjectionX2);
+            this.groupBox9.Controls.Add(this.button2);
+            this.groupBox9.Controls.Add(this.label22);
+            this.groupBox9.Controls.Add(this.label23);
+            this.groupBox9.Controls.Add(this.textBoxProjectionY1);
+            this.groupBox9.Controls.Add(this.textBoxProjectionX1);
+            this.groupBox9.Location = new System.Drawing.Point(145, 124);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(378, 168);
+            this.groupBox9.TabIndex = 17;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Compare two series";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(99, 71);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(23, 13);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Y2:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(10, 71);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(23, 13);
+            this.label21.TabIndex = 8;
+            this.label21.Text = "X2:";
+            // 
+            // textBoxProjectionY2
+            // 
+            this.textBoxProjectionY2.Location = new System.Drawing.Point(122, 67);
+            this.textBoxProjectionY2.Name = "textBoxProjectionY2";
+            this.textBoxProjectionY2.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionY2.TabIndex = 7;
+            this.textBoxProjectionY2.Text = "-14.14";
+            // 
+            // textBoxProjectionX2
+            // 
+            this.textBoxProjectionX2.Location = new System.Drawing.Point(33, 67);
+            this.textBoxProjectionX2.Name = "textBoxProjectionX2";
+            this.textBoxProjectionX2.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionX2.TabIndex = 6;
+            this.textBoxProjectionX2.Text = "-0.99";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(204, 34);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(124, 29);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "ShowCalculationDetails";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(99, 34);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(23, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Y1:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(10, 34);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(23, 13);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "X1:";
+            // 
+            // textBoxProjectionY1
+            // 
+            this.textBoxProjectionY1.Location = new System.Drawing.Point(122, 30);
+            this.textBoxProjectionY1.Name = "textBoxProjectionY1";
+            this.textBoxProjectionY1.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionY1.TabIndex = 1;
+            this.textBoxProjectionY1.Text = "-14.14";
+            // 
+            // textBoxProjectionX1
+            // 
+            this.textBoxProjectionX1.Location = new System.Drawing.Point(33, 30);
+            this.textBoxProjectionX1.Name = "textBoxProjectionX1";
+            this.textBoxProjectionX1.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionX1.TabIndex = 0;
+            this.textBoxProjectionX1.Text = "-0.5";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(99, 108);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(23, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Y3:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(10, 108);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(23, 13);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "X3:";
+            // 
+            // textBoxProjectionY3
+            // 
+            this.textBoxProjectionY3.Location = new System.Drawing.Point(122, 104);
+            this.textBoxProjectionY3.Name = "textBoxProjectionY3";
+            this.textBoxProjectionY3.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionY3.TabIndex = 11;
+            this.textBoxProjectionY3.Text = "-14.14";
+            // 
+            // textBoxProjectionX3
+            // 
+            this.textBoxProjectionX3.Location = new System.Drawing.Point(33, 104);
+            this.textBoxProjectionX3.Name = "textBoxProjectionX3";
+            this.textBoxProjectionX3.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionX3.TabIndex = 10;
+            this.textBoxProjectionX3.Text = "-0.01";
             // 
             // MainForm
             // 
@@ -835,6 +1022,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -910,6 +1100,23 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button buttonCalculateCoefficient;
+        private System.Windows.Forms.Button buttonSumRoot2;
+        private System.Windows.Forms.Button buttonShowImageChange;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBoxProjectionY2;
+        private System.Windows.Forms.TextBox textBoxProjectionX2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textBoxProjectionY1;
+        private System.Windows.Forms.TextBox textBoxProjectionX1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBoxProjectionY3;
+        private System.Windows.Forms.TextBox textBoxProjectionX3;
     }
 }
 
