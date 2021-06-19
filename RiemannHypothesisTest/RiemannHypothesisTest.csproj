@@ -54,6 +54,12 @@
     <Compile Include="FormCompare.Designer.cs">
       <DependentUpon>FormCompare.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCompareEtaAndZeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompareEtaAndZeta.Designer.cs">
+      <DependentUpon>FormCompareEtaAndZeta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPoints.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="Utilities.cs" />
     <EmbeddedResource Include="FormCompare.resx">
       <DependentUpon>FormCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCompareEtaAndZeta.resx">
+      <DependentUpon>FormCompareEtaAndZeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPoints.resx">
       <DependentUpon>FormPoints.cs</DependentUpon>
