@@ -102,6 +102,10 @@
             this.buttonCalculateCoefficient = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBoxProjectionY3 = new System.Windows.Forms.TextBox();
+            this.textBoxProjectionX3 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.textBoxProjectionY2 = new System.Windows.Forms.TextBox();
@@ -111,10 +115,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.textBoxProjectionY3 = new System.Windows.Forms.TextBox();
-            this.textBoxProjectionX3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -567,7 +567,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(39, 438);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 39);
+            this.button1.Size = new System.Drawing.Size(150, 39);
             this.button1.TabIndex = 15;
             this.button1.Text = "Animation";
             this.button1.UseVisualStyleBackColor = true;
@@ -882,6 +882,40 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Compare two series";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(99, 108);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(23, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Y3:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(10, 108);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(23, 13);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "X3:";
+            // 
+            // textBoxProjectionY3
+            // 
+            this.textBoxProjectionY3.Location = new System.Drawing.Point(122, 104);
+            this.textBoxProjectionY3.Name = "textBoxProjectionY3";
+            this.textBoxProjectionY3.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionY3.TabIndex = 11;
+            this.textBoxProjectionY3.Text = "-14.14";
+            // 
+            // textBoxProjectionX3
+            // 
+            this.textBoxProjectionX3.Location = new System.Drawing.Point(33, 104);
+            this.textBoxProjectionX3.Name = "textBoxProjectionX3";
+            this.textBoxProjectionX3.Size = new System.Drawing.Size(48, 20);
+            this.textBoxProjectionX3.TabIndex = 10;
+            this.textBoxProjectionX3.Text = "-0.01";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -959,40 +993,6 @@
             this.textBoxProjectionX1.Size = new System.Drawing.Size(48, 20);
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(99, 108);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(23, 13);
-            this.label24.TabIndex = 13;
-            this.label24.Text = "Y3:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(10, 108);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(23, 13);
-            this.label25.TabIndex = 12;
-            this.label25.Text = "X3:";
-            // 
-            // textBoxProjectionY3
-            // 
-            this.textBoxProjectionY3.Location = new System.Drawing.Point(122, 104);
-            this.textBoxProjectionY3.Name = "textBoxProjectionY3";
-            this.textBoxProjectionY3.Size = new System.Drawing.Size(48, 20);
-            this.textBoxProjectionY3.TabIndex = 11;
-            this.textBoxProjectionY3.Text = "-14.14";
-            // 
-            // textBoxProjectionX3
-            // 
-            this.textBoxProjectionX3.Location = new System.Drawing.Point(33, 104);
-            this.textBoxProjectionX3.Name = "textBoxProjectionX3";
-            this.textBoxProjectionX3.Size = new System.Drawing.Size(48, 20);
-            this.textBoxProjectionX3.TabIndex = 10;
-            this.textBoxProjectionX3.Text = "-0.01";
             // 
             // MainForm
             // 
