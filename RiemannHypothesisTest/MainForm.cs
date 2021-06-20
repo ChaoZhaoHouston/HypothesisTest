@@ -426,28 +426,66 @@ namespace RiemannHypothesisTest
 
         private void ButtonAnimation_Click(object sender, EventArgs e)
         {
-            double dXValue = -0.95;
-            double dYValue = 0;
+            double XStart = 0.5;
+            double YStart = 30;
 
-            List<List<Complex>> lstlstComplex = GetListsAtDifferentY(dXValue, dYValue);
+            List<Complex> lstEta = new List<Complex>();
+            List<Complex> lstZeta = new List<Complex>();
+            List<Complex> lstComplex = new List<Complex>();
+            FormCompareEtaAndZeta ZetaEta = new FormCompareEtaAndZeta();
+            ZetaEta.UpdateData(lstComplex, lstComplex, lstComplex, "(0, 0)");
+            ZetaEta.Show();
 
-            FormResult result = new FormResult(lstlstComplex, false);
-            result.StartPosition = FormStartPosition.Manual;
-            result.Location = new Point(0, 200);
-            result.Show();
-
-
-            for (int i = 0; i < 50000; i++)
+            for (int i = 0; i < 2000; i++)
             {
                 Application.DoEvents();
-                result.Show();
                 Thread.Sleep(1);
-                lstlstComplex = GetListsAtDifferentY(dXValue, i * 0.2);
-                result.setDataAndUpdate(lstlstComplex, false);
-                result.setLabel(dXValue, i * 0.02);
+                double dXValue = XStart;
+                double dYValue = YStart + i * 0.01;
+                Complex s = new Complex(dXValue, dYValue);
+                lstComplex = GetVectors(s);
+                Complex lastOne = lstComplex.Last();
+                lstEta.Add(lastOne);
+                Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                lstZeta.Add(Complex.Divide(lastOne, temp3));
+                ZetaEta.UpdateData(lstComplex, lstEta, lstZeta, "(" + dXValue + ", " + i * 0.02 +")");
             }
 
+            //FormResult result = new FormResult(lstlstComplex, false);
+            //result.StartPosition = FormStartPosition.Manual;
+            //result.Location = new Point(0, 200);
+            //result.Show();
 
+
+            //for (int i = 0; i < 50000; i++)
+            //{
+            //    Application.DoEvents();
+            //    result.Show();
+            //    Thread.Sleep(1);
+            //    lstlstComplex = GetListsAtDifferentY(dXValue, i * 0.2);
+            //    result.setDataAndUpdate(lstlstComplex, false);
+            //    result.setLabel(dXValue, i * 0.02);
+            //}
+
+
+        }
+
+        private List<Complex> GetVectors(Complex s)
+        {
+            int iNumOfSeries = 5000;
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                Complex term = Complex.Pow(new Complex(i, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = (i % 2 == 0) ? start - term : start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+            }
+            return lstComplex;
         }
 
         private List<List<Complex>> GetListsAtDifferentY(double dXValue, double dYValue)
