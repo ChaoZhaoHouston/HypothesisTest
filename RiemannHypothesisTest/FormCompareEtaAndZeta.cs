@@ -50,7 +50,7 @@ namespace RiemannHypothesisTest
             }
         }
 
-        public void UpdateData(List<Complex> lstData1, List<Complex> lstData2, List<Complex> lstData3)
+        public void UpdateData(List<Complex> lstData1, List<Complex> lstData2, List<Complex> lstData3, string strText)
         {
             m_lstData1 = lstData1;
             m_lstData2 = lstData2;
@@ -78,6 +78,7 @@ namespace RiemannHypothesisTest
             m_dMinX = m_dMinY = -dMax;
             m_dMaxX = m_dMaxY = dMax;
             pictureBox1.Refresh();
+            labelCurrent.Text = strText;
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -89,10 +90,10 @@ namespace RiemannHypothesisTest
             e.Graphics.DrawLine(new Pen(Color.Blue, 1), ptScreenOrig.X - 5, ptScreenOrig.Y, ptScreenOrig.X + 5, ptScreenOrig.Y);
             e.Graphics.DrawLine(new Pen(Color.Blue, 1), ptScreenOrig.X, ptScreenOrig.Y - 5, ptScreenOrig.X, ptScreenOrig.Y + 5);
 
-            int iLength = m_lstData1.Count;
-            if (iLength > 1)
+            int iLength1 = m_lstData1.Count;
+            if (iLength1 > 1)
             {
-                for (int i = 1; i < iLength; i++)
+                for (int i = 1; i < iLength1; i++)
                 {
                     Complex c1 = m_lstData1[i - 1];
                     Complex c2 = m_lstData1[i];
@@ -104,7 +105,36 @@ namespace RiemannHypothesisTest
                     e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
                 }
             }
+            int iLength2 = m_lstData2.Count;
+            if (iLength2 > 1)
+            {
+                for (int i = 1; i < iLength2; i++)
+                {
+                    Complex c1 = m_lstData2[i - 1];
+                    Complex c2 = m_lstData2[i];
+                    Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                    Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
+                    e.Graphics.DrawLine(new Pen(Color.Blue, 1f), ptScreen1, ptScreen2);
+                }
+            }
+            int iLength3 = m_lstData3.Count;
+            if (iLength3 > 1)
+            {
+                for (int i = 1; i < iLength3; i++)
+                {
+                    Complex c1 = m_lstData3[i - 1];
+                    Complex c2 = m_lstData3[i];
+                    Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                    Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                    e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
+                }
+            }
         }
 
         private void pictureBox1_Resize(object sender, EventArgs e)
