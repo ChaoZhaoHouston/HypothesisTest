@@ -31,6 +31,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelCurrent = new System.Windows.Forms.Label();
+            this.labelMax = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.labelMax);
             this.splitContainer1.Panel2.Controls.Add(this.labelCurrent);
             this.splitContainer1.Size = new System.Drawing.Size(958, 612);
             this.splitContainer1.SplitterDistance = 677;
@@ -75,6 +77,15 @@
             this.labelCurrent.TabIndex = 0;
             this.labelCurrent.Text = "(0, 0)";
             // 
+            // labelMax
+            // 
+            this.labelMax.AutoSize = true;
+            this.labelMax.Location = new System.Drawing.Point(51, 154);
+            this.labelMax.Name = "labelMax";
+            this.labelMax.Size = new System.Drawing.Size(51, 13);
+            this.labelMax.TabIndex = 1;
+            this.labelMax.Text = "Max: 100";
+            // 
             // FormCompareEtaAndZeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,5 +109,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelCurrent;
+        private System.Windows.Forms.Label labelMax;
     }
 }

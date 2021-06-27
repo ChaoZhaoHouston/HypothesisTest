@@ -78,7 +78,8 @@ namespace RiemannHypothesisTest
             m_dMinX = m_dMinY = -dMax;
             m_dMaxX = m_dMaxY = dMax;
             pictureBox1.Refresh();
-            labelCurrent.Text = strText;
+            labelCurrent.Text = "Current Complex: " + strText;
+            labelMax.Text = "Max: " + dMax.ToString();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -102,7 +103,7 @@ namespace RiemannHypothesisTest
                     Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                         m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                    e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
+                    e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
                 }
             }
             int iLength2 = m_lstData2.Count;
@@ -132,7 +133,7 @@ namespace RiemannHypothesisTest
                     Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                         m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                    e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
+                    e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
                 }
             }
         }
