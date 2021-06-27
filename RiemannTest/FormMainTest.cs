@@ -31,41 +31,41 @@ namespace RiemannTest
 
             int iNumberCalculated = 10000;
 
-            {
-                Complex start = new Complex(0, 0);
-                lstComplex1.Add(start);
-                for (int i = 1; i < iNumberCalculated; i++)
-                {
-                    Complex currentTerm = Complex.Pow(new Complex(i, 0), new Complex(-dXValue, -dYValue));
+            //{
+            //    Complex start = new Complex(0, 0);
+            //    lstComplex1.Add(start);
+            //    for (int i = 1; i < iNumberCalculated; i++)
+            //    {
+            //        Complex currentTerm = Complex.Pow(new Complex(i, 0), new Complex(-dXValue, -dYValue));
 
-                    start = currentTerm + start;
-                    lstComplex1.Add(start);
-                }
+            //        start = currentTerm + start;
+            //        lstComplex1.Add(start);
+            //    }
 
-                formDisplay.addVectors(lstComplex1);
-                Complex last = lstComplex1.Last();
-                formDisplay.addPoints(last);
-            }
+            //    formDisplay.addVectors(lstComplex1);
+            //    Complex last = lstComplex1.Last();
+            //    formDisplay.addPoints(last);
+            //}
 
-            {
-                Complex start = new Complex(0, 0);
-                lstComplex2.Add(start);
-                for (int i = 1; i < iNumberCalculated; i++)
-                {
-                    Complex currentTerm = Complex.Pow(new Complex(i, 0), new Complex(-dXValue, -dYValue));
-                    if (i % 2 == 0)
-                        start = start - currentTerm;
-                    else
-                        start = currentTerm + start;
-                    lstComplex2.Add(start);
-                }
+            //{
+            //    Complex start = new Complex(0, 0);
+            //    lstComplex2.Add(start);
+            //    for (int i = 1; i < iNumberCalculated; i++)
+            //    {
+            //        Complex currentTerm = Complex.Pow(new Complex(i, 0), new Complex(-dXValue, -dYValue));
+            //        if (i % 2 == 0)
+            //            start = start - currentTerm;
+            //        else
+            //            start = currentTerm + start;
+            //        lstComplex2.Add(start);
+            //    }
 
-                formDisplay.addVectors(lstComplex2);
-                Complex temp = Complex.Pow(new Complex(2, 0), new Complex(1 - dXValue, -dYValue));
-                Complex last = lstComplex2.Last();
-                Complex result = last / (new Complex(1, 0) - temp);
-                formDisplay.addPoints(result);
-            }
+            //    formDisplay.addVectors(lstComplex2);
+            //    Complex temp = Complex.Pow(new Complex(2, 0), new Complex(1 - dXValue, -dYValue));
+            //    Complex last = lstComplex2.Last();
+            //    Complex result = last / (new Complex(1, 0) - temp);
+            //    formDisplay.addPoints(result);
+            //}
 
 
             {

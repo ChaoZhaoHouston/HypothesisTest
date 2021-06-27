@@ -427,7 +427,7 @@ namespace RiemannHypothesisTest
         private void ButtonAnimation_Click(object sender, EventArgs e)
         {
             double XStart = 0.5;
-            double YStart = 30;
+            double YStart = 800; // 8000;
 
             List<Complex> lstEta = new List<Complex>();
             List<Complex> lstZeta = new List<Complex>();
@@ -436,7 +436,7 @@ namespace RiemannHypothesisTest
             ZetaEta.UpdateData(lstComplex, lstComplex, lstComplex, "(0, 0)");
             ZetaEta.Show();
 
-            for (int i = 0; i < 2000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 Application.DoEvents();
                 Thread.Sleep(1);
@@ -450,7 +450,8 @@ namespace RiemannHypothesisTest
                 Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
                 Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
                 lstZeta.Add(Complex.Divide(lastOne, temp3));
-                ZetaEta.UpdateData(lstComplex, lstEta, lstZeta, "(" + dXValue + ", " + i * 0.02 +")");
+                ZetaEta.UpdateData(lstComplex.Take(5000).ToList(), lstEta, lstZeta, "(" + dXValue + ", " + dYValue + ")");
+                //ZetaEta.UpdateData(lstComplex.GetRange(0, 10000).ToList(), lstEta, lstEta, "(" + dXValue + ", " + i * 0.02 + ")");
             }
 
             //FormResult result = new FormResult(lstlstComplex, false);
@@ -474,7 +475,7 @@ namespace RiemannHypothesisTest
 
         private List<Complex> GetVectors(Complex s)
         {
-            int iNumOfSeries = 5000;
+            int iNumOfSeries = 20000;
             List<Complex> lstComplex = new List<Complex>();
             Complex start = new Complex(0, 0);
             lstComplex.Add(start);
@@ -482,6 +483,7 @@ namespace RiemannHypothesisTest
             {
                 Complex term = Complex.Pow(new Complex(i, 0), new Complex(-s.Real, -s.Imaginary));
                 Complex vectorEnd = (i % 2 == 0) ? start - term : start + term;
+                //Complex vectorEnd = start + term;
                 start = vectorEnd;
                 lstComplex.Add(start);
             }
