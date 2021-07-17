@@ -30,8 +30,10 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelCurrent = new System.Windows.Forms.Label();
             this.labelMax = new System.Windows.Forms.Label();
+            this.labelCurrent = new System.Windows.Forms.Label();
+            this.buttonZoomIn = new System.Windows.Forms.Button();
+            this.buttonZoomOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,6 +53,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonZoomOut);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonZoomIn);
             this.splitContainer1.Panel2.Controls.Add(this.labelMax);
             this.splitContainer1.Panel2.Controls.Add(this.labelCurrent);
             this.splitContainer1.Size = new System.Drawing.Size(958, 612);
@@ -68,6 +72,15 @@
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.Resize += new System.EventHandler(this.pictureBox1_Resize);
             // 
+            // labelMax
+            // 
+            this.labelMax.AutoSize = true;
+            this.labelMax.Location = new System.Drawing.Point(51, 154);
+            this.labelMax.Name = "labelMax";
+            this.labelMax.Size = new System.Drawing.Size(51, 13);
+            this.labelMax.TabIndex = 1;
+            this.labelMax.Text = "Max: 100";
+            // 
             // labelCurrent
             // 
             this.labelCurrent.AutoSize = true;
@@ -77,14 +90,25 @@
             this.labelCurrent.TabIndex = 0;
             this.labelCurrent.Text = "(0, 0)";
             // 
-            // labelMax
+            // buttonZoomIn
             // 
-            this.labelMax.AutoSize = true;
-            this.labelMax.Location = new System.Drawing.Point(51, 154);
-            this.labelMax.Name = "labelMax";
-            this.labelMax.Size = new System.Drawing.Size(51, 13);
-            this.labelMax.TabIndex = 1;
-            this.labelMax.Text = "Max: 100";
+            this.buttonZoomIn.Location = new System.Drawing.Point(76, 268);
+            this.buttonZoomIn.Name = "buttonZoomIn";
+            this.buttonZoomIn.Size = new System.Drawing.Size(75, 23);
+            this.buttonZoomIn.TabIndex = 2;
+            this.buttonZoomIn.Text = "Zoom in";
+            this.buttonZoomIn.UseVisualStyleBackColor = true;
+            this.buttonZoomIn.Click += new System.EventHandler(this.buttonZoomIn_Click);
+            // 
+            // buttonZoomOut
+            // 
+            this.buttonZoomOut.Location = new System.Drawing.Point(76, 331);
+            this.buttonZoomOut.Name = "buttonZoomOut";
+            this.buttonZoomOut.Size = new System.Drawing.Size(75, 23);
+            this.buttonZoomOut.TabIndex = 3;
+            this.buttonZoomOut.Text = "Zoom out";
+            this.buttonZoomOut.UseVisualStyleBackColor = true;
+            this.buttonZoomOut.Click += new System.EventHandler(this.buttonZoomOut_Click);
             // 
             // FormCompareEtaAndZeta
             // 
@@ -110,5 +134,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelCurrent;
         private System.Windows.Forms.Label labelMax;
+        private System.Windows.Forms.Button buttonZoomOut;
+        private System.Windows.Forms.Button buttonZoomIn;
     }
 }
