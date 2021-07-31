@@ -19,6 +19,7 @@ namespace RiemannHypothesisTest
         double m_dMinY = double.MaxValue;
         double m_dMaxY = double.MinValue;
         List<List<Complex>> m_lstlstComplexes = null;
+        List<Complex> m_lstComplexes2 = null;
         bool m_bHighlightLast = false;
 
         public FormResult(List<List<Complex>> lstlstComplexes, bool highlightLast)
@@ -33,6 +34,15 @@ namespace RiemannHypothesisTest
         {
             m_bHighlightLast = highlightLast;
             m_lstlstComplexes = lstlstComplexes;
+            UpdateMinMax();
+            pictureBox1.Invalidate();
+        }
+
+        public void setDataAndUpdate(List<List<Complex>> lstlstComplexes, List<Complex> lstComplexes2, bool highlightLast)
+        {
+            m_bHighlightLast = highlightLast;
+            m_lstlstComplexes = lstlstComplexes;
+            m_lstComplexes2 = lstComplexes2;
             UpdateMinMax();
             pictureBox1.Invalidate();
         }
@@ -134,7 +144,20 @@ namespace RiemannHypothesisTest
             //    }
             //    e.Graphics.FillEllipse(aBrush, ptScreen.X, ptScreen.Y, 2, 2);
             //}
+            if (m_lstComplexes2 != null)
+            {
+                for (int i = 1; i < m_lstComplexes2.Count; i++)
+                {
+                    Complex c1 = m_lstComplexes2[i - 1];
+                    Complex c2 = m_lstComplexes2[i];
+                    Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                    Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
+                    e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);       
+                }
+            }
             if (iListLength > 1)
             {
                 Color[] arrColor = { Color.Red, Color.Blue, Color.Green, Color.Aqua, Color.Violet };

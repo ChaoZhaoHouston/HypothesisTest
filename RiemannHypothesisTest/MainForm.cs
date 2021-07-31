@@ -741,7 +741,7 @@ namespace RiemannHypothesisTest
             result.StartPosition = FormStartPosition.Manual;
             result.Location = new Point(0, 200);
             result.Show();
-
+            List<Complex> lstTrace = new List<Complex>();
 
             for (int i = 0; i < 3500; i++)
             {
@@ -749,7 +749,9 @@ namespace RiemannHypothesisTest
                 result.Show();
                 //Thread.Sleep(100);
                 lstlstComplex = GetListsAtDifferentY(-0.001 * i, dYValue);
-                result.setDataAndUpdate(lstlstComplex, false);
+                
+                lstTrace.Add(lstlstComplex.Last().Last());
+                result.setDataAndUpdate(lstlstComplex, lstTrace,  false);
                 result.setLabel(0.001 * i, dYValue);
             }
 
