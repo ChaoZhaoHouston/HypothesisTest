@@ -426,14 +426,22 @@ namespace RiemannHypothesisTest
 
         private void ButtonAnimation_Click(object sender, EventArgs e)
         {
-            double XStart1 = 0.4;
-            double YStart1 = 200; // 8000;
+            double XStart1 = 0.3;
+            double YStart1 = 80;
 
-            double XStart2 = 0.5;
-            double YStart2 = 200; // 8000;
+            double XStart2 = 0.3;
+            double YStart2 = YStart1; // 8000;
 
-            double XStart3 = 0.6;
-            double YStart3 = 200; // 8000;
+            double XStart3 = 0.5;
+            double YStart3 = YStart1; // 8000;
+
+            double XStart4 = 0.6;
+            double YStart4 = YStart1; // 8000;
+
+            double XStart5 = 0.7;
+            double YStart5 = YStart1; // 8000;
+
+            double dStep = 0.04;
 
             List<Complex> lstEta_1 = new List<Complex>();
             List<Complex> lstZeta_1 = new List<Complex>();
@@ -444,18 +452,25 @@ namespace RiemannHypothesisTest
             List<Complex> lstEta_3 = new List<Complex>();
             List<Complex> lstZeta_3 = new List<Complex>();
             List<Complex> lstComplex_3 = new List<Complex>();
+            List<Complex> lstEta_4 = new List<Complex>();
+            List<Complex> lstZeta_4 = new List<Complex>();
+            List<Complex> lstComplex_4 = new List<Complex>();
+            List<Complex> lstEta_5 = new List<Complex>();
+            List<Complex> lstZeta_5 = new List<Complex>();
+            List<Complex> lstComplex_5 = new List<Complex>();
 
             FormCompareEtaAndZeta ZetaEta = new FormCompareEtaAndZeta();
-            ZetaEta.UpdateData(lstComplex_1, lstComplex_1, lstComplex_1, "(0, 0)", lstComplex_2, lstComplex_2, lstComplex_2, lstComplex_3, lstComplex_3, lstComplex_3);
+            ZetaEta.UpdateData(lstComplex_1, lstComplex_1, lstComplex_1, "(0, 0)", lstComplex_2, lstComplex_2, lstComplex_2, lstComplex_3, lstComplex_3, lstComplex_3,
+                lstComplex_4, lstComplex_4, lstComplex_4, lstComplex_5, lstComplex_5, lstComplex_5);
             ZetaEta.Show();
 
-            for (int i = 0; i < 2000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 Application.DoEvents();
                 Thread.Sleep(1);
 
                 double dXValue1 = XStart1;
-                double dYValue1 = YStart1 + i * 0.01;
+                double dYValue1 = YStart1 + i * dStep;
                 {
                     Complex s = new Complex(dXValue1, dYValue1);
                     lstComplex_1 = GetVectors(s);
@@ -468,7 +483,7 @@ namespace RiemannHypothesisTest
                 }
 
                 double dXValue2 = XStart2;
-                double dYValue2 = YStart2 + i * 0.01;
+                double dYValue2 = YStart2 + i * dStep;
                 {
                     Complex s = new Complex(dXValue2, dYValue2);
                     lstComplex_2 = GetVectors(s);
@@ -480,7 +495,7 @@ namespace RiemannHypothesisTest
                     lstZeta_2.Add(Complex.Divide(lastOne, temp3));
                 }
                 double dXValue3 = XStart3;
-                double dYValue3 = YStart3 + i * 0.01;
+                double dYValue3 = YStart3 + i * dStep;
                 {
                     Complex s = new Complex(dXValue3, dYValue3);
                     lstComplex_3 = GetVectors(s);
@@ -491,10 +506,38 @@ namespace RiemannHypothesisTest
                     Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
                     lstZeta_3.Add(Complex.Divide(lastOne, temp3));
                 }
+
+                double dXValue4 = XStart4;
+                double dYValue4 = YStart4 + i * dStep;
+                {
+                    Complex s = new Complex(dXValue4, dYValue4);
+                    lstComplex_4 = GetVectors(s);
+                    Complex lastOne = lstComplex_4.Last();
+                    lstEta_4.Add(lastOne);
+                    Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                    Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                    Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                    lstZeta_4.Add(Complex.Divide(lastOne, temp3));
+                }
+                double dXValue5 = XStart5;
+                double dYValue5 = YStart5 + i * dStep;
+                {
+                    Complex s = new Complex(dXValue5, dYValue5);
+                    lstComplex_5 = GetVectors(s);
+                    Complex lastOne = lstComplex_5.Last();
+                    lstEta_5.Add(lastOne);
+                    Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                    Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                    Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                    lstZeta_5.Add(Complex.Divide(lastOne, temp3));
+                }
+
                 ZetaEta.UpdateData(lstComplex_1.Take(5000).ToList(), lstEta_1, lstZeta_1, 
                     "(" + dXValue1 + ", " + dYValue1 + ")" + "   " + "(" + dXValue2 + ", " + dYValue2 + ")",
                     lstComplex_2.Take(5000).ToList(), lstEta_2, lstZeta_2,
-                    lstComplex_3.Take(5000).ToList(), lstEta_3, lstZeta_3);
+                    lstComplex_3.Take(5000).ToList(), lstEta_3, lstZeta_3,
+                    lstComplex_4.Take(5000).ToList(), lstEta_4, lstZeta_4,
+                    lstComplex_5.Take(5000).ToList(), lstEta_5, lstZeta_5);
                 //ZetaEta.UpdateData(lstComplex.GetRange(0, 10000).ToList(), lstEta, lstEta, "(" + dXValue + ", " + i * 0.02 + ")");
             }
 
@@ -519,7 +562,7 @@ namespace RiemannHypothesisTest
 
         private List<Complex> GetVectors(Complex s)
         {
-            int iNumOfSeries = 20000;
+            int iNumOfSeries = 80000;
             List<Complex> lstComplex = new List<Complex>();
             Complex start = new Complex(0, 0);
             lstComplex.Add(start);

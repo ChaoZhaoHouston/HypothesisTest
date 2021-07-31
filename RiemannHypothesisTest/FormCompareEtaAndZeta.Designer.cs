@@ -30,10 +30,15 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonZoomOut = new System.Windows.Forms.Button();
+            this.buttonZoomIn = new System.Windows.Forms.Button();
             this.labelMax = new System.Windows.Forms.Label();
             this.labelCurrent = new System.Windows.Forms.Label();
-            this.buttonZoomIn = new System.Windows.Forms.Button();
-            this.buttonZoomOut = new System.Windows.Forms.Button();
+            this.buttonMoveDown = new System.Windows.Forms.Button();
+            this.buttonMoveUp = new System.Windows.Forms.Button();
+            this.buttonLeft = new System.Windows.Forms.Button();
+            this.buttonMoveRight = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,6 +58,11 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonReset);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonMoveRight);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonLeft);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonMoveUp);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonMoveDown);
             this.splitContainer1.Panel2.Controls.Add(this.buttonZoomOut);
             this.splitContainer1.Panel2.Controls.Add(this.buttonZoomIn);
             this.splitContainer1.Panel2.Controls.Add(this.labelMax);
@@ -72,6 +82,26 @@
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.Resize += new System.EventHandler(this.pictureBox1_Resize);
             // 
+            // buttonZoomOut
+            // 
+            this.buttonZoomOut.Location = new System.Drawing.Point(76, 331);
+            this.buttonZoomOut.Name = "buttonZoomOut";
+            this.buttonZoomOut.Size = new System.Drawing.Size(75, 23);
+            this.buttonZoomOut.TabIndex = 3;
+            this.buttonZoomOut.Text = "Zoom out";
+            this.buttonZoomOut.UseVisualStyleBackColor = true;
+            this.buttonZoomOut.Click += new System.EventHandler(this.buttonZoomOut_Click);
+            // 
+            // buttonZoomIn
+            // 
+            this.buttonZoomIn.Location = new System.Drawing.Point(76, 268);
+            this.buttonZoomIn.Name = "buttonZoomIn";
+            this.buttonZoomIn.Size = new System.Drawing.Size(75, 23);
+            this.buttonZoomIn.TabIndex = 2;
+            this.buttonZoomIn.Text = "Zoom in";
+            this.buttonZoomIn.UseVisualStyleBackColor = true;
+            this.buttonZoomIn.Click += new System.EventHandler(this.buttonZoomIn_Click);
+            // 
             // labelMax
             // 
             this.labelMax.AutoSize = true;
@@ -90,25 +120,55 @@
             this.labelCurrent.TabIndex = 0;
             this.labelCurrent.Text = "(0, 0)";
             // 
-            // buttonZoomIn
+            // buttonMoveDown
             // 
-            this.buttonZoomIn.Location = new System.Drawing.Point(76, 268);
-            this.buttonZoomIn.Name = "buttonZoomIn";
-            this.buttonZoomIn.Size = new System.Drawing.Size(75, 23);
-            this.buttonZoomIn.TabIndex = 2;
-            this.buttonZoomIn.Text = "Zoom in";
-            this.buttonZoomIn.UseVisualStyleBackColor = true;
-            this.buttonZoomIn.Click += new System.EventHandler(this.buttonZoomIn_Click);
+            this.buttonMoveDown.Location = new System.Drawing.Point(76, 406);
+            this.buttonMoveDown.Name = "buttonMoveDown";
+            this.buttonMoveDown.Size = new System.Drawing.Size(75, 23);
+            this.buttonMoveDown.TabIndex = 4;
+            this.buttonMoveDown.Text = "Move down";
+            this.buttonMoveDown.UseVisualStyleBackColor = true;
+            this.buttonMoveDown.Click += new System.EventHandler(this.buttonMoveDown_Click);
             // 
-            // buttonZoomOut
+            // buttonMoveUp
             // 
-            this.buttonZoomOut.Location = new System.Drawing.Point(76, 331);
-            this.buttonZoomOut.Name = "buttonZoomOut";
-            this.buttonZoomOut.Size = new System.Drawing.Size(75, 23);
-            this.buttonZoomOut.TabIndex = 3;
-            this.buttonZoomOut.Text = "Zoom out";
-            this.buttonZoomOut.UseVisualStyleBackColor = true;
-            this.buttonZoomOut.Click += new System.EventHandler(this.buttonZoomOut_Click);
+            this.buttonMoveUp.Location = new System.Drawing.Point(76, 452);
+            this.buttonMoveUp.Name = "buttonMoveUp";
+            this.buttonMoveUp.Size = new System.Drawing.Size(75, 23);
+            this.buttonMoveUp.TabIndex = 5;
+            this.buttonMoveUp.Text = "Move up";
+            this.buttonMoveUp.UseVisualStyleBackColor = true;
+            this.buttonMoveUp.Click += new System.EventHandler(this.buttonMoveUp_Click);
+            // 
+            // buttonLeft
+            // 
+            this.buttonLeft.Location = new System.Drawing.Point(76, 499);
+            this.buttonLeft.Name = "buttonLeft";
+            this.buttonLeft.Size = new System.Drawing.Size(74, 27);
+            this.buttonLeft.TabIndex = 6;
+            this.buttonLeft.Text = "Move left";
+            this.buttonLeft.UseVisualStyleBackColor = true;
+            this.buttonLeft.Click += new System.EventHandler(this.buttonLeft_Click);
+            // 
+            // buttonMoveRight
+            // 
+            this.buttonMoveRight.Location = new System.Drawing.Point(76, 547);
+            this.buttonMoveRight.Name = "buttonMoveRight";
+            this.buttonMoveRight.Size = new System.Drawing.Size(75, 29);
+            this.buttonMoveRight.TabIndex = 7;
+            this.buttonMoveRight.Text = "Move right";
+            this.buttonMoveRight.UseVisualStyleBackColor = true;
+            this.buttonMoveRight.Click += new System.EventHandler(this.buttonMoveRight_Click);
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(77, 205);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(73, 23);
+            this.buttonReset.TabIndex = 8;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // FormCompareEtaAndZeta
             // 
@@ -136,5 +196,10 @@
         private System.Windows.Forms.Label labelMax;
         private System.Windows.Forms.Button buttonZoomOut;
         private System.Windows.Forms.Button buttonZoomIn;
+        private System.Windows.Forms.Button buttonMoveUp;
+        private System.Windows.Forms.Button buttonMoveDown;
+        private System.Windows.Forms.Button buttonMoveRight;
+        private System.Windows.Forms.Button buttonLeft;
+        private System.Windows.Forms.Button buttonReset;
     }
 }
