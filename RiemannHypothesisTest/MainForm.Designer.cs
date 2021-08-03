@@ -115,6 +115,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
+            this.buttonAnimationChangeA2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -335,7 +336,7 @@
             // checkBoxUseOriginal
             // 
             this.checkBoxUseOriginal.AutoSize = true;
-            this.checkBoxUseOriginal.Location = new System.Drawing.Point(72, 571);
+            this.checkBoxUseOriginal.Location = new System.Drawing.Point(235, 566);
             this.checkBoxUseOriginal.Name = "checkBoxUseOriginal";
             this.checkBoxUseOriginal.Size = new System.Drawing.Size(118, 17);
             this.checkBoxUseOriginal.TabIndex = 12;
@@ -691,7 +692,7 @@
             // 
             // buttonAnimationBall
             // 
-            this.buttonAnimationBall.Location = new System.Drawing.Point(40, 496);
+            this.buttonAnimationBall.Location = new System.Drawing.Point(40, 546);
             this.buttonAnimationBall.Name = "buttonAnimationBall";
             this.buttonAnimationBall.Size = new System.Drawing.Size(149, 42);
             this.buttonAnimationBall.TabIndex = 19;
@@ -782,6 +783,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonAnimationChangeA2);
             this.tabPage1.Controls.Add(this.buttonShowImageChange);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.buttonPlotSum);
@@ -809,7 +811,7 @@
             // 
             // buttonShowImageChange
             // 
-            this.buttonShowImageChange.Location = new System.Drawing.Point(227, 563);
+            this.buttonShowImageChange.Location = new System.Drawing.Point(405, 554);
             this.buttonShowImageChange.Name = "buttonShowImageChange";
             this.buttonShowImageChange.Size = new System.Drawing.Size(125, 34);
             this.buttonShowImageChange.TabIndex = 24;
@@ -994,6 +996,16 @@
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
             // 
+            // buttonAnimationChangeA2
+            // 
+            this.buttonAnimationChangeA2.Location = new System.Drawing.Point(37, 496);
+            this.buttonAnimationChangeA2.Name = "buttonAnimationChangeA2";
+            this.buttonAnimationChangeA2.Size = new System.Drawing.Size(152, 37);
+            this.buttonAnimationChangeA2.TabIndex = 25;
+            this.buttonAnimationChangeA2.Text = "Animation Change A";
+            this.buttonAnimationChangeA2.UseVisualStyleBackColor = true;
+            this.buttonAnimationChangeA2.Click += new System.EventHandler(this.buttonAnimationChangeA2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1117,6 +1129,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox textBoxProjectionY3;
         private System.Windows.Forms.TextBox textBoxProjectionX3;
+        private System.Windows.Forms.Button buttonAnimationChangeA2;
     }
 }
 
