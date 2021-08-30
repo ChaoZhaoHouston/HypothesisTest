@@ -134,7 +134,7 @@ namespace RiemannHypothesisTest
         {
 
             List<Complex> lstComplex = new List<Complex>();
-            Complex c1= new Complex(0, 0);
+            Complex c1 = new Complex(0, 0);
             //lstComplex.Add(c1);
             //c1 = Complex.Pow(new Complex(k1, 0), complex1);
             //lstComplex.Add(c1);
@@ -295,7 +295,7 @@ namespace RiemannHypothesisTest
             double dXValue = Convert.ToDouble(textBoxOnePointX.Text);
             double dYValue = Convert.ToDouble(textBoxOnePointY.Text);
 
-            
+
             List<List<Complex>> lstlstComplex = new List<List<Complex>>();
             Complex start = new Complex(0, 0);
             for (int i = 118; i < 120; i++)
@@ -304,7 +304,7 @@ namespace RiemannHypothesisTest
                 start = lstComplexes.Last();
                 lstlstComplex.Add(lstComplexes);
             }
-            
+
             FormResult result = new FormResult(lstlstComplex, false);
             result.Show();
         }
@@ -313,7 +313,7 @@ namespace RiemannHypothesisTest
         private List<Complex> addComplexToANumber(List<Complex> lstComplex, Complex num, bool bNegative)
         {
             List<Complex> lstResults = new List<Complex>();
-            for(int i = 0; i < lstComplex.Count(); i++)
+            for (int i = 0; i < lstComplex.Count(); i++)
             {
                 lstResults.Add((bNegative ? -lstComplex[i] : lstComplex[i]) + num);
             }
@@ -424,12 +424,12 @@ namespace RiemannHypothesisTest
             result.Show();
         }
 
-        private void ButtonAnimation_Click(object sender, EventArgs e)
+        private void buttonAnimation_Click(object sender, EventArgs e)
         {
-            double XStart1 = 0.3;
-            double YStart1 = 344;
+            double XStart1 = 0.4;
+            double YStart1 = 0;
 
-            double XStart2 = 0.3;
+            double XStart2 = 0.4;
             double YStart2 = YStart1; // 8000;
 
             double XStart3 = 0.5;
@@ -467,7 +467,7 @@ namespace RiemannHypothesisTest
             for (int i = 0; i < 1000; i++)
             {
                 Application.DoEvents();
-                Thread.Sleep(1);
+                Thread.Sleep(2);
 
                 double dXValue1 = XStart1;
                 double dYValue1 = YStart1 + i * dStep;
@@ -489,6 +489,7 @@ namespace RiemannHypothesisTest
                     lstComplex_2 = GetVectors(s);
                     Complex lastOne = lstComplex_2.Last();
                     lstEta_2.Add(lastOne);
+                    //lstEta_2.Add(Complex.Multiply(lastOne, lastOne));
                     Complex temp1 = Complex.Pow(new Complex(2, 0), s);
                     Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
                     Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
@@ -532,7 +533,7 @@ namespace RiemannHypothesisTest
                     lstZeta_5.Add(Complex.Divide(lastOne, temp3));
                 }
 
-                ZetaEta.UpdateData(lstComplex_1.Take(5000).ToList(), lstEta_1, lstZeta_1, 
+                ZetaEta.UpdateData(lstComplex_1.Take(5000).ToList(), lstEta_1, lstZeta_1,
                     "(" + dXValue1 + ", " + dYValue1 + ")" + "   " + "(" + dXValue2 + ", " + dYValue2 + ")",
                     lstComplex_2.Take(5000).ToList(), lstEta_2, lstZeta_2,
                     lstComplex_3.Take(5000).ToList(), lstEta_3, lstZeta_3,
@@ -608,7 +609,7 @@ namespace RiemannHypothesisTest
             List<List<Complex>> lstlstComplex1 = new List<List<Complex>>();
             List<List<Complex>> lstlstComplex2 = new List<List<Complex>>();
             {
-                
+
                 double dXValue = Convert.ToDouble(textBoxCompareX1.Text);
                 double dYValue = Convert.ToDouble(textBoxCompareY1.Text);
 
@@ -618,7 +619,7 @@ namespace RiemannHypothesisTest
                 {
                     List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dXValue, dYValue), i);
                     List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, i % 2 == 0);
-                   
+
                     List<Complex> lstLast = new List<Complex>();
                     lstLast.Add(start);
                     lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
@@ -705,7 +706,7 @@ namespace RiemannHypothesisTest
             for (int i = 1; i <= iLoopNum; i++)
             {
                 //double rotate2halfRound = Math.Log(Math.E, 2) * Math.PI * i;
-                Complex cRotate = Complex.Exp(new Complex(0, Math.PI * i ));
+                Complex cRotate = Complex.Exp(new Complex(0, Math.PI * i));
 
                 Application.DoEvents();
                 result.Show();
@@ -749,9 +750,9 @@ namespace RiemannHypothesisTest
                 result.Show();
                 //Thread.Sleep(100);
                 lstlstComplex = GetListsAtDifferentY(-0.001 * i, dYValue);
-                
+
                 lstTrace.Add(lstlstComplex.Last().Last());
-                result.setDataAndUpdate(lstlstComplex, lstTrace,  false);
+                result.setDataAndUpdate(lstlstComplex, lstTrace, false);
                 result.setLabel(0.001 * i, dYValue);
             }
 
@@ -838,7 +839,7 @@ namespace RiemannHypothesisTest
             result1.StartPosition = FormStartPosition.Manual;
             result1.Location = new Point(0, 200);
             result1.Show();
-         
+
         }
 
         private void buttonShowSumBySkipping_Click(object sender, EventArgs e)
@@ -854,12 +855,12 @@ namespace RiemannHypothesisTest
                 List<List<Complex>> lstlstComplex = new List<List<Complex>>();
 
                 Complex start = new Complex(0, 0);
-  
+
                 for (int i = 1; i < iNumOfSeries; i++)
                 {
                     List<Complex> lstComplexes = getSeriesOneExponent(new Complex(dX, dY), dBase * i);
                     List<Complex> lstComplexesShift = addComplexToANumber(lstComplexes, start, false);
-                   
+
                     List<Complex> lstLast = new List<Complex>();
                     lstLast.Add(start);
                     lstLast.Add(lstComplexesShift[lstComplexes.Count - 1]);
@@ -899,7 +900,7 @@ namespace RiemannHypothesisTest
 
             //List<List<Complex>> lstlstComplex = GetListsAtDifferentY_Ball(dXValue, dYValue);
             //lstlstComplex.Add(sumOfListComplex(lstlstComplex));
-            
+
             //FormResult result = new FormResult(lstlstComplex, true);
             //result.StartPosition = FormStartPosition.Manual;
             //result.Location = new Point(0, 200);
@@ -990,7 +991,7 @@ namespace RiemannHypothesisTest
             //for (int i = 0; i < iTotalNum; i++)
             //{
             //    arr_Sum3[i] = arr_Sum[i];
-               
+
             //}
 
 
@@ -1098,10 +1099,10 @@ namespace RiemannHypothesisTest
 
             for (int i = 1; i < 1000000; i++)
             {
-                dSum += (Math.Pow(-1, i+1) /Math.Sqrt( i));
+                dSum += (Math.Pow(-1, i + 1) / Math.Sqrt(i));
             }
 
-            Console.WriteLine(dSum / (1-Math.Sqrt(2)) );
+            Console.WriteLine(dSum / (1 - Math.Sqrt(2)));
         }
 
         private void buttonShowImageChange_Click(object sender, EventArgs e)
@@ -1308,6 +1309,143 @@ namespace RiemannHypothesisTest
             //    result.setDataAndUpdate(lstlstComplex, false);
             //    result.setLabel(dXValue, i * 0.02);
             //}
+
+        }
+
+        private void buttonAnimationSquare_Click(object sender, EventArgs e)
+        {
+            double XStart1 = 0.4;
+            double YStart1 = 0;
+
+            double XStart2 = 0.4;
+            double YStart2 = YStart1; // 8000;
+
+            double XStart3 = 0.5;
+            double YStart3 = YStart1; // 8000;
+
+            double XStart4 = 0.6;
+            double YStart4 = YStart1; // 8000;
+
+            double XStart5 = 0.7;
+            double YStart5 = YStart1; // 8000;
+
+            double dStep = 0.04;
+
+            List<Complex> lstEta_1 = new List<Complex>();
+            List<Complex> lstZeta_1 = new List<Complex>();
+            List<Complex> lstComplex_1 = new List<Complex>();
+            List<Complex> lstEta_2 = new List<Complex>();
+            List<Complex> lstZeta_2 = new List<Complex>();
+            List<Complex> lstComplex_2 = new List<Complex>();
+            List<Complex> lstEta_3 = new List<Complex>();
+            List<Complex> lstZeta_3 = new List<Complex>();
+            List<Complex> lstComplex_3 = new List<Complex>();
+            List<Complex> lstEta_4 = new List<Complex>();
+            List<Complex> lstZeta_4 = new List<Complex>();
+            List<Complex> lstComplex_4 = new List<Complex>();
+            List<Complex> lstEta_5 = new List<Complex>();
+            List<Complex> lstZeta_5 = new List<Complex>();
+            List<Complex> lstComplex_5 = new List<Complex>();
+
+            FormCompareEtaAndZeta ZetaEta = new FormCompareEtaAndZeta();
+            ZetaEta.UpdateData(lstComplex_1, lstComplex_1, lstComplex_1, "(0, 0)", lstComplex_2, lstComplex_2, lstComplex_2, lstComplex_3, lstComplex_3, lstComplex_3,
+                lstComplex_4, lstComplex_4, lstComplex_4, lstComplex_5, lstComplex_5, lstComplex_5);
+            ZetaEta.Show();
+
+            for (int i = 0; i < 1000; i++)
+            {
+                Application.DoEvents();
+                Thread.Sleep(2);
+
+                double dXValue1 = XStart1;
+                double dYValue1 = YStart1 + i * dStep;
+                {
+                    Complex s = new Complex(dXValue1, dYValue1);
+                    lstComplex_1 = GetVectors(s);
+                    Complex lastOne = lstComplex_1.Last();
+                    lstEta_1.Add(lastOne);
+                    Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                    Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                    Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                    lstZeta_1.Add(Complex.Divide(lastOne, temp3));
+                }
+
+                double dXValue2 = XStart2;
+                double dYValue2 = YStart2 + i * dStep;
+                {
+                    Complex s = new Complex(dXValue2, dYValue2);
+                    lstComplex_2 = GetVectors(s);
+                    Complex lastOne = lstComplex_2.Last();
+                    lstEta_2.Add(lastOne);
+                    //lstEta_2.Add(Complex.Multiply(lastOne, lastOne));
+                    Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                    Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                    Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                    lstZeta_2.Add(Complex.Divide(lastOne, temp3));
+                }
+                double dXValue3 = XStart3;
+                double dYValue3 = YStart3 + i * dStep;
+                {
+                    Complex s = new Complex(dXValue3, dYValue3);
+                    lstComplex_3 = GetVectors(s);
+                    Complex lastOne = lstComplex_3.Last();
+                    lstEta_3.Add(Complex.Multiply(lastOne, lastOne));
+                    Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                    Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                    Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                    lstZeta_3.Add(Complex.Divide(lastOne, temp3));
+                }
+
+                double dXValue4 = XStart4;
+                double dYValue4 = YStart4 + i * dStep;
+                {
+                    Complex s = new Complex(dXValue4, dYValue4);
+                    lstComplex_4 = GetVectors(s);
+                    Complex lastOne = lstComplex_4.Last();
+                    lstEta_4.Add(lastOne);
+                    Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                    Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                    Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                    lstZeta_4.Add(Complex.Divide(lastOne, temp3));
+                }
+                double dXValue5 = XStart5;
+                double dYValue5 = YStart5 + i * dStep;
+                {
+                    Complex s = new Complex(dXValue5, dYValue5);
+                    lstComplex_5 = GetVectors(s);
+                    Complex lastOne = lstComplex_5.Last();
+                    lstEta_5.Add(lastOne);
+                    Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                    Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                    Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                    lstZeta_5.Add(Complex.Divide(lastOne, temp3));
+                }
+
+                ZetaEta.UpdateData(lstComplex_1.Take(5000).ToList(), lstEta_1, lstZeta_1,
+                    "(" + dXValue1 + ", " + dYValue1 + ")" + "   " + "(" + dXValue2 + ", " + dYValue2 + ")",
+                    lstComplex_2.Take(5000).ToList(), lstEta_2, lstZeta_2,
+                    lstComplex_3.Take(5000).ToList(), lstEta_3, lstZeta_3,
+                    lstComplex_4.Take(5000).ToList(), lstEta_4, lstZeta_4,
+                    lstComplex_5.Take(5000).ToList(), lstEta_5, lstZeta_5);
+                //ZetaEta.UpdateData(lstComplex.GetRange(0, 10000).ToList(), lstEta, lstEta, "(" + dXValue + ", " + i * 0.02 + ")");
+            }
+
+            //FormResult result = new FormResult(lstlstComplex, false);
+            //result.StartPosition = FormStartPosition.Manual;
+            //result.Location = new Point(0, 200);
+            //result.Show();
+
+
+            //for (int i = 0; i < 50000; i++)
+            //{
+            //    Application.DoEvents();
+            //    result.Show();
+            //    Thread.Sleep(1);
+            //    lstlstComplex = GetListsAtDifferentY(dXValue, i * 0.2);
+            //    result.setDataAndUpdate(lstlstComplex, false);
+            //    result.setLabel(dXValue, i * 0.02);
+            //}
+
 
         }
     }

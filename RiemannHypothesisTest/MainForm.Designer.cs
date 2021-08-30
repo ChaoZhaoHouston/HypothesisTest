@@ -73,7 +73,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxShowPowerImagine = new System.Windows.Forms.TextBox();
             this.textBoxShowPowerReal = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -96,6 +95,9 @@
             this.buttonBallCompare = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonAnimationSquare = new System.Windows.Forms.Button();
+            this.buttonAnimation = new System.Windows.Forms.Button();
+            this.buttonAnimationChangeA2 = new System.Windows.Forms.Button();
             this.buttonShowImageChange = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.buttonSumRoot2 = new System.Windows.Forms.Button();
@@ -115,7 +117,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
-            this.buttonAnimationChangeA2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -564,16 +565,6 @@
             this.textBoxShowPowerReal.TabIndex = 0;
             this.textBoxShowPowerReal.Text = "-0.5";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(39, 438);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 39);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Animation";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ButtonAnimation_Click);
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label17);
@@ -783,6 +774,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonAnimationSquare);
+            this.tabPage1.Controls.Add(this.buttonAnimation);
             this.tabPage1.Controls.Add(this.buttonAnimationChangeA2);
             this.tabPage1.Controls.Add(this.buttonShowImageChange);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -799,7 +792,6 @@
             this.tabPage1.Controls.Add(this.buttonChangeA);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.buttonMultiplyComplex);
-            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.groupBox7);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -808,6 +800,36 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Curves&Animations";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // buttonAnimationSquare
+            // 
+            this.buttonAnimationSquare.Location = new System.Drawing.Point(935, 374);
+            this.buttonAnimationSquare.Name = "buttonAnimationSquare";
+            this.buttonAnimationSquare.Size = new System.Drawing.Size(150, 39);
+            this.buttonAnimationSquare.TabIndex = 27;
+            this.buttonAnimationSquare.Text = "AnimationSquare";
+            this.buttonAnimationSquare.UseVisualStyleBackColor = true;
+            this.buttonAnimationSquare.Click += new System.EventHandler(this.buttonAnimationSquare_Click);
+            // 
+            // buttonAnimation
+            // 
+            this.buttonAnimation.Location = new System.Drawing.Point(935, 326);
+            this.buttonAnimation.Name = "buttonAnimation";
+            this.buttonAnimation.Size = new System.Drawing.Size(150, 39);
+            this.buttonAnimation.TabIndex = 26;
+            this.buttonAnimation.Text = "Animation";
+            this.buttonAnimation.UseVisualStyleBackColor = true;
+            this.buttonAnimation.Click += new System.EventHandler(this.buttonAnimation_Click);
+            // 
+            // buttonAnimationChangeA2
+            // 
+            this.buttonAnimationChangeA2.Location = new System.Drawing.Point(37, 496);
+            this.buttonAnimationChangeA2.Name = "buttonAnimationChangeA2";
+            this.buttonAnimationChangeA2.Size = new System.Drawing.Size(152, 37);
+            this.buttonAnimationChangeA2.TabIndex = 25;
+            this.buttonAnimationChangeA2.Text = "Animation Change A";
+            this.buttonAnimationChangeA2.UseVisualStyleBackColor = true;
+            this.buttonAnimationChangeA2.Click += new System.EventHandler(this.buttonAnimationChangeA2_Click);
             // 
             // buttonShowImageChange
             // 
@@ -996,16 +1018,6 @@
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
             // 
-            // buttonAnimationChangeA2
-            // 
-            this.buttonAnimationChangeA2.Location = new System.Drawing.Point(37, 496);
-            this.buttonAnimationChangeA2.Name = "buttonAnimationChangeA2";
-            this.buttonAnimationChangeA2.Size = new System.Drawing.Size(152, 37);
-            this.buttonAnimationChangeA2.TabIndex = 25;
-            this.buttonAnimationChangeA2.Text = "Animation Change A";
-            this.buttonAnimationChangeA2.UseVisualStyleBackColor = true;
-            this.buttonAnimationChangeA2.Click += new System.EventHandler(this.buttonAnimationChangeA2_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1087,7 +1099,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBoxShowPowerImagine;
         private System.Windows.Forms.TextBox textBoxShowPowerReal;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -1130,6 +1141,8 @@
         private System.Windows.Forms.TextBox textBoxProjectionY3;
         private System.Windows.Forms.TextBox textBoxProjectionX3;
         private System.Windows.Forms.Button buttonAnimationChangeA2;
+        private System.Windows.Forms.Button buttonAnimation;
+        private System.Windows.Forms.Button buttonAnimationSquare;
     }
 }
 

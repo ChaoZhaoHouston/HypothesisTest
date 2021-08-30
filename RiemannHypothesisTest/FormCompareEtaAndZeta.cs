@@ -248,7 +248,7 @@ namespace RiemannHypothesisTest
                         Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        //e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
+                        //e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
                     }
                 }
             }
@@ -315,7 +315,7 @@ namespace RiemannHypothesisTest
                         Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        //e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
+                        e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
                     }
                 }
             }
