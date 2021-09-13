@@ -427,7 +427,7 @@ namespace RiemannHypothesisTest
         private void buttonAnimation_Click(object sender, EventArgs e)
         {
             double XStart1 = 0.4;
-            double YStart1 = 0;
+            double YStart1 = 186;
 
             double XStart2 = 0.4;
             double YStart2 = YStart1; // 8000;
@@ -467,7 +467,7 @@ namespace RiemannHypothesisTest
             for (int i = 0; i < 1000; i++)
             {
                 Application.DoEvents();
-                Thread.Sleep(2);
+                Thread.Sleep(1);
 
                 double dXValue1 = XStart1;
                 double dYValue1 = YStart1 + i * dStep;
@@ -1315,7 +1315,7 @@ namespace RiemannHypothesisTest
         private void buttonAnimationSquare_Click(object sender, EventArgs e)
         {
             double XStart1 = 0.4;
-            double YStart1 = 0;
+            double YStart1 = 120;
 
             double XStart2 = 0.4;
             double YStart2 = YStart1; // 8000;
@@ -1352,7 +1352,7 @@ namespace RiemannHypothesisTest
                 lstComplex_4, lstComplex_4, lstComplex_4, lstComplex_5, lstComplex_5, lstComplex_5);
             ZetaEta.Show();
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Application.DoEvents();
                 Thread.Sleep(2);
@@ -1376,8 +1376,8 @@ namespace RiemannHypothesisTest
                     Complex s = new Complex(dXValue2, dYValue2);
                     lstComplex_2 = GetVectors(s);
                     Complex lastOne = lstComplex_2.Last();
-                    lstEta_2.Add(lastOne);
-                    //lstEta_2.Add(Complex.Multiply(lastOne, lastOne));
+                    //lstEta_2.Add(lastOne);
+                    lstEta_2.Add(Complex.Multiply(lastOne, lastOne));
                     Complex temp1 = Complex.Pow(new Complex(2, 0), s);
                     Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
                     Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
@@ -1390,6 +1390,10 @@ namespace RiemannHypothesisTest
                     lstComplex_3 = GetVectors(s);
                     Complex lastOne = lstComplex_3.Last();
                     lstEta_3.Add(Complex.Multiply(lastOne, lastOne));
+                    //double d1 = (i - 100) / 50.0;
+                    ////Complex temp = new Complex(d1, d1 * d1 - 10);
+                    //Complex temp = new Complex(d1, 0.03 * d1 * d1 * d1 - 0.7 * d1 * d1 + d1);
+                    //lstEta_3.Add(Complex.Multiply(temp, temp));
                     Complex temp1 = Complex.Pow(new Complex(2, 0), s);
                     Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
                     Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);

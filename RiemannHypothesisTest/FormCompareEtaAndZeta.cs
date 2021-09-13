@@ -248,7 +248,7 @@ namespace RiemannHypothesisTest
                         Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        //e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
+                        e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
                     }
                 }
             }
@@ -370,6 +370,20 @@ namespace RiemannHypothesisTest
 
         private void pictureBox1_Resize(object sender, EventArgs e)
         {
+            //int iMin = Math.Min(pictureBox1.Width, pictureBox1.Height);
+            //pictureBox1.Width = iMin;
+            //pictureBox1.Height = iMin;
+
+            //if (pictureBox1.Width == pictureBox1.Height) return;
+
+            //if (pictureBox1.Width > pictureBox1.Height)
+            //{
+            //    pictureBox1.Height = pictureBox1.Width;
+            //}
+            //else
+            //{
+            //    pictureBox1.Width = pictureBox1.Height;
+            //}
             pictureBox1.Refresh();
         }
 
@@ -430,6 +444,13 @@ namespace RiemannHypothesisTest
             m_dMinY = m_dMinY_Original;
             m_dMaxY = m_dMaxY_Original;
             pictureBox1.Refresh();
+        }
+
+        private void FormCompareEtaAndZeta_Resize(object sender, EventArgs e)
+        {
+            int iMin = Math.Min(this.Height, this.Width);
+            pictureBox1.Width = iMin;
+            pictureBox1.Height = iMin;
         }
     }
 }
