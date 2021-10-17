@@ -39,6 +39,7 @@
             this.labelMax = new System.Windows.Forms.Label();
             this.labelCurrent = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonPause = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -146,6 +147,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.buttonPause);
             this.groupBox1.Controls.Add(this.buttonZoomOut);
             this.groupBox1.Controls.Add(this.buttonReset);
             this.groupBox1.Controls.Add(this.labelCurrent);
@@ -161,6 +163,16 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "settings";
+            // 
+            // buttonPause
+            // 
+            this.buttonPause.Location = new System.Drawing.Point(60, 547);
+            this.buttonPause.Name = "buttonPause";
+            this.buttonPause.Size = new System.Drawing.Size(73, 26);
+            this.buttonPause.TabIndex = 9;
+            this.buttonPause.Text = "Pause";
+            this.buttonPause.UseVisualStyleBackColor = true;
+            this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click);
             // 
             // FormCompareEtaAndZeta
             // 
@@ -191,5 +203,6 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button buttonPause;
     }
 }

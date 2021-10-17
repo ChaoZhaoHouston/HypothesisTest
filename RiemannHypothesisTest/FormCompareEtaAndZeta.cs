@@ -42,6 +42,7 @@ namespace RiemannHypothesisTest
         List<Complex> m_lstData2_5;
         List<Complex> m_lstData3_5;
 
+        public bool m_Pause = false;
         public FormCompareEtaAndZeta()
         {
             InitializeComponent();
@@ -168,24 +169,24 @@ namespace RiemannHypothesisTest
             //        }
             //    }
             //}
-            if (m_lstData2_1 != null)
-            {
-                int iLength2 = m_lstData2_1.Count;
-                if (iLength2 > 1)
-                {
-                    for (int i = 1; i < iLength2; i++)
-                    {
-                        Complex c1 = m_lstData2_1[i - 1];
-                        Complex c2 = m_lstData2_1[i];
-                        Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
-                            m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
-                        Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
-                            m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+            //if (m_lstData2_1 != null)
+            //{
+            //    int iLength2 = m_lstData2_1.Count;
+            //    if (iLength2 > 1)
+            //    {
+            //        for (int i = 1; i < iLength2; i++)
+            //        {
+            //            Complex c1 = m_lstData2_1[i - 1];
+            //            Complex c2 = m_lstData2_1[i];
+            //            Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+            //                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+            //            Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+            //                m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        //e.Graphics.DrawLine(new Pen(Color.Blue, 1f), ptScreen1, ptScreen2);
-                    }
-                }
-            }
+            //            e.Graphics.DrawLine(new Pen(Color.Blue, 1f), ptScreen1, ptScreen2);
+            //        }
+            //    }
+            //}
             //if (m_lstData3_1 != null)
             //{
             //    int iLength3 = m_lstData3_1.Count;
@@ -451,6 +452,11 @@ namespace RiemannHypothesisTest
             int iMin = Math.Min(this.Height, this.Width);
             pictureBox1.Width = iMin;
             pictureBox1.Height = iMin;
+        }
+
+        private void buttonPause_Click(object sender, EventArgs e)
+        {
+            m_Pause = !m_Pause;
         }
     }
 }
