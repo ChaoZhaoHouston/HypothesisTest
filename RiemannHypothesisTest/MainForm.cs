@@ -427,7 +427,7 @@ namespace RiemannHypothesisTest
         private void buttonAnimation_Click(object sender, EventArgs e)
         {
             double XStart1 = 0.4;
-            double YStart1 = 123;
+            double YStart1 = 0;
 
             double XStart2 = 0.5;
             double YStart2 = YStart1; // 8000;
@@ -464,7 +464,7 @@ namespace RiemannHypothesisTest
                 lstComplex_4, lstComplex_4, lstComplex_4, lstComplex_5, lstComplex_5, lstComplex_5);
             ZetaEta.Show();
 
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < 4000; i++)
             {
                 Application.DoEvents();
                 Thread.Sleep(1);
@@ -494,19 +494,25 @@ namespace RiemannHypothesisTest
                     Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
                     Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
                     lstZeta_2.Add(Complex.Divide(lastOne, temp3));
+
+                    Console.WriteLine(XStart2 + ": " + lstEta_2.Last());
                 }
                 double dXValue3 = XStart3;
                 double dYValue3 = YStart3 + i * dStep;
                 {
                     Complex s = new Complex(dXValue3, dYValue3);
-                    lstComplex_3 = GetVectors_3(s);
+                    lstComplex_3 = GetVectors_2_3(s);
                     Complex lastOne = lstComplex_3.Last();
                     lstEta_3.Add(lastOne);
                     Complex temp1 = Complex.Pow(new Complex(2, 0), s);
                     Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
                     Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
                     lstZeta_3.Add(Complex.Divide(lastOne, temp3));
+
+                    Console.WriteLine(XStart3 + ": " + lstEta_3.Last());
                 }
+
+
 
                 //double dXValue4 = XStart4;
                 //double dYValue4 = YStart4 + i * dStep;
@@ -599,6 +605,25 @@ namespace RiemannHypothesisTest
             {
                 int iTemp = (int)Math.Pow(2, i);
                 Complex term = Complex.Pow(new Complex(iTemp, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+            }
+            return lstComplex;
+        }
+
+        private List<Complex> GetVectors_2_3(Complex s) //2 Power i
+        {
+            int iNumOfSeries = 20;
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                int iTemp = (int)Math.Pow(2, i);
+                Complex term = Complex.Pow(new Complex(2, 0), new Complex(-s.Real, -s.Imaginary)) *
+                    Complex.Pow(new Complex(iTemp, 0), new Complex(-s.Real, -s.Imaginary));
                 Complex vectorEnd = start + term;
                 //Complex vectorEnd = start + term;
                 start = vectorEnd;
