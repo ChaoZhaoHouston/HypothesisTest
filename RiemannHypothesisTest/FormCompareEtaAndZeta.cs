@@ -233,6 +233,9 @@ namespace RiemannHypothesisTest
                             e.Graphics.DrawLine(new Pen(Color.Blue, 1f), ptScreen1, ptScreen2);
                         }
                     }
+                    Point ptScreenLast = Utilities.convertRealToScreen(new PointF((float)m_lstData1_2[iLength1 - 1].Real, (float)m_lstData1_2[iLength1 - 1].Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen); ;
+                    e.Graphics.FillEllipse(new SolidBrush(Color.Red), ptScreenLast.X, ptScreenLast.Y, 4, 4);
                 }
             }
             if (m_lstData2_2 != null)
@@ -249,8 +252,12 @@ namespace RiemannHypothesisTest
                         Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
+                        e.Graphics.DrawLine(new Pen(Color.Green, 3f), ptScreen1, ptScreen2);
                     }
+
+                    Point ptScreenLast = Utilities.convertRealToScreen(new PointF((float)m_lstData2_2[iLength2 - 1].Real, (float)m_lstData2_2[iLength2 - 1].Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen); ;
+                    e.Graphics.FillEllipse(new SolidBrush(Color.Red), ptScreenLast.X, ptScreenLast.Y, 4, 4);
                 }
             }
             //if (m_lstData3_2 != null)
@@ -289,17 +296,20 @@ namespace RiemannHypothesisTest
 
                         if (i % 3 == 0)
                         {
-                            e.Graphics.DrawLine(new Pen(Color.Green, 2f), ptScreen1, ptScreen2);
+                            e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
                         }
                         else if (i % 3 == 1)
                         {
-                            e.Graphics.DrawLine(new Pen(Color.Red, 2f), ptScreen1, ptScreen2);
+                            e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
                         }
                         else
                         {
-                            e.Graphics.DrawLine(new Pen(Color.Blue, 2f), ptScreen1, ptScreen2);
+                            e.Graphics.DrawLine(new Pen(Color.Blue, 1f), ptScreen1, ptScreen2);
                         }
                     }
+                    Point ptScreenLast = Utilities.convertRealToScreen(new PointF((float)m_lstData1_3[iLength1 - 1].Real, (float)m_lstData1_3[iLength1 - 1].Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);;
+                    e.Graphics.DrawEllipse(new Pen(Color.Green), ptScreenLast.X, ptScreenLast.Y, 8, 8);
                 }
             }
             if (m_lstData2_3 != null)
@@ -316,8 +326,12 @@ namespace RiemannHypothesisTest
                         Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
+                        e.Graphics.DrawLine(new Pen(Color.Red, 3f), ptScreen1, ptScreen2);
                     }
+
+                    Point ptScreenLast = Utilities.convertRealToScreen(new PointF((float)m_lstData2_3[iLength2 - 1].Real, (float)m_lstData2_3[iLength2 - 1].Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen); ;
+                    e.Graphics.DrawEllipse(new Pen(Color.Green), ptScreenLast.X, ptScreenLast.Y, 8, 8);
                 }
             }
             //if (m_lstData3_3 != null)

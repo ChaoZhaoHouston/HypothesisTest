@@ -95,6 +95,9 @@
             this.buttonBallCompare = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonCompareTwoMethods = new System.Windows.Forms.Button();
+            this.buttonOddTerms = new System.Windows.Forms.Button();
+            this.buttonGeometrySeries = new System.Windows.Forms.Button();
             this.buttonAnimationSquare = new System.Windows.Forms.Button();
             this.buttonAnimation = new System.Windows.Forms.Button();
             this.buttonAnimationChangeA2 = new System.Windows.Forms.Button();
@@ -117,6 +120,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
+            this.buttonSumDiff = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -774,6 +778,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonCompareTwoMethods);
+            this.tabPage1.Controls.Add(this.buttonOddTerms);
+            this.tabPage1.Controls.Add(this.buttonGeometrySeries);
             this.tabPage1.Controls.Add(this.buttonAnimationSquare);
             this.tabPage1.Controls.Add(this.buttonAnimation);
             this.tabPage1.Controls.Add(this.buttonAnimationChangeA2);
@@ -801,9 +808,39 @@
             this.tabPage1.Text = "Curves&Animations";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // buttonCompareTwoMethods
+            // 
+            this.buttonCompareTwoMethods.Location = new System.Drawing.Point(996, 489);
+            this.buttonCompareTwoMethods.Name = "buttonCompareTwoMethods";
+            this.buttonCompareTwoMethods.Size = new System.Drawing.Size(144, 37);
+            this.buttonCompareTwoMethods.TabIndex = 30;
+            this.buttonCompareTwoMethods.Text = "CompareTwoMethods";
+            this.buttonCompareTwoMethods.UseVisualStyleBackColor = true;
+            this.buttonCompareTwoMethods.Click += new System.EventHandler(this.buttonCompareTwoMethods_Click);
+            // 
+            // buttonOddTerms
+            // 
+            this.buttonOddTerms.Location = new System.Drawing.Point(994, 432);
+            this.buttonOddTerms.Name = "buttonOddTerms";
+            this.buttonOddTerms.Size = new System.Drawing.Size(149, 34);
+            this.buttonOddTerms.TabIndex = 29;
+            this.buttonOddTerms.Text = "Odd terms";
+            this.buttonOddTerms.UseVisualStyleBackColor = true;
+            this.buttonOddTerms.Click += new System.EventHandler(this.buttonOddTerms_Click);
+            // 
+            // buttonGeometrySeries
+            // 
+            this.buttonGeometrySeries.Location = new System.Drawing.Point(994, 360);
+            this.buttonGeometrySeries.Name = "buttonGeometrySeries";
+            this.buttonGeometrySeries.Size = new System.Drawing.Size(147, 40);
+            this.buttonGeometrySeries.TabIndex = 28;
+            this.buttonGeometrySeries.Text = "Geometry Series";
+            this.buttonGeometrySeries.UseVisualStyleBackColor = true;
+            this.buttonGeometrySeries.Click += new System.EventHandler(this.buttonGeometrySeries_Click);
+            // 
             // buttonAnimationSquare
             // 
-            this.buttonAnimationSquare.Location = new System.Drawing.Point(935, 374);
+            this.buttonAnimationSquare.Location = new System.Drawing.Point(994, 298);
             this.buttonAnimationSquare.Name = "buttonAnimationSquare";
             this.buttonAnimationSquare.Size = new System.Drawing.Size(150, 39);
             this.buttonAnimationSquare.TabIndex = 27;
@@ -813,7 +850,7 @@
             // 
             // buttonAnimation
             // 
-            this.buttonAnimation.Location = new System.Drawing.Point(935, 326);
+            this.buttonAnimation.Location = new System.Drawing.Point(39, 438);
             this.buttonAnimation.Name = "buttonAnimation";
             this.buttonAnimation.Size = new System.Drawing.Size(150, 39);
             this.buttonAnimation.TabIndex = 26;
@@ -875,6 +912,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonSumDiff);
             this.tabPage3.Controls.Add(this.groupBox9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -1018,6 +1056,16 @@
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
             // 
+            // buttonSumDiff
+            // 
+            this.buttonSumDiff.Location = new System.Drawing.Point(752, 190);
+            this.buttonSumDiff.Name = "buttonSumDiff";
+            this.buttonSumDiff.Size = new System.Drawing.Size(291, 38);
+            this.buttonSumDiff.TabIndex = 18;
+            this.buttonSumDiff.Text = "Sum odd terms Sum even terms Then minus";
+            this.buttonSumDiff.UseVisualStyleBackColor = true;
+            this.buttonSumDiff.Click += new System.EventHandler(this.buttonSumDiff_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1143,6 +1191,10 @@
         private System.Windows.Forms.Button buttonAnimationChangeA2;
         private System.Windows.Forms.Button buttonAnimation;
         private System.Windows.Forms.Button buttonAnimationSquare;
+        private System.Windows.Forms.Button buttonGeometrySeries;
+        private System.Windows.Forms.Button buttonOddTerms;
+        private System.Windows.Forms.Button buttonCompareTwoMethods;
+        private System.Windows.Forms.Button buttonSumDiff;
     }
 }
 
