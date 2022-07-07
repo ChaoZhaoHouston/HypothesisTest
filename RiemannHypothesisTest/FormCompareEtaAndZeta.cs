@@ -252,7 +252,7 @@ namespace RiemannHypothesisTest
                         Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        e.Graphics.DrawLine(new Pen(Color.Green, 3f), ptScreen1, ptScreen2);
+                        e.Graphics.DrawLine(new Pen(Color.Green, 1f), ptScreen1, ptScreen2);
                     }
 
                     Point ptScreenLast = Utilities.convertRealToScreen(new PointF((float)m_lstData2_2[iLength2 - 1].Real, (float)m_lstData2_2[iLength2 - 1].Imaginary),
@@ -326,10 +326,44 @@ namespace RiemannHypothesisTest
                         Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
                             m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
 
-                        e.Graphics.DrawLine(new Pen(Color.Red, 3f), ptScreen1, ptScreen2);
+                        e.Graphics.DrawLine(new Pen(Color.Red, 1f), ptScreen1, ptScreen2);
                     }
 
                     Point ptScreenLast = Utilities.convertRealToScreen(new PointF((float)m_lstData2_3[iLength2 - 1].Real, (float)m_lstData2_3[iLength2 - 1].Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen); ;
+                    e.Graphics.DrawEllipse(new Pen(Color.Green), ptScreenLast.X, ptScreenLast.Y, 8, 8);
+                }
+            }
+
+
+            if (m_lstData1_4 != null)
+            {
+                int iLength1 = m_lstData1_4.Count;
+                if (iLength1 > 1)
+                {
+                    for (int i = 1; i < iLength1; i++)
+                    {
+                        Complex c1 = m_lstData1_4[i - 1];
+                        Complex c2 = m_lstData1_4[i];
+                        Point ptScreen1 = Utilities.convertRealToScreen(new PointF((float)c1.Real, (float)c1.Imaginary),
+                            m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                        Point ptScreen2 = Utilities.convertRealToScreen(new PointF((float)c2.Real, (float)c2.Imaginary),
+                            m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+
+                        if (i % 3 == 0)
+                        {
+                            e.Graphics.DrawLine(new Pen(Color.Green, 3f), ptScreen1, ptScreen2);
+                        }
+                        else if (i % 3 == 1)
+                        {
+                            e.Graphics.DrawLine(new Pen(Color.Red, 3f), ptScreen1, ptScreen2);
+                        }
+                        else
+                        {
+                            e.Graphics.DrawLine(new Pen(Color.Blue, 3f), ptScreen1, ptScreen2);
+                        }
+                    }
+                    Point ptScreenLast = Utilities.convertRealToScreen(new PointF((float)m_lstData1_4[iLength1 - 1].Real, (float)m_lstData1_4[iLength1 - 1].Imaginary),
                         m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen); ;
                     e.Graphics.DrawEllipse(new Pen(Color.Green), ptScreenLast.X, ptScreenLast.Y, 8, 8);
                 }

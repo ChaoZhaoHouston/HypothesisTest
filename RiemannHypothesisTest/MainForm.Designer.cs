@@ -106,6 +106,8 @@
             this.buttonSumRoot2 = new System.Windows.Forms.Button();
             this.buttonCalculateCoefficient = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonSumDifference = new System.Windows.Forms.Button();
+            this.buttonSumDiff = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -120,7 +122,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
-            this.buttonSumDiff = new System.Windows.Forms.Button();
+            this.buttonShowImaginePart = new System.Windows.Forms.Button();
+            this.buttonPerpendicular = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -912,6 +915,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonPerpendicular);
+            this.tabPage3.Controls.Add(this.buttonShowImaginePart);
+            this.tabPage3.Controls.Add(this.buttonSumDifference);
             this.tabPage3.Controls.Add(this.buttonSumDiff);
             this.tabPage3.Controls.Add(this.groupBox9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -919,8 +925,28 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1206, 609);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "New functions";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonSumDifference
+            // 
+            this.buttonSumDifference.Location = new System.Drawing.Point(155, 412);
+            this.buttonSumDifference.Name = "buttonSumDifference";
+            this.buttonSumDifference.Size = new System.Drawing.Size(175, 36);
+            this.buttonSumDifference.TabIndex = 19;
+            this.buttonSumDifference.Text = "Sum odd - Sum even";
+            this.buttonSumDifference.UseVisualStyleBackColor = true;
+            this.buttonSumDifference.Click += new System.EventHandler(this.buttonSumDifference_Click);
+            // 
+            // buttonSumDiff
+            // 
+            this.buttonSumDiff.Location = new System.Drawing.Point(752, 190);
+            this.buttonSumDiff.Name = "buttonSumDiff";
+            this.buttonSumDiff.Size = new System.Drawing.Size(291, 38);
+            this.buttonSumDiff.TabIndex = 18;
+            this.buttonSumDiff.Text = "Sum odd terms Sum even terms Then minus";
+            this.buttonSumDiff.UseVisualStyleBackColor = true;
+            this.buttonSumDiff.Click += new System.EventHandler(this.buttonSumDiff_Click);
             // 
             // groupBox9
             // 
@@ -1056,15 +1082,25 @@
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
             // 
-            // buttonSumDiff
+            // buttonShowImaginePart
             // 
-            this.buttonSumDiff.Location = new System.Drawing.Point(752, 190);
-            this.buttonSumDiff.Name = "buttonSumDiff";
-            this.buttonSumDiff.Size = new System.Drawing.Size(291, 38);
-            this.buttonSumDiff.TabIndex = 18;
-            this.buttonSumDiff.Text = "Sum odd terms Sum even terms Then minus";
-            this.buttonSumDiff.UseVisualStyleBackColor = true;
-            this.buttonSumDiff.Click += new System.EventHandler(this.buttonSumDiff_Click);
+            this.buttonShowImaginePart.Location = new System.Drawing.Point(462, 412);
+            this.buttonShowImaginePart.Name = "buttonShowImaginePart";
+            this.buttonShowImaginePart.Size = new System.Drawing.Size(132, 33);
+            this.buttonShowImaginePart.TabIndex = 20;
+            this.buttonShowImaginePart.Text = "ImaginePart";
+            this.buttonShowImaginePart.UseVisualStyleBackColor = true;
+            this.buttonShowImaginePart.Click += new System.EventHandler(this.buttonShowImaginePart_Click);
+            // 
+            // buttonPerpendicular
+            // 
+            this.buttonPerpendicular.Location = new System.Drawing.Point(703, 412);
+            this.buttonPerpendicular.Name = "buttonPerpendicular";
+            this.buttonPerpendicular.Size = new System.Drawing.Size(123, 32);
+            this.buttonPerpendicular.TabIndex = 21;
+            this.buttonPerpendicular.Text = "Perpendicular";
+            this.buttonPerpendicular.UseVisualStyleBackColor = true;
+            this.buttonPerpendicular.Click += new System.EventHandler(this.buttonPerpendicular_Click);
             // 
             // MainForm
             // 
@@ -1195,6 +1231,9 @@
         private System.Windows.Forms.Button buttonOddTerms;
         private System.Windows.Forms.Button buttonCompareTwoMethods;
         private System.Windows.Forms.Button buttonSumDiff;
+        private System.Windows.Forms.Button buttonSumDifference;
+        private System.Windows.Forms.Button buttonShowImaginePart;
+        private System.Windows.Forms.Button buttonPerpendicular;
     }
 }
 
