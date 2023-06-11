@@ -79,7 +79,10 @@ namespace RiemannHypothesisTest
             m_dMaxX = m_dMaxY = dMax;
             pictureBox1.Refresh();
             labelCurrent.Text = "Current Complex: " + strText;
-            labelMax.Text = "Max: " + dMax.ToString();
+            labelMax.Text = "Max1: " + (lstData1.Count() > 0 ? lstData1.Select(x=>x.Real).ToList().Max().ToString() : "0") + "\n"
+                + "Max2: " + (lstData2.Count() > 0 ? lstData2.Select(x => x.Real).ToList().Max().ToString() : "0") + "\n"
+                + "Max3: " + (lstData3.Count() > 0 ? lstData3.Select(x => x.Real).ToList().Max().ToString() : "0") + "\n"
+                ;
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -140,6 +143,9 @@ namespace RiemannHypothesisTest
 
         private void pictureBox1_Resize(object sender, EventArgs e)
         {
+            int iMin = Math.Min(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Width = iMin;
+            pictureBox1.Height = iMin;
             pictureBox1.Refresh();
         }
     }

@@ -97,7 +97,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.buttonShowImageChange = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageSumExponentials = new System.Windows.Forms.TabPage();
+            this.buttonSumExponentials = new System.Windows.Forms.Button();
             this.buttonSumRoot2 = new System.Windows.Forms.Button();
             this.buttonCalculateCoefficient = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -115,6 +116,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
+            this.buttonPrimeProduct = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -125,7 +127,7 @@
             this.groupBox8.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabPageSumExponentials.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
@@ -771,7 +773,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPageSumExponentials);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -817,17 +819,29 @@
             this.buttonShowImageChange.UseVisualStyleBackColor = true;
             this.buttonShowImageChange.Click += new System.EventHandler(this.buttonShowImageChange_Click);
             // 
-            // tabPage2
+            // tabPageSumExponentials
             // 
-            this.tabPage2.Controls.Add(this.buttonSumRoot2);
-            this.tabPage2.Controls.Add(this.buttonCalculateCoefficient);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1206, 609);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Calculate Polynomial";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageSumExponentials.Controls.Add(this.buttonPrimeProduct);
+            this.tabPageSumExponentials.Controls.Add(this.buttonSumExponentials);
+            this.tabPageSumExponentials.Controls.Add(this.buttonSumRoot2);
+            this.tabPageSumExponentials.Controls.Add(this.buttonCalculateCoefficient);
+            this.tabPageSumExponentials.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSumExponentials.Name = "tabPageSumExponentials";
+            this.tabPageSumExponentials.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSumExponentials.Size = new System.Drawing.Size(1206, 609);
+            this.tabPageSumExponentials.TabIndex = 1;
+            this.tabPageSumExponentials.Text = "Calculate Polynomial";
+            this.tabPageSumExponentials.UseVisualStyleBackColor = true;
+            // 
+            // buttonSumExponentials
+            // 
+            this.buttonSumExponentials.Location = new System.Drawing.Point(57, 267);
+            this.buttonSumExponentials.Name = "buttonSumExponentials";
+            this.buttonSumExponentials.Size = new System.Drawing.Size(167, 37);
+            this.buttonSumExponentials.TabIndex = 2;
+            this.buttonSumExponentials.Text = "Calculate 3^x + 9^x + 27^x...";
+            this.buttonSumExponentials.UseVisualStyleBackColor = true;
+            this.buttonSumExponentials.Click += new System.EventHandler(this.buttonSumExponentials_Click);
             // 
             // buttonSumRoot2
             // 
@@ -994,6 +1008,16 @@
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
             // 
+            // buttonPrimeProduct
+            // 
+            this.buttonPrimeProduct.Location = new System.Drawing.Point(57, 372);
+            this.buttonPrimeProduct.Name = "buttonPrimeProduct";
+            this.buttonPrimeProduct.Size = new System.Drawing.Size(167, 40);
+            this.buttonPrimeProduct.TabIndex = 3;
+            this.buttonPrimeProduct.Text = "Calculate Zeta function by prime products";
+            this.buttonPrimeProduct.UseVisualStyleBackColor = true;
+            this.buttonPrimeProduct.Click += new System.EventHandler(this.buttonPrimeProduct_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1021,7 +1045,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.tabPageSumExponentials.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
@@ -1098,7 +1122,7 @@
         private System.Windows.Forms.Button buttonBallCompare;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageSumExponentials;
         private System.Windows.Forms.Button buttonCalculateCoefficient;
         private System.Windows.Forms.Button buttonSumRoot2;
         private System.Windows.Forms.Button buttonShowImageChange;
@@ -1117,6 +1141,8 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox textBoxProjectionY3;
         private System.Windows.Forms.TextBox textBoxProjectionX3;
+        private System.Windows.Forms.Button buttonSumExponentials;
+        private System.Windows.Forms.Button buttonPrimeProduct;
     }
 }
 

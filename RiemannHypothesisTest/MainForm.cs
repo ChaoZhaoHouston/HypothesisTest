@@ -490,6 +490,42 @@ namespace RiemannHypothesisTest
             return lstComplex;
         }
 
+        private List<Complex> GetExpVectors(Complex s, int iNumOfSeries, int iBaseNum)
+        {
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            int iBase = 1;
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                Complex term = Complex.Pow(new Complex(iBase, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+                iBase *= iBaseNum;
+            }
+            return lstComplex;
+        }
+
+        private List<Complex> GetPrimeProductVectors(Complex s, int iNumOfSeries, int iBaseNum)
+        {
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            double dBase = 1;
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                Complex term = Complex.Pow(new Complex(dBase, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+                dBase *= iBaseNum;
+            }
+            return lstComplex;
+        }
+
         private List<List<Complex>> GetListsAtDifferentY(double dXValue, double dYValue)
         {
             int iNumOfSeries = 20000;
@@ -1131,6 +1167,127 @@ namespace RiemannHypothesisTest
             result.StartPosition = FormStartPosition.Manual;
             result.Location = new Point(0, 200);
             result.Show();
+        }
+
+        private void buttonSumExponentials_Click(object sender, EventArgs e)
+        {
+            double XStart = 0.7;
+            double YStart = 0; // 20; // 800; // 8000;
+
+            List<Complex> lstEta = new List<Complex>();
+            List<Complex> lstZeta = new List<Complex>();
+            List<Complex> lstComplex = new List<Complex>();
+            FormCompareEtaAndZeta ZetaEta = new FormCompareEtaAndZeta();
+            ZetaEta.UpdateData(lstComplex, lstComplex, lstComplex, "(0, 0)");
+            ZetaEta.Show();
+            double dMin = double.MaxValue;
+            double dMax = double.MinValue;
+            for (int i = 0; i < 10000; i++)
+            {
+                Application.DoEvents();
+                Thread.Sleep(1);
+                double dXValue = XStart;
+                double dYValue = YStart + i * 0.01;
+
+                if (dYValue > 25.010)
+                    break;
+                Complex s = new Complex(dXValue, dYValue);
+                lstComplex = GetExpVectors(s, 20, 3);
+                Complex lastOne = lstComplex.Last();
+                lstEta.Add(lastOne);
+                lstZeta.Add(Complex.Subtract(new Complex(2, 0), lastOne));
+                //lstEta.Add(Complex.Subtract(new Complex(2, 0), lastOne));
+                //dMin = Math.Min(lstEta.Last().Real, dMin);
+                //dMax = Math.Max(lstEta.Last().Real, dMax);
+                //Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                //Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                //Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                //lstZeta.Add(Complex.Divide(lastOne, temp3));
+                ZetaEta.UpdateData(lstComplex.Take(5000).ToList(), lstEta, lstZeta, "(" + dXValue + ", " + dYValue + ")");
+                //ZetaEta.UpdateData(lstComplex.GetRange(0, 10000).ToList(), lstEta, lstEta, "(" + dXValue + ", " + i * 0.02 + ")");
+                Console.WriteLine(dMin + ", " + dMax + ", " + lstEta.Last().Magnitude);
+            }
+
+        }
+
+        private void buttonPrimeProduct_Click(object sender, EventArgs e)
+        {
+            double XStart = 0.5;
+            double YStart = 0; // 20; // 800; // 8000;
+
+            List<Complex> lstEta = new List<Complex>();
+            List<Complex> lstZeta = new List<Complex>();
+            List<Complex> lstComplex = new List<Complex>();
+            FormCompareEtaAndZeta ZetaEta = new FormCompareEtaAndZeta();
+            ZetaEta.UpdateData(lstComplex, lstComplex, lstComplex, "(0, 0)");
+            ZetaEta.Show();
+            double dMin = double.MaxValue;
+            double dMax = double.MinValue;
+            for (int i = 0; i < 10000; i++)
+            {
+                Application.DoEvents();
+                Thread.Sleep(1);
+                double dXValue = XStart;
+                double dYValue = YStart + i * 0.01;
+                int iTermNumber = 20;
+                if (dYValue > 25.010)
+                    break;
+                Complex s = new Complex(dXValue, dYValue);
+                List<Complex> lstComplex2 = GetPrimeProductVectors(s, iTermNumber, 2);
+                Complex lastOne2 = lstComplex2.Last();
+                List<Complex> lstComplex3 = GetPrimeProductVectors(s, iTermNumber, 3);
+                Complex lastOne3 = lstComplex3.Last();
+                List<Complex> lstComplex5 = GetPrimeProductVectors(s, iTermNumber, 5);
+                Complex lastOne5 = lstComplex5.Last();
+                List<Complex> lstComplex7 = GetPrimeProductVectors(s, iTermNumber, 7);
+                Complex lastOne7 = lstComplex7.Last();
+                List<Complex> lstComplex11 = GetPrimeProductVectors(s, iTermNumber, 11);
+                Complex lastOne11 = lstComplex11.Last();
+                List<Complex> lstComplex13 = GetPrimeProductVectors(s, iTermNumber, 13);
+                Complex lastOne13 = lstComplex13.Last();
+                List<Complex> lstComplex17 = GetPrimeProductVectors(s, iTermNumber, 17);
+                Complex lastOne17 = lstComplex17.Last();
+                List<Complex> lstComplex19 = GetPrimeProductVectors(s, iTermNumber, 19);
+                Complex lastOne19 = lstComplex19.Last();
+                List<Complex> lstComplex23 = GetPrimeProductVectors(s, iTermNumber, 23);
+                Complex lastOne23 = lstComplex23.Last();
+                List<Complex> lstComplex29 = GetPrimeProductVectors(s, iTermNumber, 29);
+                Complex lastOne29 = lstComplex29.Last();
+                List<Complex> lstComplex31 = GetPrimeProductVectors(s, iTermNumber, 31);
+                Complex lastOne31 = lstComplex31.Last();
+                List<Complex> lstComplex37 = GetPrimeProductVectors(s, iTermNumber, 37);
+                Complex lastOne37 = lstComplex37.Last();
+
+                List<Complex> lstComplex41 = GetPrimeProductVectors(s, iTermNumber, 41);
+                Complex lastOne41 = lstComplex41.Last();
+                List<Complex> lstComplex43 = GetPrimeProductVectors(s, iTermNumber, 43);
+                Complex lastOne43 = lstComplex43.Last();
+                List<Complex> lstComplex47 = GetPrimeProductVectors(s, iTermNumber, 47);
+                Complex lastOne47 = lstComplex47.Last();
+                List<Complex> lstComplex53 = GetPrimeProductVectors(s, iTermNumber, 53);
+                Complex lastOne53 = lstComplex53.Last();
+                //lastOne2 = Complex.Subtract(new Complex(2, 0), lastOne2);
+
+                //Complex Complex2_3_5_7 = Complex.Multiply(Complex.Multiply(lastOne2, lastOne3), Complex.Multiply(lastOne5, lastOne7));
+                //Complex Complex11_13_17_19 = Complex.Multiply(Complex.Multiply(lastOne11, lastOne13), Complex.Multiply(lastOne17, lastOne19));
+                //Complex Complex23_29_31_37 = Complex.Multiply(Complex.Multiply(lastOne23, lastOne29), Complex.Multiply(lastOne31, lastOne37));
+                //Complex Complex41_43_47_53 = Complex.Multiply(Complex.Multiply(lastOne41, lastOne43), Complex.Multiply(lastOne47, lastOne53));
+
+
+
+                //lstZeta.Add(Complex.Subtract(new Complex(2, 0), lastOne));
+                //lstEta.Add(Complex.Subtract(new Complex(2, 0), lastOne));
+                //dMin = Math.Min(lstEta.Last().Real, dMin);
+                //dMax = Math.Max(lstEta.Last().Real, dMax);
+                //Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                //Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                //Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                //lstZeta.Add(Complex.Divide(lastOne, temp3));
+                lstEta.Add(Complex.Multiply(lastOne47, lastOne53));
+                ZetaEta.UpdateData(lstComplex53.Take(5000).ToList(), lstEta, lstZeta, "(" + dXValue + ", " + dYValue + ")");
+
+                Console.WriteLine(dMin + ", " + dMax + ", " + lstEta.Last().Magnitude);
+            }
         }
     }
 }
