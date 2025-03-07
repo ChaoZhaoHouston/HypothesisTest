@@ -427,7 +427,7 @@ namespace RiemannHypothesisTest
         private void ButtonAnimation_Click(object sender, EventArgs e)
         {
             double XStart = 0.5;
-            double YStart = 800; // 8000;
+            double YStart = 0; // 8000;
 
             List<Complex> lstEta = new List<Complex>();
             List<Complex> lstZeta = new List<Complex>();
@@ -436,20 +436,38 @@ namespace RiemannHypothesisTest
             ZetaEta.UpdateData(lstComplex, lstComplex, lstComplex, "(0, 0)");
             ZetaEta.Show();
 
-            for (int i = 0; i < 1000; i++)
+            double[] firstzeros = { 
+                14.1347, 21.0220, 25.0209, 30.4248, 32.9351, 37.5862, 40.9187, 43.3271, 
+                48.0052, 49.7738, 52.9703, 56.4462, 59.3470, 60.8318, 65.1125, 67.0798, 
+                69.5464, 72.0672, 75.7047, 77.1448, 79.3374, 82.9104, 84.7355, 87.4253, 
+                88.8091, 92.4919, 94.6513, 95.8706, 98.8312};
+
+
+            for (int i = 0; i < 10000; i++)
             {
                 Application.DoEvents();
                 Thread.Sleep(1);
                 double dXValue = XStart;
-                double dYValue = YStart + i * 0.01;
+                double dYValue = YStart + i * 0.005;
+            //    for (int i = 0; i < 10000; i++)
+            //{
+            //    Application.DoEvents();
+            //    Thread.Sleep(5000);
+            //    double dXValue = XStart;
+            //    double dYValue = firstzeros[i % firstzeros.Length];
                 Complex s = new Complex(dXValue, dYValue);
                 lstComplex = GetVectors(s);
                 Complex lastOne = lstComplex.Last();
+
+                if (Math.Abs(lastOne.Real) < 0.01 && Math.Abs(lastOne.Imaginary) < 0.01)
+                {
+                    Console.WriteLine(dYValue);
+                }
                 lstEta.Add(lastOne);
-                Complex temp1 = Complex.Pow(new Complex(2, 0), s);
-                Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
-                Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
-                lstZeta.Add(Complex.Divide(lastOne, temp3));
+                //Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                //Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                //Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                //lstZeta.Add(Complex.Divide(lastOne, temp3));
                 ZetaEta.UpdateData(lstComplex.Take(5000).ToList(), lstEta, lstZeta, "(" + dXValue + ", " + dYValue + ")");
                 //ZetaEta.UpdateData(lstComplex.GetRange(0, 10000).ToList(), lstEta, lstEta, "(" + dXValue + ", " + i * 0.02 + ")");
             }
@@ -476,6 +494,7 @@ namespace RiemannHypothesisTest
         private List<Complex> GetVectors(Complex s)
         {
             int iNumOfSeries = 20000;
+            //int iNumOfSeries = 5;
             List<Complex> lstComplex = new List<Complex>();
             Complex start = new Complex(0, 0);
             lstComplex.Add(start);
@@ -907,7 +926,7 @@ namespace RiemannHypothesisTest
 
         private void buttonCalculateCoefficient_Click(object sender, EventArgs e)
         {
-            int iTotalNum = 1000;
+            int iTotalNum = 10000;
             int[] arr_Sum1 = new int[iTotalNum];
             for (int i = 0; i < iTotalNum; i++)
             {
@@ -993,7 +1012,7 @@ namespace RiemannHypothesisTest
                     if (bFoundOne)
                     {
                         writetext.WriteLine(iSum + ":");
-                        writetext.WriteLine(str);
+                        writetext.WriteLine("\t" + str);
                         writetext.WriteLine();
                     }
                 }
@@ -1192,7 +1211,7 @@ namespace RiemannHypothesisTest
                 if (dYValue > 25.010)
                     break;
                 Complex s = new Complex(dXValue, dYValue);
-                lstComplex = GetExpVectors(s, 20, 3);
+                lstComplex = GetExpVectors(s, 20, 2);
                 Complex lastOne = lstComplex.Last();
                 lstEta.Add(lastOne);
                 lstZeta.Add(Complex.Subtract(new Complex(2, 0), lastOne));
@@ -1213,7 +1232,7 @@ namespace RiemannHypothesisTest
         private void buttonPrimeProduct_Click(object sender, EventArgs e)
         {
             double XStart = 0.5;
-            double YStart = 0; // 20; // 800; // 8000;
+            double YStart = 20; // 20; // 800; // 8000;
 
             List<Complex> lstEta = new List<Complex>();
             List<Complex> lstZeta = new List<Complex>();
@@ -1230,7 +1249,7 @@ namespace RiemannHypothesisTest
                 double dXValue = XStart;
                 double dYValue = YStart + i * 0.01;
                 int iTermNumber = 20;
-                if (dYValue > 25.010)
+                if (dYValue > 65.010)
                     break;
                 Complex s = new Complex(dXValue, dYValue);
                 List<Complex> lstComplex2 = GetPrimeProductVectors(s, iTermNumber, 2);
@@ -1266,13 +1285,38 @@ namespace RiemannHypothesisTest
                 Complex lastOne47 = lstComplex47.Last();
                 List<Complex> lstComplex53 = GetPrimeProductVectors(s, iTermNumber, 53);
                 Complex lastOne53 = lstComplex53.Last();
-                //lastOne2 = Complex.Subtract(new Complex(2, 0), lastOne2);
 
-                //Complex Complex2_3_5_7 = Complex.Multiply(Complex.Multiply(lastOne2, lastOne3), Complex.Multiply(lastOne5, lastOne7));
-                //Complex Complex11_13_17_19 = Complex.Multiply(Complex.Multiply(lastOne11, lastOne13), Complex.Multiply(lastOne17, lastOne19));
-                //Complex Complex23_29_31_37 = Complex.Multiply(Complex.Multiply(lastOne23, lastOne29), Complex.Multiply(lastOne31, lastOne37));
-                //Complex Complex41_43_47_53 = Complex.Multiply(Complex.Multiply(lastOne41, lastOne43), Complex.Multiply(lastOne47, lastOne53));
 
+                List<Complex> lstComplex59 = GetPrimeProductVectors(s, iTermNumber, 59);
+                Complex lastOne59 = lstComplex59.Last();
+                List<Complex> lstComplex61 = GetPrimeProductVectors(s, iTermNumber, 61);
+                Complex lastOne61 = lstComplex61.Last();
+                List<Complex> lstComplex67 = GetPrimeProductVectors(s, iTermNumber, 67);
+                Complex lastOne67 = lstComplex67.Last();
+                List<Complex> lstComplex71 = GetPrimeProductVectors(s, iTermNumber, 71);
+                Complex lastOne71 = lstComplex71.Last();
+
+                List<Complex> lstComplex73 = GetPrimeProductVectors(s, iTermNumber, 73);
+                Complex lastOne73 = lstComplex73.Last();
+                List<Complex> lstComplex79 = GetPrimeProductVectors(s, iTermNumber, 79);
+                Complex lastOne79 = lstComplex79.Last();
+                List<Complex> lstComplex83 = GetPrimeProductVectors(s, iTermNumber, 83);
+                Complex lastOne83 = lstComplex83.Last();
+                List<Complex> lstComplex89 = GetPrimeProductVectors(s, iTermNumber, 89);
+                Complex lastOne89 = lstComplex89.Last();
+                Complex lastOne2_corrected = Complex.Subtract(new Complex(2, 0), lastOne2);
+
+                Complex Complex2_3_5_7 = Complex.Multiply(Complex.Multiply(lastOne2_corrected, lastOne3), Complex.Multiply(lastOne5, lastOne7));
+                Complex Complex11_13_17_19 = Complex.Multiply(Complex.Multiply(lastOne11, lastOne13), Complex.Multiply(lastOne17, lastOne19));
+                Complex Complex23_29_31_37 = Complex.Multiply(Complex.Multiply(lastOne23, lastOne29), Complex.Multiply(lastOne31, lastOne37));
+                Complex Complex41_43_47_53 = Complex.Multiply(Complex.Multiply(lastOne41, lastOne43), Complex.Multiply(lastOne47, lastOne53));
+                Complex Complex59_61_67_71 = Complex.Multiply(Complex.Multiply(lastOne59, lastOne61), Complex.Multiply(lastOne67, lastOne71));
+                Complex Complex73_79_83_89 = Complex.Multiply(Complex.Multiply(lastOne73, lastOne79), Complex.Multiply(lastOne83, lastOne89));
+
+                Complex prod1 = Complex.Multiply(Complex2_3_5_7, Complex11_13_17_19);
+                Complex prod2 = Complex.Multiply(Complex41_43_47_53, Complex23_29_31_37);
+                Complex prod3 = Complex.Multiply(Complex59_61_67_71, Complex73_79_83_89);
+                Complex prod1_2 = Complex.Multiply(prod1, prod2);
 
 
                 //lstZeta.Add(Complex.Subtract(new Complex(2, 0), lastOne));
@@ -1283,8 +1327,12 @@ namespace RiemannHypothesisTest
                 //Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
                 //Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
                 //lstZeta.Add(Complex.Divide(lastOne, temp3));
-                lstEta.Add(Complex.Multiply(lastOne47, lastOne53));
-                ZetaEta.UpdateData(lstComplex53.Take(5000).ToList(), lstEta, lstZeta, "(" + dXValue + ", " + dYValue + ")");
+                //lstEta.Add(Complex.Multiply(lastOne11, lastOne23));
+
+                //lstEta.Add(Complex.Multiply(lastOne2, 1));
+                lstEta.Add(Complex.Multiply(prod1_2, 1));
+                lstZeta.Add(Complex.Multiply(lastOne2, 1));
+                ZetaEta.UpdateData(lstComplex2.Take(5000).ToList(), lstEta, lstZeta, "(" + dXValue + ", " + dYValue + ")");
 
                 Console.WriteLine(dMin + ", " + dMax + ", " + lstEta.Last().Magnitude);
             }

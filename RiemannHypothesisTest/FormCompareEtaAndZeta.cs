@@ -123,7 +123,12 @@ namespace RiemannHypothesisTest
 
                     e.Graphics.DrawLine(new Pen(Color.Blue, 1f), ptScreen1, ptScreen2);
                 }
+                Complex cLast = m_lstData2.Last();
+                Point ptLast = Utilities.convertRealToScreen(new PointF((float)cLast.Real, (float)cLast.Imaginary),
+                        m_dMinX, m_dMaxX, m_dMinY, m_dMaxY, m_dimensionScreen);
+                e.Graphics.DrawEllipse(new Pen(Color.Red, 1f), ptLast.X, ptLast.Y, 4, 4);
             }
+
             int iLength3 = m_lstData3.Count;
             if (iLength3 > 1)
             {
