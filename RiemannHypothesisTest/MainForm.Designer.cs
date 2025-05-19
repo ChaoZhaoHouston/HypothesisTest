@@ -98,10 +98,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.buttonShowImageChange = new System.Windows.Forms.Button();
             this.tabPageSumExponentials = new System.Windows.Forms.TabPage();
+            this.buttonPrimeProduct = new System.Windows.Forms.Button();
             this.buttonSumExponentials = new System.Windows.Forms.Button();
             this.buttonSumRoot2 = new System.Windows.Forms.Button();
             this.buttonCalculateCoefficient = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonDrawRadiusAngle = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -116,7 +118,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
-            this.buttonPrimeProduct = new System.Windows.Forms.Button();
+            this.buttonCompareTwoAlphas = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -833,6 +835,16 @@
             this.tabPageSumExponentials.Text = "Calculate Polynomial";
             this.tabPageSumExponentials.UseVisualStyleBackColor = true;
             // 
+            // buttonPrimeProduct
+            // 
+            this.buttonPrimeProduct.Location = new System.Drawing.Point(57, 372);
+            this.buttonPrimeProduct.Name = "buttonPrimeProduct";
+            this.buttonPrimeProduct.Size = new System.Drawing.Size(167, 40);
+            this.buttonPrimeProduct.TabIndex = 3;
+            this.buttonPrimeProduct.Text = "Calculate Zeta function by prime products";
+            this.buttonPrimeProduct.UseVisualStyleBackColor = true;
+            this.buttonPrimeProduct.Click += new System.EventHandler(this.buttonPrimeProduct_Click);
+            // 
             // buttonSumExponentials
             // 
             this.buttonSumExponentials.Location = new System.Drawing.Point(57, 267);
@@ -865,14 +877,26 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonCompareTwoAlphas);
+            this.tabPage3.Controls.Add(this.buttonDrawRadiusAngle);
             this.tabPage3.Controls.Add(this.groupBox9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1206, 609);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "More implementation";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonDrawRadiusAngle
+            // 
+            this.buttonDrawRadiusAngle.Location = new System.Drawing.Point(218, 383);
+            this.buttonDrawRadiusAngle.Name = "buttonDrawRadiusAngle";
+            this.buttonDrawRadiusAngle.Size = new System.Drawing.Size(118, 45);
+            this.buttonDrawRadiusAngle.TabIndex = 18;
+            this.buttonDrawRadiusAngle.Text = "DrawRadiusAngle";
+            this.buttonDrawRadiusAngle.UseVisualStyleBackColor = true;
+            this.buttonDrawRadiusAngle.Click += new System.EventHandler(this.buttonDrawRadiusAngle_Click);
             // 
             // groupBox9
             // 
@@ -1008,15 +1032,15 @@
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
             // 
-            // buttonPrimeProduct
+            // buttonCompareTwoAlphas
             // 
-            this.buttonPrimeProduct.Location = new System.Drawing.Point(57, 372);
-            this.buttonPrimeProduct.Name = "buttonPrimeProduct";
-            this.buttonPrimeProduct.Size = new System.Drawing.Size(167, 40);
-            this.buttonPrimeProduct.TabIndex = 3;
-            this.buttonPrimeProduct.Text = "Calculate Zeta function by prime products";
-            this.buttonPrimeProduct.UseVisualStyleBackColor = true;
-            this.buttonPrimeProduct.Click += new System.EventHandler(this.buttonPrimeProduct_Click);
+            this.buttonCompareTwoAlphas.Location = new System.Drawing.Point(695, 155);
+            this.buttonCompareTwoAlphas.Name = "buttonCompareTwoAlphas";
+            this.buttonCompareTwoAlphas.Size = new System.Drawing.Size(272, 55);
+            this.buttonCompareTwoAlphas.TabIndex = 19;
+            this.buttonCompareTwoAlphas.Text = "Compare two alphas";
+            this.buttonCompareTwoAlphas.UseVisualStyleBackColor = true;
+            this.buttonCompareTwoAlphas.Click += new System.EventHandler(this.buttonCompareTwoAlphas_Click);
             // 
             // MainForm
             // 
@@ -1143,6 +1167,8 @@
         private System.Windows.Forms.TextBox textBoxProjectionX3;
         private System.Windows.Forms.Button buttonSumExponentials;
         private System.Windows.Forms.Button buttonPrimeProduct;
+        private System.Windows.Forms.Button buttonDrawRadiusAngle;
+        private System.Windows.Forms.Button buttonCompareTwoAlphas;
     }
 }
 

@@ -30,8 +30,8 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelCurrent = new System.Windows.Forms.Label();
             this.labelMax = new System.Windows.Forms.Label();
+            this.labelCurrent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -54,7 +54,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.labelMax);
             this.splitContainer1.Panel2.Controls.Add(this.labelCurrent);
             this.splitContainer1.Size = new System.Drawing.Size(958, 612);
-            this.splitContainer1.SplitterDistance = 677;
+            this.splitContainer1.SplitterDistance = 734;
             this.splitContainer1.TabIndex = 0;
             // 
             // pictureBox1
@@ -62,20 +62,11 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(677, 612);
+            this.pictureBox1.Size = new System.Drawing.Size(734, 612);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.Resize += new System.EventHandler(this.pictureBox1_Resize);
-            // 
-            // labelCurrent
-            // 
-            this.labelCurrent.AutoSize = true;
-            this.labelCurrent.Location = new System.Drawing.Point(53, 98);
-            this.labelCurrent.Name = "labelCurrent";
-            this.labelCurrent.Size = new System.Drawing.Size(31, 13);
-            this.labelCurrent.TabIndex = 0;
-            this.labelCurrent.Text = "(0, 0)";
             // 
             // labelMax
             // 
@@ -85,6 +76,15 @@
             this.labelMax.Size = new System.Drawing.Size(51, 13);
             this.labelMax.TabIndex = 1;
             this.labelMax.Text = "Max: 100";
+            // 
+            // labelCurrent
+            // 
+            this.labelCurrent.AutoSize = true;
+            this.labelCurrent.Location = new System.Drawing.Point(53, 98);
+            this.labelCurrent.Name = "labelCurrent";
+            this.labelCurrent.Size = new System.Drawing.Size(31, 13);
+            this.labelCurrent.TabIndex = 0;
+            this.labelCurrent.Text = "(0, 0)";
             // 
             // FormCompareEtaAndZeta
             // 
