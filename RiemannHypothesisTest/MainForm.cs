@@ -427,7 +427,7 @@ namespace RiemannHypothesisTest
         private void ButtonAnimation_Click(object sender, EventArgs e)
         {
             double XStart = 0.5; // 0.55;
-            double YStart = 400; //0 // 900; // 8000;
+            double YStart = 0; //0 // 900; // 8000;
 
             List<Complex> lstEta = new List<Complex>();
             List<Complex> lstZeta = new List<Complex>();
@@ -464,10 +464,10 @@ namespace RiemannHypothesisTest
                     Console.WriteLine(dYValue);
                 }
                 lstEta.Add(lastOne);
-                //Complex temp1 = Complex.Pow(new Complex(2, 0), s);
-                //Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
-                //Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
-                //lstZeta.Add(Complex.Divide(lastOne, temp3));
+                Complex temp1 = Complex.Pow(new Complex(2, 0), s);
+                Complex temp2 = Complex.Divide(new Complex(2, 0), temp1);
+                Complex temp3 = Complex.Subtract(new Complex(1, 0), temp2);
+                lstZeta.Add(Complex.Divide(lastOne, temp3));
                 ZetaEta.UpdateData(lstComplex.Take(5000).ToList(), lstEta, lstZeta, "(" + dXValue + ", " + dYValue + ")");
                 //ZetaEta.UpdateData(lstComplex.GetRange(0, 10000).ToList(), lstEta, lstEta, "(" + dXValue + ", " + i * 0.02 + ")");
             }
@@ -491,9 +491,11 @@ namespace RiemannHypothesisTest
 
         }
 
+
+
         private List<Complex> GetVectors(Complex s)
         {
-            int iNumOfSeries = 20000;
+            int iNumOfSeries = 200000;
             //int iNumOfSeries = 5;
             List<Complex> lstComplex = new List<Complex>();
             Complex start = new Complex(0, 0);
@@ -509,6 +511,86 @@ namespace RiemannHypothesisTest
             return lstComplex;
         }
 
+        private List<Complex> GetVectors(Complex s, int inum)
+        {
+            int iNumOfSeries = inum;
+            //int iNumOfSeries = 5;
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                Complex term = Complex.Pow(new Complex(i, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = (i % 2 == 0) ? start - term : start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+            }
+            return lstComplex;
+        }
+
+        private List<Complex> GetVectors_AlwaysAdd(Complex s, int inum)
+        {
+            int iNumOfSeries = inum;
+            //int iNumOfSeries = 5;
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                Complex term = Complex.Pow(new Complex(i, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+            }
+            return lstComplex;
+        }
+
+
+        private List<Complex> GetVectors_Odd_Then_Even(Complex s)
+        {
+            int iNumOfSeries = 40000;
+            //int iNumOfSeries = 5;
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            for (int i = 1; i < iNumOfSeries; i+= 2)
+            {
+                Complex term = Complex.Pow(new Complex(i, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = (i % 2 == 0) ? start - term : start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+            }
+            for (int i = 2; i < iNumOfSeries; i += 2)
+            {
+                Complex term = Complex.Pow(new Complex(i, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = (i % 2 == 0) ? start - term : start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+            }
+            return lstComplex;
+        }
+
+        private List<Complex> GetVectors_2(Complex s)
+        {
+            int iNumOfSeries = 200000;
+            //int iNumOfSeries = 5;
+            List<Complex> lstComplex = new List<Complex>();
+            Complex start = new Complex(0, 0);
+            lstComplex.Add(start);
+            for (int i = 1; i < iNumOfSeries; i++)
+            {
+                Complex term = Complex.Pow(new Complex(i, 0), new Complex(-s.Real, -s.Imaginary));
+                Complex vectorEnd = (i % 2 == 0) ? start + term : start + term;
+                //Complex vectorEnd = start + term;
+                start = vectorEnd;
+                lstComplex.Add(start);
+            }
+            return lstComplex;
+        }
 
         private List<Complex> GetVectors_RadiusAngle(Complex s)
         {
@@ -1417,9 +1499,9 @@ namespace RiemannHypothesisTest
 
         private void buttonCompareTwoAlphas_Click(object sender, EventArgs e)
         {
-            double XStart1 = 0.5;
-            double XStart2 = 0.4;
-            double YStart = 400; //0 // 900; // 8000;
+            double XStart1 = 0.25;
+            double XStart2 = 0.5;
+            double YStart = 0; // 400; //0 // 900; // 8000;
 
             List<Complex> lstEta1 = new List<Complex>();
             List<Complex> lstEta2 = new List<Complex>();
@@ -1430,10 +1512,10 @@ namespace RiemannHypothesisTest
             compareAlphas.Show();
 
 
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 30000; i++)
             {
                 Application.DoEvents();
-                Thread.Sleep(1);
+                Thread.Sleep(10);
 
                 double dYValue = YStart + i * 0.005;
 
@@ -1443,15 +1525,97 @@ namespace RiemannHypothesisTest
                 lstEta1.Add(lastOne1);
                 //if (Math.Abs(lastOne.Real) < 0.01 && Math.Abs(lastOne.Imaginary) < 0.01)
                 //{
-                //    Console.WriteLine(dYValue);
+                //    Console.WriteLine(dYValue);41
                 //}
 
                 Complex s2 = new Complex(XStart2, dYValue);
                 lstComplex2 = GetVectors(s2);
                 Complex lastOne2 = lstComplex2.Last();
                 lstEta2.Add(lastOne2);
+                compareAlphas.currentComplex = s2;
+                compareAlphas.UpdateData(lstComplex1.Take(5000).ToList(), lstEta1, lstComplex2.Take(20000).ToList(), lstEta2);
 
-                compareAlphas.UpdateData(lstComplex1.Take(5000).ToList(), lstEta1, lstComplex2.Take(5000).ToList(), lstEta2);
+            }
+        }
+
+        private void buttonDrawOddFirst_Click(object sender, EventArgs e)
+        {
+            double XStart1 = 0.5;
+            double XStart2 = 0.5;
+            double YStart = 100; // 400; //0 // 900; // 8000;
+
+            List<Complex> lstEta1 = new List<Complex>();
+            List<Complex> lstEta2 = new List<Complex>();
+            List<Complex> lstComplex1 = new List<Complex>();
+            List<Complex> lstComplex2 = new List<Complex>();
+            FormCompareAlphas compareAlphas = new FormCompareAlphas();
+            compareAlphas.UpdateData(lstComplex1, lstEta1, lstComplex2, lstEta2);
+            compareAlphas.Show();
+
+
+            for (int i = 0; i < 30000; i++)
+            {
+                Application.DoEvents();
+                Thread.Sleep(10);
+
+                double dYValue = YStart + i * 0.005;
+
+                Complex s1 = new Complex(XStart1, dYValue);
+                lstComplex1 = GetVectors_Odd_Then_Even(s1);
+                Complex lastOne1 = lstComplex1.Last();
+                lstEta1.Add(lastOne1);
+                //if (Math.Abs(lastOne.Real) < 0.01 && Math.Abs(lastOne.Imaginary) < 0.01)
+                //{
+                //    Console.WriteLine(dYValue);
+                //}
+
+                Complex s2 = new Complex(XStart2, dYValue);
+                lstComplex2 = GetVectors_Odd_Then_Even(s2);
+                Complex lastOne2 = lstComplex2.Last();
+                lstEta2.Add(lastOne2);
+                int iDrawNumber = 40000;
+                compareAlphas.UpdateData(lstComplex1.Take(iDrawNumber).ToList(), lstEta1, lstComplex2.Take(iDrawNumber).ToList(), lstEta2);
+
+            }
+        }
+
+        private void buttonCompareNegPosAlpha_Click(object sender, EventArgs e)
+        {
+            double XStart1 = 0.5;// 0.45;
+            double XStart2 = 2;
+            double YStart = -0; // 400; //0 // 900; // 8000;
+
+            List<Complex> lstEta1 = new List<Complex>();
+            List<Complex> lstEta2 = new List<Complex>();
+            List<Complex> lstComplex1 = new List<Complex>();
+            List<Complex> lstComplex2 = new List<Complex>();
+            FormCompareAlphas compareAlphas = new FormCompareAlphas();
+            compareAlphas.UpdateData(lstComplex1, lstEta1, lstComplex2, lstEta2);
+            compareAlphas.Show();
+
+
+            for (int i = 0; i < 30000; i++)
+            {
+                Application.DoEvents();
+                Thread.Sleep(10);
+
+                double dYValue = YStart + i * 0.005;
+
+                Complex s1 = new Complex(XStart1, dYValue);
+                lstComplex1 = GetVectors (s1);
+                Complex lastOne1 = lstComplex1.Last();
+                lstEta1.Add(lastOne1);
+                //if (Math.Abs(lastOne.Real) < 0.01 && Math.Abs(lastOne.Imaginary) < 0.01)
+                //{
+                //    Console.WriteLine(dYValue);
+                //}
+
+                Complex s2 = new Complex(XStart2, dYValue);
+                lstComplex2 = GetVectors_AlwaysAdd(s2, 2000);
+                Complex lastOne2 = lstComplex2.Last();
+                lstEta2.Add(lastOne2);
+                compareAlphas.currentComplex = s2;
+                compareAlphas.UpdateData(lstComplex1.Take(5000).ToList(), lstEta1, lstComplex2.Take(20000).ToList(), lstEta2);
 
             }
         }

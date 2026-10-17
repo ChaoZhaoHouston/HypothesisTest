@@ -103,6 +103,8 @@
             this.buttonSumRoot2 = new System.Windows.Forms.Button();
             this.buttonCalculateCoefficient = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonDrawOddFirst = new System.Windows.Forms.Button();
+            this.buttonCompareTwoAlphas = new System.Windows.Forms.Button();
             this.buttonDrawRadiusAngle = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -118,7 +120,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxProjectionY1 = new System.Windows.Forms.TextBox();
             this.textBoxProjectionX1 = new System.Windows.Forms.TextBox();
-            this.buttonCompareTwoAlphas = new System.Windows.Forms.Button();
+            this.buttonCompareNegPosAlpha = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -877,6 +879,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonCompareNegPosAlpha);
+            this.tabPage3.Controls.Add(this.buttonDrawOddFirst);
             this.tabPage3.Controls.Add(this.buttonCompareTwoAlphas);
             this.tabPage3.Controls.Add(this.buttonDrawRadiusAngle);
             this.tabPage3.Controls.Add(this.groupBox9);
@@ -887,6 +891,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "More implementation";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonDrawOddFirst
+            // 
+            this.buttonDrawOddFirst.Location = new System.Drawing.Point(699, 175);
+            this.buttonDrawOddFirst.Name = "buttonDrawOddFirst";
+            this.buttonDrawOddFirst.Size = new System.Drawing.Size(268, 52);
+            this.buttonDrawOddFirst.TabIndex = 20;
+            this.buttonDrawOddFirst.Text = "Draw odd first";
+            this.buttonDrawOddFirst.UseVisualStyleBackColor = true;
+            this.buttonDrawOddFirst.Click += new System.EventHandler(this.buttonDrawOddFirst_Click);
+            // 
+            // buttonCompareTwoAlphas
+            // 
+            this.buttonCompareTwoAlphas.Location = new System.Drawing.Point(695, 81);
+            this.buttonCompareTwoAlphas.Name = "buttonCompareTwoAlphas";
+            this.buttonCompareTwoAlphas.Size = new System.Drawing.Size(272, 55);
+            this.buttonCompareTwoAlphas.TabIndex = 19;
+            this.buttonCompareTwoAlphas.Text = "Compare two alphas";
+            this.buttonCompareTwoAlphas.UseVisualStyleBackColor = true;
+            this.buttonCompareTwoAlphas.Click += new System.EventHandler(this.buttonCompareTwoAlphas_Click);
             // 
             // buttonDrawRadiusAngle
             // 
@@ -1032,15 +1056,15 @@
             this.textBoxProjectionX1.TabIndex = 0;
             this.textBoxProjectionX1.Text = "-0.5";
             // 
-            // buttonCompareTwoAlphas
+            // buttonCompareNegPosAlpha
             // 
-            this.buttonCompareTwoAlphas.Location = new System.Drawing.Point(695, 155);
-            this.buttonCompareTwoAlphas.Name = "buttonCompareTwoAlphas";
-            this.buttonCompareTwoAlphas.Size = new System.Drawing.Size(272, 55);
-            this.buttonCompareTwoAlphas.TabIndex = 19;
-            this.buttonCompareTwoAlphas.Text = "Compare two alphas";
-            this.buttonCompareTwoAlphas.UseVisualStyleBackColor = true;
-            this.buttonCompareTwoAlphas.Click += new System.EventHandler(this.buttonCompareTwoAlphas_Click);
+            this.buttonCompareNegPosAlpha.Location = new System.Drawing.Point(695, 267);
+            this.buttonCompareNegPosAlpha.Name = "buttonCompareNegPosAlpha";
+            this.buttonCompareNegPosAlpha.Size = new System.Drawing.Size(267, 56);
+            this.buttonCompareNegPosAlpha.TabIndex = 21;
+            this.buttonCompareNegPosAlpha.Text = "Compare negative and positive alpha";
+            this.buttonCompareNegPosAlpha.UseVisualStyleBackColor = true;
+            this.buttonCompareNegPosAlpha.Click += new System.EventHandler(this.buttonCompareNegPosAlpha_Click);
             // 
             // MainForm
             // 
@@ -1169,6 +1193,8 @@
         private System.Windows.Forms.Button buttonPrimeProduct;
         private System.Windows.Forms.Button buttonDrawRadiusAngle;
         private System.Windows.Forms.Button buttonCompareTwoAlphas;
+        private System.Windows.Forms.Button buttonDrawOddFirst;
+        private System.Windows.Forms.Button buttonCompareNegPosAlpha;
     }
 }
 
